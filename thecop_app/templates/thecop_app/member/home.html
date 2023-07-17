@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Ubuntu:wght@300&display=swap" rel="stylesheet">
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    {% load static %}
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="{% static 'thecop_app/CSS/index.css' %}" />
+    <link rel="stylesheet" href="{% static 'thecop_app/CSS/ananse.css' %}">
+    <link rel="stylesheet" href="{% static 'thecop_app/CSS/form.css' %}">
+    <link rel="stylesheet" href="{% static 'thecop_app/CSS/fa/allicons.css' %}">
+    <link rel="stylesheet" href="{% static 'thecop_app/CSS/fa/icons.css' %}">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>{{member.local_assembly.district.name}} {{member.local_assembly.name}} Assembly</title>
+</head>
+<body style="display:grid">
+<header class="header">
+      <!-- <a href="#" class="brand" id="brand">COP</a> -->
+       <a href="index.html" class="brand">
+        <img src="{% static 'thecop_app/images/The-Church-Of-Pentecost.png' %}"/>
+       </a>
+    </header>
+
+
+<div class="appbody">
+    <h4>Announcements</h4>
+        <div class="anc-keys">
+            <div class="key">
+                <span class="box l"></span>
+                <span>Local</span>
+            </div>
+            <div class="key">
+                <span class="box d"></span>
+                <span>District</span>
+            </div>
+            <div class="key">
+                <span class="box a"></span>
+                <span>Area</span>
+            </div>
+            <div class="key">
+                <span class="box n"></span>
+                <span>National</span>
+            </div>
+        </div>
+    <div>
+        {% for announcement in member.get_local_announcements %}
+            <div class="anc l">
+                <span>{{ announcement.text }}</span>
+            </div>
+        {% endfor %}
+
+        {% for announcement in member.get_district_announcements %}
+            <div class="anc d">
+                <span>{{ announcement.text }}</span>
+            </div>
+        {% endfor %}
+        {% for announcement in member.get_area_announcements %}
+            <div class="anc a">
+                <span>{{ announcement.text }}</span>
+            </div>
+        {% endfor %}
+        {% for announcement in member.get_national_announcements %}
+            <div class="anc n">
+                <span>{{ announcement.text }}</span>
+            </div>
+        {% endfor %}
+    </div>
+
+ <h4>Upcoming Events</h4>
+    <div>
+        {% for event in upcoming_events|dictsort:"start" %}
+            <div class="event-box">
+                <div class="date-box">
+                    <span class="num">{{event.start.day}}</span>
+                    <span class="month">{{event.get_month}}</span>
+                </div>
+                <div class="level">
+                    {% if event.local %}
+                        Local
+                    {% elif event.area %}
+                        Area
+                    {% elif event.district %}
+                        District
+                    {% elif event.nation %}
+                        Nation
+                    {% endif %}
+                </div>
+                <div class="img-box">
+                    <img src="/static/thecop_app/images/bee.jpg">
+                </div>
+                <div class="text-box">
+                    <span><i class="fa-thin fa-tag"></i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{event.name}}</span><br>
+                    <span><i class="fa-thin fa-location-dot"></i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{event.venue}}</span>
+                </div>
+            </div>
+        {% endfor %}
+    </div>
+
+
+    <h4>Latest Lessons</h4>
+
+    <div class="fl001">
+        <div class="box001">
+            <div class="cover"></div>
+            <div class="text">Living the godly life. Staying as holy as a saint</div>
+        </div>
+        <div class="box001">
+            <div class="cover"></div>
+            <div class="text">Worshiping the lord with all your heart. The right way to worship God</div>
+        </div>
+        <div class="box001">
+            <div class="cover"></div>
+            <div class="text">Satan the father of all devils alias the geng leader</div>
+        </div>
+        <div class="box001">
+        <div class="cover"></div>
+        <div class="text">Choosing a career. Passion, abilities and responsibilities</div>
+    </div>
+    </div>
+
+    <h4>Latest News</h4>
+
+    <div class="fl001">
+        <div class="box001">
+            <div class="cover"></div>
+            <div class="text">Living the godly life. Staying as holy as a saint</div>
+        </div>
+        <div class="box001">
+            <div class="cover"></div>
+            <div class="text">Worshiping the lord with all your heart. The right way to worship God</div>
+        </div>
+        <div class="box001">
+            <div class="cover"></div>
+            <div class="text">Satan the father of all devils alias the geng leader</div>
+        </div>
+        <div class="box001">
+        <div class="cover"></div>
+        <div class="text">Choosing a career. Passion, abilities and responsibilities</div>
+    </div>
+    </div>
+
+
+<div class="blank"></div>
+</div>
+<bottomnav>
+        <navitem is-selected onclick="window.open('', '_self')" >
+            <i class="fa-light fa-church"></i>
+            <text>Home</text>
+        </navitem>
+        <navitem onclick="window.open('', '_self')">
+            <i class="fa-thin fa-megaphone"></i>
+            <text>Announcement</text>
+        </navitem>
+        <navitem>
+            <i class="fa-light fa-video"></i>
+            <text>Videos</text>
+        </navitem>
+        <navitem>
+             <i class="fa-light fa-newspaper"></i>
+            <text>Headlines</text>
+        </navitem>
+        <navitem onclick="window.open('{% url 'member_me' %}', '_self')">
+            <i class="fa-light fa-user"></i>
+            <text>Me</text>
+        </navitem>
+</bottomnav>
+</body>
+</html>

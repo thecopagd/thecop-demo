@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<h1>National Admin Login</h1>
+
+<form method="post" action="{% url 'nationalAdmin_login' %}">
+    {% csrf_token %}
+  <select name="nation">
+    <option>Select Country</option>
+        {% for country in countries %}
+            <option value="{{ country.id }}">{{ country.country }}</option>
+        {% endfor %}
+    </select><br><br>
+    <input name="id" type="text" placeholder="ID" required/><br><br>
+    <input name="ep" type="text" placeholder="email or phone" required/><br><br>
+    <input name="password" type="password" placeholder="password" required/><br><br>
+    <input type="submit" value="Submit">
+</form>
+
+</body>
+</html>

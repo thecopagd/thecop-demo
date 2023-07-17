@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+    body{font-family:calibri}
+        table{
+            border: 1px solid black; border-spacing: 2px;
+        }
+        th, td{
+            border: 1px solid black;
+            padding: 10px
+        }
+    </style>
+</head>
+<body>
+<h1>{{admin.district.name}} District Admin, {{admin.district.area.name}} Area {{admin.district.area.nation.country}}</h1><br>
+<h3>Local Assemblies</h3>
+<table>
+    <tr>
+        <th>Name</th>
+        <th>id</th>
+        <th>Location</th>
+    </tr>
+{% for local in admin.district.localassembly_set.all|dictsort:"name" %}
+    <tr>
+        <td>{{ local.name }}</td>
+        <td>{{ local.id }}</td>
+        <td>{{ local.location }}</td>
+    </tr>
+{% endfor %}
+</table>
+
+<h3>Local Admins</h3>
+<table>
+    <tr>
+        <th>ID</th>
+        <th>Phone</th>
+        <th>Email</th>
+        <th>Local</th>
+    </tr>
+    {% for local in admin.district.localassembly_set.all|dictsort:"name" %}
+     {% for ad in local.localadmin_set.all %}
+        <tr>
+            <td>{{ ad.id }}</td>
+            <td>{{ ad.phone }}</td>
+            <td>{{ ad.email }}</td>
+            <td>{{ ad.local_assembly.name }} Assembly</td>
+        </tr>
+     {% endfor %}
+    {% endfor %}
+</table>
+
+<h3>Announcements</h3>
+<div>
+    {% for announcement in announcements %}
+        <div class="anc n">
+            <span>{{ announcement.text }}</span>
+        </div>
+    {% empty %}
+        <div class="anc n">
+            <span>No announcement</span>
+        </div>
+    {% endfor %}
+</div>
+<a href="{% url 'districtAdmin_add_announcement' %}">ADD ANNOUNCEMENT</a>
+
+
+<h3>Events</h3>
+<div>
+    {% for event in events %}
+        <div class="anc n">
+            <span>{{ event.name }}::{{ event.date }}</span>
+        </div>
+    {% empty %}
+        <div class="anc n">
+            <span>No event</span>
+        </div>
+    {% endfor %}
+</div>
+<a href="{% url 'districtAdmin_add_event' %}">ADD Event</a>
+
+</body>
+</html>

@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<h1>ADD DISTRICT ADMIN</h1>
+<form method="post" action="{% url 'areaAdmin_add_district_admin' %}">
+    {% csrf_token %}
+   <h4>Adding to {{admin.area.nation.country}}, {{admin.area.name}} AREA</h4>
+    <select name="district_id">
+        <option>Select District</option>
+        {% for district in admin.area.district_set.all|dictsort:"name" %}
+            <option value="{{district.id}}">{{district.name}} District</option>
+        {% endfor %}
+    </select><br><br>
+    <input name="phone" type="text" placeholder="Phone" required/><br><br>
+    <input name="email" type="email" placeholder="Email" required/><br><br>
+    <input type="submit" value="Submit">
+</form>
+</body>
+</html>

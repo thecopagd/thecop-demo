@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Ubuntu:wght@300&display=swap" rel="stylesheet">
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'thecop_app/CSS/index.css' %}" />
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="{% static 'thecop_app/CSS/ananse.css' %}">
+    <link rel="stylesheet" href="{% static 'thecop_app/CSS/form.css' %}">
+    <link rel="style\sheet" href="{% static 'thecop_app/CSS/fa/allicons.css' %}">
+    <link rel="stylesheet" href="{% static 'thecop_app/CSS/fa/icons.css' %}">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>{{member.local_assembly.district.name}} {{member.local_assembly.name}} Assembly</title>
+</head>
+<body style="display:grid">
+<header class="header">
+      <!-- <a href="#" class="brand" id="brand">COP</a> -->
+       <a href="index.html" class="brand">
+        <img src="{% static 'thecop_app/images/The-Church-Of-Pentecost.png' %}"/>
+       </a>
+    </header>
+<div class="appbody">
+
+    <div class="profile">
+        <img src="path_to_profile_picture.jpg" alt="Profile Picture">
+        <h2>Member Profile</h2>
+
+        <p><span class="label">ID:</span>{{ member.id }}</p>
+        <p><span class="label">Name:</span>{{ member.name }}</p>
+        <p><span class="label">Local Assembly:</span>{{ member.local_assembly.name }}</p>
+        <p><span class="label">District:</span>{{ member.local_assembly.district.name }} District</p>
+        <p><span class="label">Area:</span> {{ member.local_assembly.district.area.name }}</p>
+        <p><span class="label">Country:</span> {{ member.local_assembly.district.area.nation.country }}</p>
+    </div>
+    <div class="blank"></div>
+</div>
+
+
+<bottomnav>
+        <navitem  onclick="window.open('{% url 'member_home' %}', '_self')" >
+            <i class="fa-light fa-church"></i>
+            <text>Home</text>
+        </navitem>
+        <navitem onclick="window.open('', '_self')">
+            <i class="fa-thin fa-megaphone"></i>
+            <text>Announcement</text>
+        </navitem>
+        <navitem>
+            <i class="fa-light fa-video"></i>
+            <text>Videos</text>
+        </navitem>
+        <navitem>
+             <i class="fa-light fa-newspaper"></i>
+            <text>Headlines</text>
+        </navitem>
+        <navitem is-selected>
+            <i class="fa-light fa-user"></i>
+            <text>Me</text>
+        </navitem>
+</bottomnav>
+</body>
+</html>

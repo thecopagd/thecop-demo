@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    {% load static %}
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <link rel="stylesheet" href="{% static 'thecop_app/CSS/ananse.css' %}">
+    <link rel="stylesheet" href="{% static 'thecop_app/CSS/form.css' %}">
+    <link rel="stylesheet" href="{% static 'thecop_app/CSS/fa/allicons.css' %}">
+    <link rel="stylesheet" href="{% static 'thecop_app/CSS/fa/icons.css' %}">
+    <title>Member Login</title>
+</head>
+<body>
+
+<div class="form-container">
+    <h2>Member Login</h2>
+    <form method="post" action="{% url 'member_login' %}">
+        {% csrf_token %}
+        <label>Country</label>
+        <div class="input-container">
+            <i class="fas fa-globe"></i>
+            <select required id="countrySelect" name="nation">
+              <option value="">Select a country</option>
+              {% for country in countries|dictsort:"country" %}
+                <option value="{{ country.id }}">{{ country.country }}</option>
+              {% endfor %}
+            </select>
+      </div>
+        <label>Area</label>
+        <div class="input-container">
+            <i class="fas fa-globe"></i>
+            <select required id="areaSelect" disabled name="area">
+              <option value="">Select Area</option>
+            </select>
+      </div>
+        <label>District</label>
+        <div class="input-container">
+            <i class="fas fa-globe"></i>
+            <select required id="districtSelect" disabled name="district">
+              <option value="">Select District</option>
+            </select>
+        </div>
+        <label>Local Assembly</label>
+        <div class="input-container">
+            <i class="fas fa-globe"></i>
+            <select required id="localSelect" disabled name="local">
+              <option value="">Select Local</option>
+            </select>
+        </div>
+          <div class="input-container">
+            <i class="fas fa-user"></i>
+            <input type="text" placeholder="ID" name="id" required>
+          </div>
+        <div class="input-container">
+            <i class="fas fa-phone"></i>
+            <input type="text" placeholder="Phone or Email" name="ep" required>
+          </div>
+          <div class="input-container">
+            <i class="fas fa-lock"></i>
+            <input type="password" placeholder="Password" name="password" required>
+          </div>
+
+      <input type="submit" value="Login">
+    </form>
+  </div>
+
+<script>
+  // Get references to the select tags
+  const countrySelect = document.getElementById('countrySelect');
+  const areaSelect = document.getElementById('areaSelect');
+  const districtSelect = document.getElementById('districtSelect');
+  const localSelect = document.getElementById('localSelect');
+
+  // Define the areas data as a JavaScript object
+  const areasData = {
+    {% for country in countries %}
+      "{{ country.id }}": [
+        {% for area in country.area_set.all|dictsort:"name" %}
+          {
+            "id": "{{ area.id }}",
+            "name": "{{ area.name }} Area",
+            "districts": [
+                {% for district in area.district_set.all|dictsort:"name" %}
+                    {
+                        "name": "{{district.name}} District",
+                        "id": "{{district.id}}",
+                        "locals": [
+                            {% for local in district.localassembly_set.all|dictsort:"name" %}
+                              {
+                                "id": "{{ local.id }}",
+                                "name": "{{ local.name }}"
+                              },
+                            {% endfor %}
+                        ]
+                    },
+                {% endfor %}
+            ]
+          },
+        {% endfor %}
+      ],
+    {% endfor %}
+  };
+
+  // Function to populate the area select tag based on the selected country
+  function populateAreas() {
+    // Clear the existing options
+    areaSelect.innerHTML = '<option value="">Select an area</option>';
+
+    // Get the selected country ID
+    const countryId = countrySelect.value;
+
+    // If a country is selected
+    if (countryId) {
+      // Get the areas data for the selected country
+      const areas = areasData[countryId];
+
+      // Iterate over the areas data and create option elements
+      areas.forEach((area) => {
+        const option = document.createElement('option');
+        option.value = area.id;
+        option.textContent = area.name;
+        areaSelect.appendChild(option);
+      });
+
+      // Enable the area select tag
+      areaSelect.disabled = false;
+    } else {
+      // Disable the area select tag if no country is selected
+      areaSelect.disabled = true;
+    }
+  }
+
+  function populateDistricts() {
+    districtSelect.innerHTML = '<option value="">Select a District</option>';
+
+    const countryId = countrySelect.value;
+    const areaId = areaSelect.value;
+
+    areasData[countryId].forEach((area)=> {
+      if (areaId == area.id) {
+          districts = area.districts
+
+          districts.forEach((district)=>{
+            const option = document.createElement('option');
+            option.value = district.id;
+            option.textContent = district.name;
+            districtSelect.appendChild(option);
+          })
+      }
+      districtSelect.disabled = false
+    })
+  }
+
+  function populateLocals(){
+    localSelect.innerHTML = '<option value="">Select a local</option>';
+
+    const countryId = countrySelect.value;
+    const areaId = areaSelect.value;
+    const districtId = districtSelect.value;
+
+    areasData[countryId].forEach((area)=> {
+      if (areaId == area.id) {
+          districts = area.districts
+
+          districts.forEach((district)=>{
+            locals = district.locals
+
+            locals.forEach((local)=>{
+              const option = document.createElement('option');
+              option.value = local.id;
+              option.textContent = local.name;
+              localSelect.appendChild(option);
+            })
+          })
+      }
+      localSelect.disabled = false
+    })
+  }
+
+  // Event listener for the country select tag
+  countrySelect.addEventListener('change', populateAreas);
+  areaSelect.addEventListener('change', populateDistricts);
+  districtSelect.addEventListener('change', populateLocals);
+</script>
+</body>
+</html>

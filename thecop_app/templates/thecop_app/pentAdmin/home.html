@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+  <head>
+
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="shortcut icon" href="{% static 'thecop_app/images/logo-pent.png' %}">
+    <link rel="stylesheet" href="{% static 'thecop_app/CSS/index.css' %}" />
+    <link rel="stylesheet" href="{% static 'thecop_app/CSS/ananse.css' %}" />
+    <title>The Church Of Pentecost</title>
+    <style>
+    body{font-family:calibri}
+        table{
+            border: 1px solid black; border-spacing: 2px;
+        }
+        th, td{
+            border: 1px solid black;
+            padding: 10px
+        }
+    </style>
+</head>
+
+<body>
+<header class="header">
+      <!-- <a href="#" class="brand" id="brand">COP</a> -->
+       <a href="index.html" class="brand">
+        <img src="{% static 'thecop_app/images/The-Church-Of-Pentecost.png' %}"/>
+       </a>
+</header>
+<appbody>
+
+<h1>Home COP ADMIN</h1>
+<a href="{% url 'copAdmin_login' %}">login</a>
+<h2>Nations</h2>
+<ul>
+    {% for country in countries %}
+        <li>{{ country.country }}, {{ country.id }}</li>
+    {% endfor %}
+   <a href="{% url 'copAdmin_add_nation' %}">ADD NATION</a>
+</ul>
+
+<br><br>
+<h2>National Admins</h2>
+<table>
+    <tr>
+        <th>ID</th>
+        <th>PHONE</th>
+        <th>EMAIL</th>
+        <th>NATION</th>
+    </tr>
+    {% for admin in admins %}
+        <tr>
+            <td>{{ admin.id }}</td>
+            <td>{{ admin.phone }}</td>
+            <td>{{ admin.email }}</td>
+            <td>{{ admin.nation.country }}</td>
+        </tr>
+    {% endfor %}
+</table>
+<a href="{% url 'copAdmin_add_nation_admin' %}">ADD NATION ADMIN</a>
+</appbody>
+</body>
+</html>

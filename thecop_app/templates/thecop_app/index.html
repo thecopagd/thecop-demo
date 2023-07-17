@@ -7,7 +7,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="shortcut icon" href="{% static 'thecop_app/images/logo-pent.png' %}">
-    <link rel="stylesheet" href="{% static 'thecop_app/CSS/index.css' %}  " />
+    <link rel="stylesheet" href="{% static 'thecop_app/CSS/index.css' %}" />
     <title>The Church Of Pentecost</title>
   </head>
   <body>
@@ -28,6 +28,7 @@
           <a href="#contact" class="nav-item">Contact</a>
 
           <button class="signup">Find A Church</button>
+          <button class="signup" onclick="window.open('{% url 'member_login' %}','_self')">Login</button>
         </div>
       </div>
     </header>

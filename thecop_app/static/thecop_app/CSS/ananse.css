@@ -1,0 +1,603 @@
+* {
+    font-family: 'calibri';
+}
+
+ananselabel {
+    background-color: var(--color-one);
+    display: inline-flex;
+    align-content: center;
+    border-radius: 0px 1px 17px 0px;
+}
+
+ananselabel text {
+    color: white;
+    font-size: 25px;
+    font-weight: bold;
+}
+
+:root{
+    --color-one: gold ;
+    --color-two: #e91e63;
+    --shadow: 0px 1px 5px -2px #9b8c8c;
+}
+
+
+body{
+
+    overflow-x: hidden;
+    background: white;
+}
+
+
+.blank {
+    width: 100%;
+    height: 10em;
+}
+
+
+appbar{
+    position: absolute;
+    width: 100%;
+    display: grid;
+    background-color: white;
+    box-shadow: rgba(0, 0, 0, 0.2) 0px 18px 50px -10px;
+    left: 0;
+    right: 0;
+    top: 0;
+    grid-template-columns: 20% 40% 40%;
+    box-shadow: 0px 0px 3px 0px #898989;
+    z-index: 1;
+}
+
+
+@media only screen and (min-width:550px){
+    appbar{
+        grid-template-columns: 59px 40% 40%;
+    }
+}
+
+
+appbar > leading , appbar > apptitle, appbar > actions {
+    color: #080707;
+    height: 3.5em;
+}
+
+appbar > leading > i {
+    text-align: center;
+    position: absolute;
+    top: 27%;
+    left: 20px;
+    color: var(--color-one);
+}
+
+
+
+appbar > apptitle text{
+    color: var(--color-one);
+    padding: 0 0 0 !important;
+    font-size: 22px;
+    font-family: 'calibri';
+    position: sticky;
+    top: 12px;
+    font-weight: bold;
+    text-align: center;
+}
+
+appbar[fixed] > apptitle text{
+    color: var(--color-one);
+    padding: 0 0 0 !important;
+    font-size: 22px;
+    font-family: 'calibri';
+    position: fixed;
+    top: 12px;
+    font-weight: 400;
+    text-align: center;
+}
+ appbar[fixed] > actions items item {
+    
+ }
+
+
+
+appbar > actions{
+    display: block;
+    /* background: pink; */
+}
+
+appbar > actions items{
+    display: block;
+    text-align: right;
+    margin: 16px 0 0 0;
+}
+
+appbar > actions items item{
+    display: inline;
+    color: var(--color-one);
+    margin: 0 3px;
+}
+
+
+
+appbar > leading items{
+    display: block;
+    text-align: left;
+}
+
+appbar > leading items item{
+    display: inline;
+    color: var(--color-one);
+    position: sticky;
+    margin: 0 3px;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* AppBar with Centered Title */
+appbar[center-title]{
+    grid-template-columns: 28% 44% 28%;
+}
+
+appbar[center-title] > leading > i {
+    text-align: center;
+    position: sticky;
+    top: 16px;
+    left: 20px;
+    color: var(--color-one);
+}
+
+
+appbar[center-title] > apptitle{
+    color: var(--color-one);
+    text-align: center;
+}
+
+appbar[center-title] > apptitle text{
+    color: var(--color-one);
+    font-size: 22px;
+}
+
+
+
+
+
+appbar[fixed]{
+    position: fixed;
+}
+
+appbar[fixed] > actions items,
+appbar[fixed] > leading items
+{
+    position: fixed;
+}
+
+appbody{
+    /* background-color: chocolate; */
+    width: 100%;
+    margin: 57px 0 100px 0;
+    position: absolute;
+    left: 0;
+    padding-bottom: 200px;
+    z-index: 0;
+}
+
+@media (max-width:600px) {
+    bottomnav{
+    position: fixed;
+    width: 100% !important;
+    height: 4em;
+    justify-content: space-around;
+    display: flex;
+    background-color: white !important;
+    left: 0;
+    right: 0;
+    bottom: 0 !important;
+    box-shadow: 0px 0px 3px 0px #898989;
+    z-index: 2;
+}
+}
+
+
+bottomnav{
+    position: fixed;
+    width: 40%;
+    height: 4em;
+    justify-self: center;
+    align-self: center;
+    justify-content: space-around;
+    display: flex;
+    background-color: white;
+    bottom: 39px;
+    box-shadow: 0px 10px 20px 0px rgba(229, 229, 229, 0.75);
+    z-index: 10;
+    border-radius: 10px;
+    cursor: pointer;
+}
+
+bottomnav > navitem:active{
+    background: none;
+}
+bottomnav > navitem:focus{
+    background: none;
+}
+bottomnav > navitem {
+        height: 90%;
+    align-items: center;
+    justify-content: center;
+    display: flex;
+    flex-direction: column;
+    border-radius: 100px;
+    padding: 12px;
+    margin-top: 4px;
+}
+
+bottomnav > navitem i {
+    text-align: center;
+    margin: 7px 0 0 0;
+    color: #a5abbb;/*var(--color-one);*/
+    font-size: 24px !important;
+}
+
+bottomnav > navitem text {
+    text-align: center;
+    text-transform: capitalize;
+    color: #a5abbb; /*var(--color-one);*/
+    font-weight: 200;
+    font-family: 'Ubuntu';
+    font-size: 13px;
+    align-items: center;
+    justify-content: center;
+    display: flex;
+}
+
+
+
+navitem[is-selected]{
+
+}
+
+navitem[is-selected] text, navitem[is-selected] i {
+    color: #183153;
+}
+
+
+navitem[is-selected-foreground]{
+    background-color: none;
+}
+
+navitem[is-selected-foreground] text, navitem[is-selected-foreground] i {
+    color: var(--color-two);
+}
+
+
+
+navitem[hover-effect-foreground]:hover{
+    background-color: inherit;
+}
+
+navitem[hover-effect-foreground]:hover text,
+navitem[hover-effect-foreground]:hover i {
+    color: var(--color-two);
+}
+
+
+
+
+
+
+@media (min-width:600px) {
+
+anansecard:hover {
+    transform: scale(1.1)
+}
+}
+
+
+
+
+
+
+
+anansecard {
+    width: 306px;
+    background: #fff;
+   box-shadow: rgba(0, 0, 0, 0.4) 0px 2px 4px, rgba(0, 0, 0, 0.3) 0px 7px 13px -3px, rgba(0, 0, 0, 0.2) 0px -3px 0px inset;
+    height: 20em;
+    display: grid;
+    grid-template-rows: 60% 10% 20% 10%;
+    margin: 21px 0px 0 0px;
+    border: 1px;
+    border-radius: 15px;
+    cursor: pointer;
+    transition: transform 200ms;
+}
+
+
+anansecard > date {
+    padding: 5px 14px 0 0;
+    color: #66250b;
+    text-align: end;
+}
+
+anansecard > cardimage {
+    width: 100%;
+    border-radius: 15px 15px 0 0;
+}
+
+anansecard > cardimage > img {
+    width: 100%;
+    border-radius: 15px 15px 0 0;
+    height: 100%;
+    object-fit: cover;
+}
+
+anansecard > headtext {
+    width: 100%;
+}
+
+anansecard > headtext > text {
+    margin: 0px 0 0 14px !important;
+    position: relative;
+    top: 4px;
+    font-size: 14px;
+    font-weight: bolder;
+    color: blue
+}
+
+anansecard > mini {
+    margin: 0px 10px 0 14px !important;
+    font-size: 16px;
+    font-family: calibri !important;
+    display: flex;
+}
+
+anansecard[with-button] {
+    height: 22em;
+    display: grid;
+    grid-template-rows: 50% 10% 24% 16%;
+    margin: 21px 0px 0 27px;
+}
+
+anansecard[with-button] > actions {
+    /* background-color: aqua; */
+    display: inline-block;
+}
+
+anansecard[with-button] > actions > button {
+    width: 32%;
+    height: 44px;
+    border: none;
+    background-color:var(--color-one);
+    border-radius: 20px;
+    position: relative;
+    right: -63%;
+    top: 0px;
+    color: white;
+    font-weight: 600;
+}
+
+
+
+
+card[add-user]{
+    width: 100%;
+    height: 6em;
+    display: grid;
+    grid-template-columns: 70% 30%;
+    box-shadow: var(--shadow);
+    margin: 0 0 0 0;
+}
+
+card[add-user] > right{
+    text-align: center;
+}
+
+card[add-user] > right > button{
+    margin: 39px 0 0 0;
+    width: 47%;
+    height: 28px;
+    background-color: var(--color-one);
+    border: 0px;
+    border-radius: 9px;
+    color: white;
+    font-weight: 600;
+    font-size: 7px;
+}
+
+card[add-user] > left{
+    display: grid;
+    grid-template-columns: 33% 66%;
+}
+
+
+card[add-user] > left > avatarcont{
+   /* width: 100%; */
+   /* background-color: #814d0b; */
+}
+
+
+card[add-user] > left > avatarcont > avatar{/* margin: 66px 0 11px 13px; */position: relative;top: 18px;left: 9px;}
+
+
+
+card[add-user] > left > avatarcont > avatar > img{
+   width: 65px;
+   height: 65px;
+   border-radius: 100px;
+   /* margin: 6px 0 11px 13px; */
+   object-fit: cover;
+   border: 1px;
+}
+
+card[add-user] > left > user{
+    display: grid;
+    grid-template-rows: 49% 37%;
+}
+
+
+
+card[add-user] > left > user > name > text{
+    position: relative;
+    top: 22px;
+    font-size: 18px;
+    font-weight: 800;
+}
+
+card[add-user] > left > user > username > text{
+    position: relative;
+    top: -4px;
+    font-size: 15px;
+    font-weight: 200;
+    color: #9c9b9d;
+}
+
+
+
+
+@media only screen and (min-width:600px){
+    .biz{
+        align-self: center;
+        width: 40% !important;
+    }
+
+    .promotion{
+        align-self: center;
+        width: 30% !important;
+    }
+}
+
+.biz {
+    width: 100%;
+    height: 20em;
+    background: aqua;
+    display: block;
+}
+
+
+.biz img{
+    width: 100%;
+    height: 100%;
+}
+
+
+
+.promotion{
+    display: grid;
+    grid-template-rows: 40% 15% 45%;
+    width: 80%;
+    height: 30em;
+    margin: 40px 0 0 0;
+    background: white;
+    border-radius: 30px 30px 0px 0;
+    box-shadow: 0px 0px 11px 1px #00000014;
+}
+
+.promotion .r-2{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.promotion .r-3{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center
+}
+
+.promotion .r-1{
+    display: flex;
+    align-items: center;
+    justify-content: center
+}
+
+
+
+.promotion button{
+    width: 98%;
+    height: 40px;
+    font-size: 20px;
+    border: 0;
+    border-radius: 00px;
+    box-shadow: 0px 0px 11px 1px #00000014;
+    background: white;
+    font-weight: bold;
+}
+
+
+.appbody{
+    margin: 10px 16px;
+    background: #e6e6fa99 !important
+}
+
+
+@media screen and (max-width: 520px) {
+    .appbody{
+        margin: 17% 0 0 0;
+        border: 6px solid transparent;
+        height:95%;
+        width: 100%;
+    }
+}
+
+.profile {
+            max-width: 600px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #f0f0f0;
+            border-radius: 5px;
+            box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+        }
+
+        .profile img {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            object-fit: cover;
+            margin-bottom: 20px;
+        }
+
+        .profile h2 {
+            margin-bottom: 10px;
+        }
+
+        .profile p {
+            margin-bottom: 5px;
+        }
+
+        .label {
+            font-weight: bold;
+        }
+
+
+
+
+
+
+
+
+
+
+
+
+

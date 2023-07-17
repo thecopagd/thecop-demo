@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<h2>{{nation.country}} Admin > add announcement</h2>
+<h3>{{admin.email}}</h3>
+
+<form method="post" action="{% url 'nationalAdmin_add_announcement' %}">
+    {% csrf_token %}
+    <input type="text" name="text" placeholder="type announcement here">
+    <input type="submit" value="Submit">
+</form>
+
+</body>
+</html>

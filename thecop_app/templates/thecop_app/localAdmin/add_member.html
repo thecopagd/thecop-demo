@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<h1>ADD LOCAL ADMIN</h1>
+<form method="post" action="{% url 'localAdmin_add_member' %}">
+    {% csrf_token %}
+    <input name="name" type="text" placeholder="Name" required/><br><br>
+    <select name="gender">
+      <option>Select Gender</option>
+      <option value="Male">Male</option>
+      <option value="Female">Female</option>
+    </select>
+    <input name="age" type="number" placeholder="Age" required/><br><br>
+    <input name="email" type="email" placeholder="Email" required/><br><br>
+    <input name="phone" type="text" placeholder="Phone" required/><br><br>
+    <input name="phone2" type="text" placeholder="Phone 2" /><br><br>
+    <input name="address" type="text" placeholder="Residence Address" required/><br><br>
+    <input type="submit" value="Submit">
+</form>
+</body>
+</html>

@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Add event</title>
+</head>
+<body>
+<h1>ADD Even</h1>
+<form method="post" action="{% url 'nationalAdmin_add_event' %}">
+    {% csrf_token %}
+    <input name="name" type="text" placeholder="Wedding" required/><br>
+    Start
+    <input name="start" type="date"  required/><br><br>
+    End
+    <input name="end" type="date"  required/><br><br>
+    <input name="description" type="text" placeholder="give more detail about the event" required/><br><br>
+    <input name="venue" type="text" placeholder="location of the event" required/><br><br>
+    <input type="submit" value="Submit">
+</form>
+
+</body>
+</html>

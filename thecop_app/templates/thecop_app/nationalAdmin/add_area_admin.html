@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<h1>ADD AREA ADMIN</h1>
+<form method="post" action="{% url 'nationalAdmin_add_area_admin' %}">
+    {% csrf_token %}
+    <select name="area">
+        {% for area in areas %}
+            <option value="{{ area.id }}">{{ area.name }} Area</option>
+        {% endfor %}
+    </select><br><br>
+    <input name="phone" type="text" placeholder="Phone" required/><br><br>
+    <input name="email" type="email" placeholder="Email" required/><br><br>
+    <input type="submit" value="Submit">
+</form>
+
+</body>
+</html>

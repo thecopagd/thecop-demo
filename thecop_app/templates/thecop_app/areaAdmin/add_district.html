@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<h1>ADD DISTRICT</h1>
+<form method="post" action="{% url 'areaAdmin_add_district' %}">
+    {% csrf_token %}
+    <h4>Adding to {{admin.area.nation.country}}, {{admin.area.name}} AREA</h4>
+    <input name="district_name" type="text" placeholder="Abelemkpe" required/><br>
+    <span style="color:red">* Please enter only the name of the<br> District without including "District"</span>
+    <br><br>
+    <input name="location" type="text" placeholder="Town" required/><br><br>
+    <input type="submit" value="Submit">
+</form>
+
+
+</body>
+</html>

@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<h1>ADD DISTRICT</h1>
+<form method="post" action="{% url 'districtAdmin_add_local' %}">
+    {% csrf_token %}
+    <h4>Adding to {{admin.district.area.nation.country}}, {{admin.district.area.name}} AREA {{admin.district.name}} DISTRICT</h4>
+    <input name="local_name" type="text" placeholder="Central Assembly" required/><br>
+    <br>
+    <input name="location" type="text" placeholder="Location" required/><br><br>
+    <input type="submit" value="Submit">
+</form>
+
+
+</body>
+</html>

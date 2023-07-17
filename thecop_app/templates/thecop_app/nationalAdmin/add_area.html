@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<h1>ADD AREA</h1>
+<form method="post" action="{% url 'nationalAdmin_add_area' %}">
+    {% csrf_token %}
+    <select name="nation">
+        <option selected value="{{active_nation.id}}">{{active_nation.country}}</option>
+    </select><br><br>
+    <input name="area_name" type="text" placeholder="Area" required/><br>
+    <span style="color:red">* Please enter only the name of the<br> area without including "Area"</span>
+    <br><br>
+    <input name="location" type="text" placeholder="State or Region" required/><br><br>
+    <input type="submit" value="Submit">
+</form>
+</body>
+</html>

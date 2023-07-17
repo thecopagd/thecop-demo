@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+    body{font-family:calibri}
+        table{
+            border: 1px solid black; border-spacing: 2px;
+        }
+        th, td{
+            border: 1px solid black;
+            padding: 10px
+        }
+    </style>
+</head>
+<body>
+<h1>{{active_nation.country}} Admin</h1>
+<h3>Areas</h3>
+<table>
+    <tr>
+        <th>Name</th>
+        <th>id</th>
+        <th>Location</th>
+    </tr>
+{% for area in areas %}
+    <tr>
+        <td>{{ area.name }} Area</td>
+        <td>{{ area.id }}</td>
+        <td>{{ area.location }}</td>
+    </tr>
+{% endfor %}
+</table>
+
+<a href="{% url 'nationalAdmin_add_area' %}">ADD AREA</a>
+
+<h3>Areas Admins</h3>
+<table>
+    <tr>
+        <th>ID</th>
+        <th>PHONE</th>
+        <th>EMAIL</th>
+        <th>AREA</th>
+    </tr>
+{% for admin in admins %}
+    <tr>
+        <td>{{ admin.id }}</td>
+        <td>{{ admin.phone }}</td>
+        <td>{{ admin.email }}</td>
+        <td>{{ admin.area.name }} Area</td>
+    </tr>
+{% endfor %}
+</table>
+
+<a href="{% url 'nationalAdmin_add_area_admin' %}">ADD AREA ADMIN</a>
+
+<h3>Announcements</h3>
+<div>
+    {% for announcement in announcements %}
+        <div class="anc n">
+            <span>{{ announcement.text }}</span>
+        </div>
+    {% empty %}
+        <div class="anc n">
+            <span>No announcement</span>
+        </div>
+    {% endfor %}
+</div>
+<a href="{% url 'nationalAdmin_add_announcement' %}">ADD ANNOUNCEMENT</a>
+
+
+<h3>Events</h3>
+<div>
+    {% for event in events %}
+        <div class="anc n">
+            <span>{{ event.name }}::{{ event.date }}</span>
+        </div>
+    {% empty %}
+        <div class="anc n">
+            <span>No event</span>
+        </div>
+    {% endfor %}
+</div>
+<a href="{% url 'nationalAdmin_add_event' %}">ADD Event</a>
+
+
+
+</body>
+</html>

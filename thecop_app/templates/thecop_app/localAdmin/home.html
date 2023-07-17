@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Local ADMIN|HOME</title>
+    <style>
+    body{font-family:calibri}
+        table{
+            border: 1px solid black; border-spacing: 2px;
+        }
+        th, td{
+            border: 1px solid black;
+            padding: 10px; vx
+        }
+    </style>
+</head>
+<body>
+<h1>{{admin.local_assembly.district.area.nation.country}},{{admin.local_assembly.district.area.name}} Area,
+    {{admin.local_assembly.district.name}} District,{{admin.local_assembly.name}} Assembly Admin</h1>
+
+<table>
+    <tr>
+        <th>Name</th>
+        <th>ID</th>
+        <th>Gender</th>
+        <th>Age</th>
+        <th>Phone</th>
+        <th>Phone 2</th>
+        <th>Email</th>
+        <th>Address</th>
+    </tr>
+{% for member in admin.local_assembly.member_set.all|dictsort:"name" %}
+    <tr>
+        <td>{{ member.id }}</td>
+        <td>{{ member.name }}</td>
+        <td>{{ member.gender }}</td>
+        <td>{{ member.age }}</td>
+        <td>{{ member.phone }}</td>
+        <td>{{ member.phone2 }}</td>
+        <td>{{ member.email }}</td>
+        <td>{{ member.address }}</td>
+    </tr>
+{% endfor %}
+</table>
+<a href="{% url 'localAdmin_add_member' %}">Add Member</a>
+
+<h3>Announcements</h3>
+<div>
+    {% for announcement in announcements %}
+        <div class="anc n">
+            <span>{{ announcement.text }}</span>
+        </div>
+    {% empty %}
+        <div class="anc n">
+            <span>No announcement</span>
+        </div>
+    {% endfor %}
+</div>
+<a href="{% url 'localAdmin_add_announcement' %}">ADD ANNOUNCEMENT</a>
+
+
+
+<h3>Events</h3>
+<div>
+    {% for event in events %}
+        <div class="anc n">
+            <span>{{ event.name }}::{{ event.date }}</span>
+        </div>
+    {% empty %}
+        <div class="anc n">
+            <span>No event</span>
+        </div>
+    {% endfor %}
+</div>
+<a href="{% url 'localAdmin_add_event' %}">ADD Event</a>
+
+
+</body>
+</html>

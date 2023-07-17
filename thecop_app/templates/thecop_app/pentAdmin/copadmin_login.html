@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    {% load static %}
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <link rel="stylesheet" href="{% static 'thecop_app/CSS/ananse.css' %}">
+    <link rel="stylesheet" href="{% static 'thecop_app/CSS/form.css' %}">
+    <link rel="stylesheet" href="{% static 'thecop_app/CSS/fa/allicons.css' %}">
+    <link rel="stylesheet" href="{% static 'thecop_app/CSS/fa/icons.css' %}">
+    <title>Member Login</title>
+</head>
+<body>
+
+<div class="form-container">
+<h2>Pent Admin Login</h2>
+<form method="post" action="{% url 'copAdmin_login' %}">
+    {% csrf_token %}
+    <div class="input-container">
+        <i class="fas fa-user"></i>
+        <input name="id" type="text" placeholder="ID" required/>
+    </div>
+
+    <div class="input-container">
+        <i class="fas fa-user"></i>
+        <input name="ep" type="text" placeholder="email or phone" required/>
+    </div>
+
+    <div class="input-container">
+        <i class="fas fa-lock"></i>
+        <input type="password" placeholder="Password" name="password" required>
+    </div>
+
+
+    <input type="submit" value="Submit">
+</form>
+</div>
+</body>
+</html>
