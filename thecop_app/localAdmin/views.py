@@ -17,6 +17,18 @@ def home(request):
     return render(request, 'thecop_app/localAdmin/home.html', context)
 
 
+def members(request):
+    active_admin = LocalAdmin.objects.get(pk=request.session.get('local_admin_id'))
+
+    context = {
+        "members": Member.objects.all(),
+        "admin": active_admin,
+        "announcements": active_admin.local_assembly.localannouncement_set.all(),
+        "events": active_admin.local_assembly.localevent_set.all()
+    }
+    return render(request, 'thecop_app/localAdmin/members.html', context)
+
+
 def login(request):
     context = {
         "countries": Nation.objects.all(),
@@ -59,7 +71,7 @@ def add_member(request):
     if request.method == 'POST':
         name = request.POST["name"]
         gender = request.POST["gender"]
-        age = int(request.POST["age"])
+        dob = request.POST["dob"]
         phone = request.POST['phone']
         phone2 = request.POST['phone2']
         email = request.POST['email']
@@ -70,7 +82,7 @@ def add_member(request):
             local_assembly=active_admin.local_assembly,
             name=name,
             gender=gender,
-            age=age,
+            date_of_birth=dob,
             phone=phone,
             phone2=phone2,
             email=email,

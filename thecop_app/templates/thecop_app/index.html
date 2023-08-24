@@ -1,34 +1,62 @@
 <!DOCTYPE html>
-{% load static %}
 <html lang="en">
+  {% load static %}
   <head>
-
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="shortcut icon" href="{% static 'thecop_app/images/logo-pent.png' %}">
-    <link rel="stylesheet" href="{% static 'thecop_app/CSS/index.css' %}" />
-    <title>The Church Of Pentecost</title>
+       <link rel="shortcut icon" href="{% static 'thecop_app/images/logo-pent.png' %}">
+    <link rel="stylesheet" href="{% static 'thecop_app/CSS/index0.css' %}" />
+    <link rel="stylesheet" href="{% static 'thecop_app/CSS/index1.css' %}" />
+    <link rel="stylesheet" href="{% static 'thecop_app/CSS/ananse.css' %}" />
+      <link rel="stylesheet" href="{% static 'thecop_app/CSS/fa/allicons.css' %}">
+    <link rel="stylesheet" href="{% static 'thecop_app/CSS/fa/icons.css' %}">
+    <!-- <link rel="stylesheet" href="../CSS/swiper-bundle.min.css" /> -->
+    <title>Document</title>
   </head>
   <body>
     <header class="header">
       <!-- <a href="#" class="brand" id="brand">COP</a> -->
        <a href="index.html" class="brand">
-        <img src="{% static 'thecop_app/images/The-Church-Of-Pentecost.png' %}"/>
+        <img src="/static/thecop_app/images/The-Church-Of-Pentecost.png"/>
        </a>
       <div class="menu-btn"></div>
       <div class="navigation">
         <div class="navigation-items">
           <a href="#home" class="nav-item">Home</a>
-          <a href="#about" class="nav-item">About</a>
-          <a href="#features" class="nav-item">Donations</a>
-          <a href="#contact" class="nav-item">Events</a>
-          <a href="#contact" class="nav-item">The Gallery</a>
-          <a href="songs.html" class="nav-item">Songs</a>
-          <a href="#contact" class="nav-item">Contact</a>
+          <div class="dropdown">
+            <a href="#" class="dropbtn">About</a>
+            <div class="dropdown-content">
+              <a href="./about.html" class="dropdown-item">Vision</a>
+              <a href="" class="dropdown-item">Mission</a>
+              <a href="" class="dropdown-item">Testimonials</a>
+              <a href="" class="dropdown-item">Leaders</a>
+              <a href="" class="dropdown-item">Awards</a>
+            </div>
+          </div>
+          <a href="#" class="nav-item dropdown-item">Donations</a>
+          <div class="dropdown">
+            <a href="#" class="dropbtn">Events</a>
+            <div class="dropdown-content">
+              <a href="./about.html" class="dropdown-item">Easter Convention</a>
+              <a href="" class="dropdown-item">Carol Services</a>
+              <a href="" class="dropdown-item">Sports</a>
+              <a href="" class="dropdown-item">Other Holidays</a>
+            </div>
+          </div>
+          <a href="#" class="nav-item">The Gallery</a>
+          <div class="dropdown">
+            <a href="#" class="dropbtn">Songs</a>
+            <div class="dropdown-content">
+              <a href="./about.html" class="dropdown-item">Theme Songs</a>
+              <a href="" class="dropdown-item">PEMEM Songs</a>
+              <a href="" class="dropdown-item">Womens' Ministry Songs</a>
+              <a href="" class="dropdown-item">Youth Anthems</a>
+            </div>
+          </div>
+          <a href="#" class="nav-item">Contact</a>
 
           <button class="signup">Find A Church</button>
-          <button class="signup" onclick="window.open('{% url 'member_login' %}','_self')">Login</button>
         </div>
       </div>
     </header>
@@ -38,51 +66,54 @@
         <!-- <video class="video-slider"  src="vid/Nature - 108302.mp4" autoplay muted loop></video> -->
         <!-- <video class="video-slider"  src="../vid/search (1).mp4" autoplay muted loop></video>
         <video class="video-slider"  src="../vid/search (2).mp4" autoplay muted loop></video> -->
-        <img class="video-slider active" src="{% static 'thecop_app/images/bee.jpg' %}" alt="">
-        <img class="video-slider" src="{% static 'thecop_app/images/fern.jpg' %}" alt="">
-        <img class="video-slider" src="{% static 'thecop_app/images/rose.jpg' %}" alt="">
+        <img class="video-slider active" src="/static/thecop_app/images/bee.jpg" alt="" />
+        <img class="video-slider" src="/static/thecop_app/images/fern.jpg" alt="" />
+        <img class="video-slider" src="/static/thecop_app/images/rose.jpg" alt="" />
 
         <div class="content active">
-            <h1>EXPLORE <br><span>WITH US</span></h1>
-            <p>Explore the world's best tourist sites with<br> great tourists to educate
-              you on your researches; and more over have fun!
-            </p>
-               <a href="index.html#explore">BOOK NOW</a>
+          <h1>EXPLORE <br /><span>WITH US</span></h1>
+          <p>
+            Explore the world's best tourist sites with<br />
+            great tourists to educate you on your researches; and more over have
+            fun!
+          </p>
+          <a href="index.html#explore">BOOK NOW</a>
         </div>
-  
-  
-      <div class="content">
-          <h1>ENJOY <br><span>WITH US</span></h1>
+
+        <div class="content">
+          <h1>ENJOY <br /><span>WITH US</span></h1>
           <p>Take a bite of our recipies and feel good.Eat well!</p>
-             <a href="index.html#food">BOOK NOW</a>
-      </div>
-  
-      <div class="content">
-          <h1>TRAVEL <br><span>WITH US</span></h1>
-          <p>Travel the world with us.Enoy your trips <br/>
-              and let it be a memorable one.</p>
-             <a href="index.html#popular">BOOK NOW</a>
-      </div>
-        <div class="slider-navigation">
-            <div class="nav-btn active"></div>
-            <div class="nav-btn"></div>
-            <div class="nav-btn"></div>
+          <a href="index.html#food">BOOK NOW</a>
         </div>
-    </section>
-<br/>
-<br/>
-<br/>
-<br/>
-<br/>
-<br/>
-<br/>
+
+        <div class="content">
+          <h1>TRAVEL <br /><span>WITH US</span></h1>
+          <p>
+            Travel the world with us.Enoy your trips <br />
+            and let it be a memorable one.
+          </p>
+          <a href="index.html#popular">BOOK NOW</a>
+        </div>
+        <div class="slider-navigation">
+          <div class="nav-btn active"></div>
+          <div class="nav-btn"></div>
+          <div class="nav-btn"></div>
+        </div>
+      </section>
+      <br />
+      <br />
+      <br />
+      <br />
+      <br />
+      <br />
+      <br />
       <section>
         <div class="topic-div">
           <div class="topic">
             <h2>WE BELIEVE IN ...</h2>
           </div>
           <div class="hr-div">
-            <img src="{% static 'thecop_app/images/hr.png' %}" alt="" />
+            <img src="static/thecop_app/images/hr.png" alt="" />
           </div>
           <div class="sub-topic">
             <p>
@@ -119,7 +150,7 @@
                   <button class="readmore">Find A Church</button>
                 </div>
                 <div class="event-img">
-                  <img src="{% static 'thecop_app/images/bannerimg.jpg' %}" alt="" />
+                  <img src="static/thecop_app/images/bannerimg.jpg" alt="" />
                 </div>
               </div>
             </div>
@@ -144,7 +175,7 @@
                   <button class="readmore">Find A Church</button>
                 </div>
                 <div class="event-img">
-                  <img src="{% static 'thecop_app/images/bannerimg.jpg' %}" alt="" />
+                  <img src="static/thecop_app/images/bannerimg.jpg" alt="" />
                 </div>
               </div>
             </div>
@@ -169,7 +200,7 @@
                   <button class="readmore">Find A Church</button>
                 </div>
                 <div class="event-img">
-                  <img src="{% static 'thecop_app/images/bannerimg.jpg' %}" alt="" />
+                  <img src="static/thecop_app/images/bannerimg.jpg" alt="" />
                 </div>
               </div>
             </div>
@@ -182,7 +213,7 @@
           <div class="exp-container">
             <div class="icon-div"></div>
             <div>
-              <div class="room" data-ceil="304">34+</div>
+              <div class="room" data-ceil="304">304</div>
               <h4>Churches</h4>
             </div>
           </div>
@@ -190,7 +221,7 @@
           <div class="exp-container">
             <div class="icon-div"></div>
             <div>
-              <div class="room" data-ceil="280"></div>
+              <div class="room" data-ceil="280">280</div>
               <h4>Souls</h4>
             </div>
           </div>
@@ -222,7 +253,7 @@
             <h2>OUR BLOG</h2>
           </div>
           <div class="hr-div">
-            <img src="{% static 'thecop_app/images/hr.png' %}" alt="" />
+            <img src="static/thecop_app/images/hr.png" alt="" />
           </div>
           <div class="sub-topic">
             <p>
@@ -233,65 +264,75 @@
           </div>
         </div>
 
-
         <div class="blog-container-div">
           <div class="blog-container">
-
             <div class="blogthumbnail">
               <div class="overlay">
-                <a href="#" class="cart-btn">Learn More</a> 
+                <a href="./blog.html" class="cart-btn">Learn More</a>
               </div>
 
               <div class="img-div">
-                <img src="{% static 'thecop_app/images/bannerimg.jpg' %}" alt="" />
+                <img src="static/thecop_app/images/bannerimg.jpg" alt="" />
               </div>
 
               <div class="text-box">
                 <h2>LOREM IPSUM</h2>
-                <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Labore tenetur minus voluptatem, vitae ad pariatur totam vel nisi, odit dolorum maiores impedit iste harum eos fuga dolores obcaecati deserunt. Nisi!</p>
+                <p>
+                  Lorem ipsum dolor sit amet consectetur, adipisicing elit.
+                  Labore tenetur minus voluptatem, vitae ad pariatur totam vel
+                  nisi, odit dolorum maiores impedit iste harum eos fuga dolores
+                  obcaecati deserunt. Nisi!
+                </p>
               </div>
             </div>
             <div class="blogthumbnail">
               <div class="overlay">
-                <a href="#" class="cart-btn">Learn More</a> 
+                <a href="static/thecop_app/blog.html" class="cart-btn">Learn More</a>
               </div>
 
               <div class="img-div">
-                <img src="{% static 'thecop_app/images/bannerimg.jpg' %}" alt="" />
+                <img src="static/thecop_app/images/bannerimg.jpg" alt="" />
               </div>
 
               <div class="text-box">
                 <h2>LOREM IPSUM</h2>
-                <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Labore tenetur minus voluptatem, vitae ad pariatur totam vel nisi, odit dolorum maiores impedit iste harum eos fuga dolores obcaecati deserunt. Nisi!</p>
+                <p>
+                  Lorem ipsum dolor sit amet consectetur, adipisicing elit.
+                  Labore tenetur minus voluptatem, vitae ad pariatur totam vel
+                  nisi, odit dolorum maiores impedit iste harum eos fuga dolores
+                  obcaecati deserunt. Nisi!
+                </p>
               </div>
             </div>
             <div class="blogthumbnail">
               <div class="overlay">
-                <a href="#" class="cart-btn">Learn More</a> 
+                <a href="./blog.html" class="cart-btn">Learn More</a>
               </div>
 
               <div class="img-div">
-                <img src="{% static 'thecop_app/images/bannerimg.jpg' %}" alt="" />
+                <img src="static/thecop_app/images/bannerimg.jpg" alt="" />
               </div>
 
               <div class="text-box">
                 <h2>LOREM IPSUM</h2>
-                <p> adipisicing elit. Labore tenetur minus voluptatem, vitae ad pariatur totam vel nisi, odit dolorum maiores impedit iste harum eos fuga dolores obcaecati deserunt. Nisi!</p>
+                <p>
+                  adipisicing elit. Labore tenetur minus voluptatem, vitae ad
+                  pariatur totam vel nisi, odit dolorum maiores impedit iste
+                  harum eos fuga dolores obcaecati deserunt. Nisi!
+                </p>
               </div>
             </div>
-            
-
           </div>
-          </div>
+        </div>
       </section>
 
       <section>
         <div class="topic-div">
           <div class="topic">
-            <h2>WHAT PEOPLE SAY ABOUT US!</h2>
+            <h2>THE TENETS OF THE CHURCH OF PENTECOST</h2>
           </div>
           <div class="hr-div">
-            <img src="{% static 'thecop_app/images/hr.png' %}" alt="" />
+            <img src="static/thecop_app/images/hr.png" alt="" />
           </div>
           <div class="sub-topic">
             <p>
@@ -301,9 +342,251 @@
             </p>
           </div>
         </div>
-        
+
+        <div class="tenets-container">
+          <div class="tenet-div">
+            <div class="badge"><h3>1</h3></div>
+            <div class="tenet-box">
+              <h2>THE BIBLE</h2>
+              <p>
+                We believe in the divine inspiration and authority of the Holy
+                Scriptures. We believe that the Bible is infalliable with it's
+                declaration, final in its authority, all-supreme in all
+                provisions and comprehensie in its sufficiency.<br /><br />
+                (2 Tim 3:16: 2 Pet 1:21)
+              </p>
+            </div>
+          </div>
+
+          <div class="tenet-div">
+            <div class="badge"><h3>2</h3></div>
+            <div class="tenet-box">
+              <h2>THE ONE TRUE GOD</h2>
+              <p>
+                We believe in the existence of the one True God, Elohim, Maker
+                of the whole universe<br /><br />
+                (2 Tim 3:16: 2 Pet 1:21)
+              </p>
+            </div>
+          </div>
+
+          <div class="tenet-div">
+            <div class="badge"><h3>3</h3></div>
+            <div class="tenet-box">
+              <h2>THE BIBLE</h2>
+              <p>
+                We believe in the divine inspiration and authority of the Holy
+                Scriptures. We believe that the Bible is infalliable with it's
+                declaration, final in its authority, all-supreme in all
+                provisions and comprehensie in its sufficiency.<br /><br />
+                (2 Tim 3:16: 2 Pet 1:21)
+              </p>
+            </div>
+          </div>
+          <div class="tenet-div">
+            <div class="badge"><h3>4</h3></div>
+            <div class="tenet-box">
+              <h2>THE BIBLE</h2>
+              <p>
+                We believe in the divine inspiration and authority of the Holy
+                Scriptures. We believe that the Bible is infalliable with it's
+                declaration, final in its authority, all-supreme in all
+                provisions and comprehensie in its sufficiency.<br /><br />
+                (2 Tim 3:16: 2 Pet 1:21)
+              </p>
+            </div>
+          </div>
+
+          <div class="tenet-div">
+            <div class="badge"><h3>5</h3></div>
+            <div class="tenet-box">
+              <h2>THE BIBLE</h2>
+              <p>
+                We believe in the divine inspiration and authority of the Holy
+                Scriptures. We believe that the Bible is infalliable with it's
+                declaration, final in its authority, all-supreme in all
+                provisions and comprehensie in its sufficiency.<br /><br />
+                (2 Tim 3:16: 2 Pet 1:21)
+              </p>
+            </div>
+          </div>
+          <div class="tenet-div">
+            <div class="badge"><h3>6</h3></div>
+            <div class="tenet-box">
+              <h2>THE BIBLE</h2>
+              <p>
+                We believe in the divine inspiration and authority of the Holy
+                Scriptures. We believe that the Bible is infalliable with it's
+                declaration, final in its authority, all-supreme in all
+                provisions and comprehensie in its sufficiency.<br /><br />
+                (2 Tim 3:16: 2 Pet 1:21)
+              </p>
+            </div>
+          </div>
+
+          <div class="tenet-div">
+            <div class="badge"><h3>7</h3></div>
+            <div class="tenet-box">
+              <h2>THE BIBLE</h2>
+              <p>
+                We believe in the divine inspiration and authority of the Holy
+                Scriptures. We believe that the Bible is infalliable with it's
+                declaration, final in its authority, all-supreme in all
+                provisions and comprehensie in its sufficiency.<br /><br />
+                (2 Tim 3:16: 2 Pet 1:21)
+              </p>
+            </div>
+          </div>
+          <div class="tenet-div">
+            <div class="badge"><h3>8</h3></div>
+            <div class="tenet-box">
+              <h2>THE BIBLE</h2>
+              <p>
+                We believe in the divine inspiration and authority of the Holy
+                Scriptures. We believe that the Bible is infalliable with it's
+                declaration, final in its authority, all-supreme in all
+                provisions and comprehensie in its sufficiency.<br /><br />
+                (2 Tim 3:16: 2 Pet 1:21)
+              </p>
+            </div>
+          </div>
+
+          <div class="tenet-div">
+            <div class="badge"><h3>9</h3></div>
+            <div class="tenet-box">
+              <h2>THE BIBLE</h2>
+              <p>
+                We believe in the divine inspiration and authority of the Holy
+                Scriptures. We believe that the Bible is infalliable with it's
+                declaration, final in its authority, all-supreme in all
+                provisions and comprehensie in its sufficiency.<br /><br />
+                (2 Tim 3:16: 2 Pet 1:21)
+              </p>
+            </div>
+          </div>
+          <div class="tenet-div">
+            <div class="badge"><h3>10</h3></div>
+            <div class="tenet-box">
+              <h2>THE BIBLE</h2>
+              <p>
+                We believe in the divine inspiration and authority of the Holy
+                Scriptures. We believe that the Bible is infalliable with it's
+                declaration, final in its authority, all-supreme in all
+                provisions and comprehensie in its sufficiency.<br /><br />
+                (2 Tim 3:16: 2 Pet 1:21)
+              </p>
+            </div>
+          </div>
+
+          <div class="tenet-div">
+            <div class="badge"><h3>11</h3></div>
+            <div class="tenet-box">
+              <h2>THE BIBLE</h2>
+              <p>
+                We believe in the divine inspiration and authority of the Holy
+                Scriptures. We believe that the Bible is infalliable with it's
+                declaration, final in its authority, all-supreme in all
+                provisions and comprehensie in its sufficiency.<br /><br />
+                (2 Tim 3:16: 2 Pet 1:21)
+              </p>
+            </div>
+          </div>
+        </div>
       </section>
+
+      <section>
+        <div class="topic-div">
+          <div class="topic">
+            <h2>DONATE</h2>
+          </div>
+          <div class="hr-div">
+            <img src="static/thecop_app/images/hr.png" alt="" />
+          </div>
+          <div class="sub-topic">
+            <p>
+              Lorem ipsum dolor sit, amet consectetur adipisicing elit. Suscipit
+              iusto rem nam quidem asperiores facilis officia nemo, iure maxime
+              odit
+            </p>
+          </div>
+        </div>
+
+        <div class="donate-container">
+          <article>
+            <h1>Joshua needs a new heart</h1>
+            <div class="box">
+              <div class="img-div">
+                <img src="static/thecop_app/images/bannerimg.jpg" alt="" />
+              </div>
+              <p>
+                Lorem ipsum dolor, sit amet consectetur adipisicing elit. Beatae
+                nostrum modi sit molestiae odio ad inventore minus? Quisquam cum
+                dicta accusantium ipsa, distinctio animi officiis, quis ad nam,
+                asperiores consequuntur.Lorem ipsum dolor, sit amet consectetur
+                adipisicing elit. Beatae nostrum modi sit molestiae odio ad
+              </p>
+            </div>
+          </article>
+
+          <div class="donate-progress-bar-container">
+
+            <div class="progress-div">
+
+            </div>
+          </div>
+        </div>
+      </section>
+
+
+
+      <section>
+
+      </section>
+
+
+  <footer>
+    <div id="grid-one">
+      <a href="index.html">
+        <img src="static/thecop_app/images/The-Church-Of-Pentecost.png" />
+      </a>
+
+      <p>The Church of Pentecost warmly recieves everyone who wants to put their all in Christ.</p>
+    </div>
+  </footer>
     </main>
-    <script src="{% static 'thecop_app/js/index.js' %}"></script>
+    <script>
+      ScrollReveal({
+        reset: true,
+        distance: "60px",
+        duration: 2500,
+        delay: 400,
+      });
+
+      ScrollReveal().reveal(".topic,.section-title", {
+        delay: 500,
+        origin: "left",
+      });
+      ScrollReveal().reveal(".event-div, .info", {
+        delay: 100,
+        origin: "right",
+      });
+      ScrollReveal().reveal(".date", { delay: 10, origin: "left" });
+      ScrollReveal().reveal(".blogthumbnail", {
+        delay: 300,
+        origin: "bottom",
+        interval: 200,
+      });
+      ScrollReveal().reveal(".sec-02 .image,.sec-03 .image", {
+        delay: 700,
+        origin: "top",
+      });
+      ScrollReveal().reveal(".media-info li", {
+        delay: 500,
+        origin: "top",
+        interval: 200,
+      });
+    </script>
+    <script src="static/thecop_app/JS/index.js"></script>
+    <!-- <script src="../JS/swiper-bundle.min.js"></script> -->
   </body>
 </html>

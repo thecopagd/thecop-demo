@@ -9,8 +9,56 @@ def home(request):
     context = {
         "countries": Nation.objects.all(),
         "admins": NationalAdmin.objects.all(),
+        "locals_total": LocalAssembly.objects.all().count(),
+        "districts_total": District.objects.all().count(),
+        "areas_total": Area.objects.all().count(),
+        "nations_total": Nation.objects.all().count(),
+        "members_total": Member.objects.all().count(),
+
     }
     return render(request, 'thecop_app/pentAdmin/home.html', context)
+
+
+def nations(request):
+    context = {
+        "countries": Nation.objects.all(),
+        "admins": NationalAdmin.objects.all(),
+        "locals_total": LocalAssembly.objects.all().count(),
+        "districts_total": District.objects.all().count(),
+        "areas_total": Area.objects.all().count(),
+        "nations_total": Nation.objects.all().count(),
+        "members_total": Member.objects.all().count(),
+    }
+    return render(request, 'thecop_app/pentAdmin/nations.html', context)
+
+
+def admins(request):
+    context = {
+        "countries": Nation.objects.all(),
+        "admins": NationalAdmin.objects.all(),
+        "locals_total": LocalAssembly.objects.all().count(),
+        "districts_total": District.objects.all().count(),
+        "areas_total": Area.objects.all().count(),
+        "nations_total": Nation.objects.all().count(),
+        "members_total": Member.objects.all().count(),
+
+    }
+    return render(request, 'thecop_app/pentAdmin/admins.html', context)
+
+
+def members(request):
+    context = {
+        "countries": Nation.objects.all(),
+        "admins": NationalAdmin.objects.all(),
+        "locals_total": LocalAssembly.objects.all().count(),
+        "districts_total": District.objects.all().count(),
+        "areas_total": Area.objects.all().count(),
+        "nations_total": Nation.objects.all().count(),
+        "members_total": Member.objects.all().count(),
+        "members": Member.objects.all()
+
+    }
+    return render(request, 'thecop_app/pentAdmin/members.html', context)
 
 
 def signup(request):

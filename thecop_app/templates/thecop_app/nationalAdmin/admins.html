@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+  <head>
+
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="shortcut icon" href="{% static 'thecop_app/images/logo-pent.png' %}">
+    <link rel="stylesheet" href="{% static 'thecop_app/CSS/index.css' %}" />
+    <link rel="stylesheet" href="{% static 'thecop_app/CSS/ananse.css' %}" />
+      <link rel="stylesheet" href="{% static 'thecop_app/CSS/fa/allicons.css' %}">
+    <link rel="stylesheet" href="{% static 'thecop_app/CSS/fa/icons.css' %}">
+
+    <title>The Church Of Pentecost</title>
+    <style>
+    body{font-family:calibri}
+        table{
+            border: 1px solid black; border-spacing: 2px;
+        }
+        th, td{
+            border: 1px solid black;
+            padding: 10px
+        }
+    </style>
+</head>
+
+<body>
+<div onclick="closeForm(b=['form-admin'])" id="body-cover"></div>
+<div class="form-div" id="form-admin">
+    <div class="header">
+        <h4>ADD Area Admin</h4>
+    </div>
+    <div>
+
+    </div>
+    <form method="post" action="{% url 'nationalAdmin_add_area_admin' %}">
+    {% csrf_token %}
+    <select name="area" hidden>
+        {% for area in areas %}
+            <option value="{{ area.id }}">{{ area.name }} Area</option>
+        {% endfor %}
+    </select><br><br>
+    <input name="phone" type="text" placeholder="Phone" required/><br><br>
+    <input name="email" type="email" placeholder="Email" required/><br><br>
+    <input type="submit" value="Submit">
+</form>
+
+   </div>
+
+
+<header class="grid-header">
+      <div class="logo">
+          <img src="{% static 'thecop_app/images/The-Church-Of-Pentecost.png' %}" width=200/>
+      </div>
+      <div class="mid-div">
+              <div class="nav-btn" onclick="window.open('{% url 'nationalAdmin_home' %}', '_self')">
+                  <i class="fa-thin fa-gauge"></i>
+                  <span>Dashboard</span>
+              </div>
+            <div class="nav-btn" onclick="window.open('{% url 'nationalAdmin_areas' %}', '_self')">
+                  <i class="fa-thin fa-map"></i>
+                  <span>Areas</span>
+              </div>
+          <div class="nav-btn" onclick="window.open('{% url 'nationalAdmin_admins' %}', '_self')">
+                      <i class="fa-thin fa-user-lock"></i>
+                     <span>Admins</span>
+              </div>
+
+          <div class="nav-btn" onclick="window.open('{% url 'nationalAdmin_members' %}', '_self')">
+                  <i class="fa-thin fa-users"></i>
+                 <span>Members</span>
+          </div>
+          <div class="nav-btn" onclick="window.open('{% url 'copAdmin_members' %}', '_self')">
+                  <i class="fa-thin fa-caret-down"></i>
+                 <span>More</span>
+          </div>
+      </div>
+      <div></div>
+</header>
+<br><br><br>
+<appbody style=" background-color: #f0f1f3 !important;">
+
+    <div class="func-bar">
+        <div class="tag">{{active_nation.country}}: Area Admins</div>
+        <div class="search-div">
+            <input type="search" placeholder="Search Area">
+        </div>
+        <div class="tag"><i class="fa-thin fa-filter" style="font-size: 15px; font-weight:bold"></i></div>
+        <div class="tag" onclick="openForm('form-admin')"><i class="fa-thin fa-add" style="font-size: 15px; font-weight:bold"></i></div>
+    </div>
+
+    <div class="custom-table-001">
+        <div class="row">
+            <div class="cell"><b>ID</b></div>
+            <div class="cell"><b>Phone</b></div>
+            <div class="cell"><b>Email</b></div>
+            <div class="cell"><b>Area</b></div>
+        </div>
+        {% for admin in admins %}
+        <div class="row">
+            <div class="cell">{{ admin.id }}</div>
+            <div class="cell">{{ admin.phone }}</div>
+            <div class="cell">{{ admin.email }}</div>
+            <div class="cell">{{ admin.area.name}}</div>
+        </div>
+        {% endfor %}
+    </div>
+
+
+
+</appbody>
+</body>
+<script src="{% static 'thecop_app/js/bodycover.js' %}"></script>
+</html>

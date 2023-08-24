@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">,
+  <head>
+
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="shortcut icon" href="{% static 'thecop_app/images/logo-pent.png' %}">
+    <link rel="stylesheet" href="{% static 'thecop_app/CSS/index.css' %}" />
+    <link rel="stylesheet" href="{% static 'thecop_app/CSS/ananse.css' %}" />
+      <link rel="stylesheet" href="{% static 'thecop_app/CSS/fa/allicons.css' %}">
+    <link rel="stylesheet" href="{% static 'thecop_app/CSS/fa/icons.css' %}">
+
+    <title>The Church Of Pentecost</title>
+    <style>
+    body{font-family:calibri}
+        table{
+            border: 1px solid black; border-spacing: 2px;
+        }
+        th, td{
+            border: 1px solid black;
+            padding: 10px
+        }
+    </style>
+</head>
+<body>
+<div onclick="closeForm(b=['form-admin'])" id="body-cover"></div>
+<div class="form-div" id="form-admin">
+    <div class="header">
+        <h4>Add Member</h4>
+    </div>
+    <div>
+
+    </div>
+    <div style="height: 25em; background-color: white; overflow-y:scroll">
+      <div></div><br><br>
+      <form method="post" action="{% url 'localAdmin_add_member' %}">
+    {% csrf_token %}
+    <input name="name" type="text" placeholder="Name" required/><br><br>
+    <select name="gender">
+      <option>Select Gender</option>
+      <option value="Male">Male</option>
+      <option value="Female">Female</option>
+    </select>
+    <input name="dob" type="date" required/><br><br>
+    <input name="email" type="email" placeholder="Email" required/><br><br>
+    <input name="phone" type="text" placeholder="Phone" required/><br><br>
+    <input name="phone2" type="text" placeholder="Phone 2" /><br><br>
+    <input name="address" type="text" placeholder="Residence Address" required/><br><br>
+    <input type="submit" value="Submit">
+</form>
+    </div>
+
+   </div>
+
+
+
+<header class="grid-header">
+      <div class="logo">
+          <img src="{% static 'thecop_app/images/The-Church-Of-Pentecost.png' %}" width=200/>
+      </div>
+      <div class="mid-div">
+              <div class="nav-btn" onclick="window.open('{% url 'localAdmin_home' %}', '_self')">
+                  <i class="fa-thin fa-gauge"></i>
+                  <span>Dashboard</span>
+              </div>
+
+          <div class="nav-btn" onclick="window.open('{% url 'localAdmin_members' %}', '_self')">
+                  <i class="fa-thin fa-users"></i>
+                 <span>Members</span>
+          </div>
+          <div class="nav-btn" onclick="window.open('{% url 'localAdmin_members' %}', '_self')">
+                <i class="fa-thin fa-scroll"></i>
+                 <span>Announcements</span>
+          </div>
+          <div class="nav-btn" onclick="window.open('{% url 'copAdmin_members' %}', '_self')">
+                  <i class="fa-thin fa-caret-down"></i>
+                 <span>More</span>
+          </div>
+      </div>
+      <div></div>
+</header>
+<br><br><br>
+<appbody style=" background-color: #f0f1f3 !important;">
+
+    <div class="func-bar">
+        <div class="tag">{{admin.local_assembly.name}} Assembly | Members</div>
+        <div class="search-div">
+            <input type="search" placeholder="Search Name, ID, Country, District, Area, Local">
+        </div>
+        <div class="tag"><i class="fa-thin fa-filter" style="font-size: 15px; font-weight:bold"></i></div>
+        <div class="tag" onclick="openForm('form-admin')"><i class="fa-thin fa-add" style="font-size: 15px; font-weight:bold"></i></div>
+    </div>
+
+   <div class="custom-table-001">
+        <div class="row">
+            <div class="cell"><b>Profile</b></div>
+            <div class="cell"><b>ID</b></div>
+            <div class="cell"><b>Name</b></div>
+            <div class="cell"><b>Gender</b></div>
+            <div class="cell"><b>Date of Birth</b></div>
+            <div class="cell"><b>Phone (1)</b></div>
+            <div class="cell"><b>Phone (2)</b></div>
+        </div>
+        {% for member in admin.local_assembly.member_set.all %}
+        <div class="row">
+            <div class="cell" style="display: flex; align-items: center; justify-content:center;">
+                <img src="{% static 'thecop_app/images/ant.png' %}" width=50>
+            </div>
+            <div class="cell">{{ member.id }}</div>
+            <div class="cell">{{ member.name }}</div>
+            <div class="cell">{{ member.gender }}</div>
+            <div class="cell">{{ member.date_of_birth }}</div>
+            <div class="cell">{{ member.phone }}</div>
+            <div class="cell">
+                {% if member.phone2 == "" %}
+                    null
+                {% else %}
+                    {{member.phone2}}
+                {% endif %}
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+
+
+
+</appbody>
+</body>
+<script src="{% static 'thecop_app/js/bodycover.js' %}"></script>
+</html>

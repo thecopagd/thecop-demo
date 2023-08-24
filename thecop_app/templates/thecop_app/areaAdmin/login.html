@@ -1,35 +1,54 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    {% load static %}
     <meta charset="UTF-8">
-    <title>Title</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <link rel="stylesheet" href="{% static 'thecop_app/CSS/ananse.css' %}">
+    <link rel="stylesheet" href="{% static 'thecop_app/CSS/form.css' %}">
+    <link rel="stylesheet" href="{% static 'thecop_app/CSS/fa/allicons.css' %}">
+    <link rel="stylesheet" href="{% static 'thecop_app/CSS/fa/icons.css' %}">
+    <title>AreaAdmin Login</title>
 </head>
-<body>
-<h1>Area Admin Login</h1>
-<form method="post" action="{% url 'areaAdmin_login' %}">
-    {% csrf_token %}
-  <!-- your_template.html -->
+<body style="display:grid">
+<div class="form-container">
+    <h3>Area Admin Login</h3>
+    <form method="post" action="{% url 'areaAdmin_login' %}">
+        {% csrf_token %}
+        <label>Country</label>
+        <div class="input-container">
+            <i class="fas fa-globe"></i>
+            <select required id="countrySelect" name="nation">
+              <option value="">Select a country</option>
+              {% for country in countries|dictsort:"country" %}
+                <option value="{{ country.id }}">{{ country.country }}</option>
+              {% endfor %}
+            </select>
+      </div>
 
-<!-- Country select tag -->
-<label>Country</label>
-<select id="countrySelect" name="nation">
-  <option value="">Select a country</option>
-  {% for country in countries|dictsort:"country" %}
-    <option value="{{ country.id }}">{{ country.country }}</option>
-  {% endfor %}
-</select>
-<br><br>
+        <label>Area</label>
+        <div class="input-container">
+            <i class="fas fa-globe"></i>
+            <select required id="areaSelect" disabled name="area">
+              <option value="">Select Area</option>
+            </select>
+      </div>
 
-<!-- Area select tag -->
-<label>Area</label>
-<select id="areaSelect" disabled name="area">
-  <option value="">Select an area</option>
-</select><br><br>
+        <div class="input-container">
+            <i class="fas fa-user"></i>
+            <input type="text" placeholder="ID" name="id" required>
+          </div>
+        <div class="input-container">
+            <i class="fas fa-phone"></i>
+            <input type="text" placeholder="Phone or Email" name="ep" required>
+          </div>
+        <div class="input-container">
+            <i class="fas fa-lock"></i>
+            <input type="password" placeholder="Password" name="password" required>
+          </div>
 
-<input type="text" placeholder="ID" name="id"><br><br>
-<input type="text" placeholder="Phone or Email" name="ep"><br><br>
-<input type="password" placeholder="Password" name="password"><br><br>
-<input type="submit" value="Login">
+        <input type="submit" value="Login">
 <script>
   // Get references to the select tags
   const countrySelect = document.getElementById('countrySelect');
@@ -84,5 +103,6 @@
 
 </form>
 
+</div>
 </body>
 </html>

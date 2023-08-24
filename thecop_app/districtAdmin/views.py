@@ -16,6 +16,39 @@ def home(request):
     return render(request, 'thecop_app/districtAdmin/home.html', context)
 
 
+def locals(request):
+    active_admin = DistrictAdmin.objects.get(pk=request.session.get('district_admin_id'))
+    context = {
+        "admins": DistrictAdmin.objects.all(),
+        "admin": active_admin,
+        "announcements": active_admin.district.districtannouncement_set.all(),
+        "events": active_admin.district.districtevent_set.all()
+    }
+    return render(request, 'thecop_app/districtAdmin/locals.html', context)
+
+
+def admins(request):
+    active_admin = DistrictAdmin.objects.get(pk=request.session.get('district_admin_id'))
+    context = {
+        "admins": DistrictAdmin.objects.all(),
+        "admin": active_admin,
+        "announcements": active_admin.district.districtannouncement_set.all(),
+        "events": active_admin.district.districtevent_set.all()
+    }
+    return render(request, 'thecop_app/districtAdmin/admins.html', context)
+
+
+def members(request):
+    active_admin = DistrictAdmin.objects.get(pk=request.session.get('district_admin_id'))
+    context = {
+        "admins": DistrictAdmin.objects.all(),
+        "admin": active_admin,
+        "announcements": active_admin.district.districtannouncement_set.all(),
+        "events": active_admin.district.districtevent_set.all()
+    }
+    return render(request, 'thecop_app/districtAdmin/members.html', context)
+
+
 def login(request):
     context = {
         "countries": Nation.objects.all(),

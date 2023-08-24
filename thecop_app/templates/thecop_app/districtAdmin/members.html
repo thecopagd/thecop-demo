@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">,
+  <head>
+
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="shortcut icon" href="{% static 'thecop_app/images/logo-pent.png' %}">
+    <link rel="stylesheet" href="{% static 'thecop_app/CSS/index.css' %}" />
+    <link rel="stylesheet" href="{% static 'thecop_app/CSS/ananse.css' %}" />
+      <link rel="stylesheet" href="{% static 'thecop_app/CSS/fa/allicons.css' %}">
+    <link rel="stylesheet" href="{% static 'thecop_app/CSS/fa/icons.css' %}">
+
+    <title>The Church Of Pentecost</title>
+    <style>
+    body{font-family:calibri}
+        table{
+            border: 1px solid black; border-spacing: 2px;
+        }
+        th, td{
+            border: 1px solid black;
+            padding: 10px
+        }
+    </style>
+</head>
+
+<body>
+<div onclick="closeForm(b=['form-admin'])" id="body-cover"></div>
+<div class="form-div" id="form-admin">
+    <div class="header">
+        <h4>ADD NATION</h4>
+    </div>
+    <div>
+
+    </div>
+    <form method="post" action="{% url 'copAdmin_add_nation' %}">
+        {% csrf_token %}
+        <input name="country" type="text" placeholder="Country" required/><br><br>
+        <input type="submit" value="Submit">
+    </form>
+   </div>
+
+
+
+<header class="grid-header">
+      <div class="logo">
+          <img src="{% static 'thecop_app/images/The-Church-Of-Pentecost.png' %}" width=200/>
+      </div>
+      <div class="mid-div">
+              <div class="nav-btn" onclick="window.open('{% url 'districtAdmin_home' %}', '_self')">
+                  <i class="fa-thin fa-gauge"></i>
+                  <span>Dashboard</span>
+              </div>
+            <div class="nav-btn" onclick="window.open('{% url 'districtAdmin_locals' %}', '_self')">
+                  <i class="fa-thin fa-map"></i>
+                  <span>Locals</span>
+            </div>
+          <div class="nav-btn" onclick="window.open('{% url 'districtAdmin_admins' %}', '_self')">
+                      <i class="fa-thin fa-user-lock"></i>
+                     <span>Admins</span>
+              </div>
+
+          <div class="nav-btn" onclick="window.open('{% url 'districtAdmin_members' %}', '_self')">
+                  <i class="fa-thin fa-users"></i>
+                 <span>Members</span>
+          </div>
+          <div class="nav-btn" onclick="window.open('{% url 'copAdmin_members' %}', '_self')">
+                  <i class="fa-thin fa-caret-down"></i>
+                 <span>More</span>
+          </div>
+      </div>
+      <div></div>
+</header>
+<br><br><br>
+<appbody style=" background-color: #f0f1f3 !important;">
+
+    <div class="func-bar">
+        <div class="tag">{{admin.district.name}} District | Members</div>
+        <div class="search-div">
+            <input type="search" placeholder="Search Name, ID, Country, District, Area, Local">
+        </div>
+        <div class="tag"><i class="fa-thin fa-filter" style="font-size: 15px; font-weight:bold"></i></div>
+<!--        <div class="tag" onclick="openForm('form-admin')"><i class="fa-thin fa-add" style="font-size: 15px; font-weight:bold"></i></div>-->
+    </div>
+
+   <div class="custom-table-001">
+        <div class="row">
+            <div class="cell"><b>Profile</b></div>
+            <div class="cell"><b>ID</b></div>
+            <div class="cell"><b>Name</b></div>
+            <div class="cell"><b>Gender</b></div>
+            <div class="cell"><b>Date of Birth</b></div>
+            <div class="cell"><b>Phone (1)</b></div>
+            <div class="cell"><b>Phone (2)</b></div>
+            <div class="cell"><b>Local</b></div>
+        </div>
+        {% for member in admin.district.get_members %}
+        <div class="row">
+            <div class="cell" style="display: flex; align-items: center; justify-content:center;">
+                <img src="{% static 'thecop_app/images/ant.png' %}" width=50>
+            </div>
+            <div class="cell">{{ member.id }}</div>
+            <div class="cell">{{ member.name }}</div>
+            <div class="cell">{{ member.gender }}</div>
+            <div class="cell">{{ member.date_of_birth }}</div>
+            <div class="cell">{{ member.phone }}</div>
+            <div class="cell">
+                {% if member.phone2 == "" %}
+                    null
+                {% else %}
+                    {{member.phone2}}
+                {% endif %}
+            </div>
+            <div class="cell">{{ member.local_assembly.name }} Asm.</div>
+        </div>
+        {% endfor %}
+    </div>
+
+
+
+</appbody>
+</body>
+<script src="{% static 'thecop_app/js/bodycover.js' %}"></script>
+</html>

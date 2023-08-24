@@ -25,6 +25,35 @@ class Nation(models.Model):
     id = models.TextField(primary_key=True)
     country = models.TextField()
 
+    def get_members_total(self):
+        total = 0
+        for i in Member.objects.all():
+            if i.local_assembly.district.area.nation == self:
+                total = total + 1
+        return total
+
+    def get_district_total(self):
+        total = 0
+        for i in District.objects.all():
+            if i.area.nation == self:
+                total = total + 1
+        return total
+
+    def get_local_total(self):
+        total = 0
+        for i in LocalAssembly.objects.all():
+            if i.district.area.nation == self:
+                total = total + 1
+        return total
+
+    def get_members(self):
+        members = []
+        for i in Member.objects.all():
+            if i.local_assembly.district.area.nation == self:
+                members.append(i)
+
+        return members
+
 
 class NationalAdmin(models.Model):
     id = models.TextField(primary_key=True)
@@ -55,12 +84,55 @@ class NationalAdmin(models.Model):
         )
         new.save()
 
+    def add_author(self, name, phone):
+        iid = str(f"AU{self.nation.id[2:]}{self.nation.author_set.all().count() + 1}")
+
+        new = Author(
+            name=name,
+            password=phone,
+            nation=self.nation,
+            phone=phone,
+            id=iid
+        )
+
+        new.save()
+
 
 class Area(models.Model):
     nation = models.ForeignKey(Nation, on_delete=models.CASCADE)
     id = models.TextField(primary_key=True)
     name = models.TextField()
     location = models.TextField()
+
+    def get_local_total(self):
+        total = 0
+        for i in LocalAssembly.objects.all():
+            if i.district.area == self:
+                total = total + 1
+        return total
+
+    def get_members_total(self):
+        total = 0
+        for i in Member.objects.all():
+            if i.local_assembly.district.area == self:
+                total = total + 1
+        return total
+
+    def get_members(self):
+        members = []
+        for i in Member.objects.all():
+            if i.local_assembly.district.area == self:
+                members.append(i)
+
+        return members
+
+    def get_district_admins(self):
+        admins = []
+        for i in DistrictAdmin.objects.all():
+            if i.district.area == self:
+                admins.append(i)
+
+        return admins
 
 
 class AreaAdmin(models.Model):
@@ -98,6 +170,36 @@ class District(models.Model):
     id = models.TextField(primary_key=True)
     name = models.TextField()
     location = models.TextField()
+
+    def get_local_total(self):
+        total = 0
+        for i in LocalAssembly.objects.all():
+            if i.district == self:
+                total = total + 1
+        return total
+
+    def get_members_total(self):
+        total = 0
+        for i in Member.objects.all():
+            if i.local_assembly.district == self:
+                total = total + 1
+        return total
+
+    def get_members(self):
+        members = []
+        for i in Member.objects.all():
+            if i.local_assembly.district == self:
+                members.append(i)
+
+        return members
+
+    def get_local_admins(self):
+        admins = []
+        for i in LocalAdmin.objects.all():
+            if i.local_assembly.district == self:
+                admins.append(i)
+
+        return admins
 
 
 class DistrictAdmin(models.Model):
@@ -179,7 +281,7 @@ class Member(models.Model):
     local_assembly = models.ForeignKey(LocalAssembly, on_delete=models.CASCADE)
     name = models.TextField()
     gender = models.CharField(max_length=10)
-    age = models.PositiveIntegerField()
+    date_of_birth = models.DateField(default="2004-02-18")
     phone = models.TextField()
     phone2 = models.TextField()
     email = models.TextField()
@@ -197,6 +299,14 @@ class Member(models.Model):
 
     def get_local_announcements(self):
         return self.local_assembly.district.area.areaannouncement_set.all()
+
+
+class Author(models.Model):
+    id = models.TextField(primary_key=True)
+    nation = models.ForeignKey(Nation, on_delete=models.CASCADE)
+    name = models.TextField()
+    phone = models.TextField()
+    password = models.TextField(default=phone)
 
 
 class LocalAnnouncement(models.Model):
@@ -289,5 +399,13 @@ class LocalEvent(models.Model):
         months = ["", "Jan", "Feb", "March", "April", "May", "June", "July", "August", "Sept", "Oct", "Nov",
                   "Dec"]
         return months[self.start.month]
+
+
+class Songs(models.Model):
+    lyrics = models.TextField()
+    author = models.CharField(max_length=100)
+    language = models.CharField(max_length=100)
+    title = models.CharField(max_length=100, default="Lyrics")
+
 
 

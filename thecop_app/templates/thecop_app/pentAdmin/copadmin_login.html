@@ -11,10 +11,10 @@
     <link rel="stylesheet" href="{% static 'thecop_app/CSS/fa/icons.css' %}">
     <title>Member Login</title>
 </head>
-<body>
+<body style="display:grid">
 
 <div class="form-container">
-<h2>Pent Admin Login</h2>
+<h3>Pent Admin Login</h3><BR>
 <form method="post" action="{% url 'copAdmin_login' %}">
     {% csrf_token %}
     <div class="input-container">
@@ -33,7 +33,7 @@
     </div>
 
 
-    <input type="submit" value="Submit">
+    <input type="submit" value="Submit"><br>
 </form>
 </div>
 </body>

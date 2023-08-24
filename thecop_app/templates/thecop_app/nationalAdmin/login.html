@@ -1,25 +1,48 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    {% load static %}
     <meta charset="UTF-8">
-    <title>Title</title>
-</head>
-<body>
-<h1>National Admin Login</h1>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-<form method="post" action="{% url 'nationalAdmin_login' %}">
+    <link rel="stylesheet" href="{% static 'thecop_app/CSS/ananse.css' %}">
+    <link rel="stylesheet" href="{% static 'thecop_app/CSS/form.css' %}">
+    <link rel="stylesheet" href="{% static 'thecop_app/CSS/fa/allicons.css' %}">
+    <link rel="stylesheet" href="{% static 'thecop_app/CSS/fa/icons.css' %}">
+    <title>National Admin Login</title>
+</head>
+<body style="display: grid">
+
+<div class="form-container">
+    <h3>National Admin Login</h3>
+    <form method="post" action="{% url 'nationalAdmin_login' %}">
     {% csrf_token %}
-  <select name="nation">
-    <option>Select Country</option>
-        {% for country in countries %}
-            <option value="{{ country.id }}">{{ country.country }}</option>
-        {% endfor %}
-    </select><br><br>
-    <input name="id" type="text" placeholder="ID" required/><br><br>
-    <input name="ep" type="text" placeholder="email or phone" required/><br><br>
-    <input name="password" type="password" placeholder="password" required/><br><br>
-    <input type="submit" value="Submit">
-</form>
+        <label>Country</label>
+        <div class="input-container">
+            <i class="fas fa-globe"></i>
+            <select required id="countrySelect" name="nation">
+              <option value="">Select a country</option>
+              {% for country in countries|dictsort:"country" %}
+                <option value="{{ country.id }}">{{ country.country }}</option>
+              {% endfor %}
+            </select>
+      </div>
+          <div class="input-container">
+            <i class="fas fa-user"></i>
+            <input type="text" placeholder="ID" name="id" required>
+          </div>
+        <div class="input-container">
+            <i class="fas fa-phone"></i>
+            <input type="text" placeholder="Phone or Email" name="ep" required>
+          </div>
+          <div class="input-container">
+            <i class="fas fa-lock"></i>
+            <input type="password" placeholder="Password" name="password" required>
+          </div>
+
+      <input type="submit" value="Login">
+    </form>
+  </div>
 
 </body>
 </html>

@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+{% load static %}
+ <head>
+
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="shortcut icon" href="{% static 'thecop_app/images/logo-pent.png' %}">
+    <link rel="stylesheet" href="{% static 'thecop_app/CSS/index.css' %}" />
+    <link rel="stylesheet" href="{% static 'thecop_app/CSS/ananse.css' %}" />
+      <link rel="stylesheet" href="{% static 'thecop_app/CSS/fa/allicons.css' %}">
+    <link rel="stylesheet" href="{% static 'thecop_app/CSS/fa/icons.css' %}">
+
+    <title>The Church Of Pentecost</title>
+    <style>
+    body{font-family:calibri}
+        table{
+            border: 1px solid black; border-spacing: 2px;
+        }
+        th, td{
+            border: 1px solid black;
+            padding: 10px
+        }
+    </style>
+</head>
+<body>
+
+<div onclick="closeForm(b=['form-admin'])" id="body-cover"></div>
+<div class="form-div larger" id="form-admin">
+    <div class="header">
+        <h4>Add Article</h4>
+    </div>
+    <div>
+
+    </div>
+    <div style="height: 25em; background-color: white; overflow-y:scroll">
+        <br><br>
+        <form method="post" action="">
+    {% csrf_token %}
+
+
+                    <h5>Image:</h5>
+                <div class="div-img-p">
+                    <div class="image-preview-container">
+                        <div class="preview">
+                            <img id="preview-selected-image" />
+                        </div>
+                        <div>
+                            <label for="file-upload">Upload Image</label>
+                            <input name="art_img" type="file" id="file-upload" accept="image/*" onchange="previewImage(event);" />
+                        </div>
+
+                    </div>
+                </div>
+                <h5>Category</h5>
+                <select name="category" class="sel_opt">
+                    {% for cat in cats %}
+                        <option value="{{cat.id}}">{{cat.name}}</option>
+                    {% endfor %}
+                </select>
+                <h5>Header</h5>
+                <input type="text" class="header-in" name="header">
+                <h5>Brief</h5>
+                <input type="text" class="header-in" name="brief">
+                <h2>Body</h2>
+                <textarea class="body-in" name="body"></textarea>
+
+
+</form>
+    </div>
+   </div>
+
+
+<header class="grid-header">
+      <div class="logo">
+          <img src="{% static 'thecop_app/images/The-Church-Of-Pentecost.png' %}" width=200 />
+      </div>
+      <div class="mid-div">
+              <div class="nav-btn" onclick="window.open('{% url 'author_home' %}', '_self')">
+                  <i class="fa-thin fa-gauge"></i>
+                  <span>Dashboard</span>
+              </div>
+            <div class="nav-btn" onclick="window.open('{% url 'author_songs' %}', '_self')">
+                  <i class="fa-thin fa-music"></i>
+                  <span>Songs</span>
+            </div>
+          <div class="nav-btn" onclick="window.open('{% url 'author_articles' %}', '_self')">
+                      <i class="fa-thin fa-newspaper"></i>
+                     <span>Articles</span>
+              </div>
+          <div class="nav-btn" onclick="window.open('{% url 'author_home' %}', '_self')">
+                  <i class="fa-thin fa-caret-down"></i>
+                 <span>More</span>
+          </div>
+      </div>
+      <div></div>
+</header>
+<br><br><br>
+<appbody style=" background-color: #f0f1f3 !important;">
+     <div class="func-bar">
+        <div class="tag">Articles</div>
+        <div class="search-div">
+            <input type="search" placeholder="Search Articles">
+        </div>
+        <div class="tag"><i class="fa-thin fa-filter" style="font-size: 15px; font-weight:bold"></i></div>
+        <div class="tag" onclick="openForm('form-admin')"><i class="fa-thin fa-add" style="font-size: 15px; font-weight:bold"></i></div>
+    </div>
+
+    <div style="width:70%;
+        position: relative;
+        left: 50%; margin-bottom: 30px;
+        translate: -50% 0;">
+        <h4 style="margin: 0 0 20px 30px">Recents <sup>4</sup></h4>
+        <div class="fl001">
+            <div class="box001">
+                <div class="cover"></div>
+                <div class="text">Living the godly life. Staying as holy as a saint</div>
+            </div>
+            <div class="box001">
+                <div class="cover"></div>
+                <div class="text">Living the godly life. Staying as holy as a saint</div>
+            </div>
+            <div class="box001">
+                <div class="cover"></div>
+                <div class="text">Living the godly life. Staying as holy as a saint</div>
+            </div>
+            <div class="box001">
+                <div class="cover"></div>
+                <div class="text">Living the godly life. Staying as holy as a saintStaying as holy as a saint</div>
+            </div>
+        </div>
+    </div>
+    <div style="width:70%;
+        position: relative;
+        left: 50%;
+        translate: -50% 0;">
+        <h4 style="margin: 0 0 20px 30px">Older <sup>4</sup></h4>
+        <div class="fl001">
+            <div class="box001">
+                <div class="cover"></div>
+                <div class="text">Living the godly life. Staying as holy as a saint</div>
+            </div>
+            <div class="box001">
+                <div class="cover"></div>
+                <div class="text">Living the godly life. Staying as holy as a saint</div>
+            </div>
+            <div class="box001">
+                <div class="cover"></div>
+                <div class="text">Living the godly life. Staying as holy as a saint</div>
+            </div>
+            <div class="box001">
+                <div class="cover"></div>
+                <div class="text">Living the godly life. Staying as holy as a saintStaying as holy as a saint</div>
+            </div>
+        </div>
+    </div>
+
+
+
+</appbody>
+
+</body>
+<script src="{% static 'thecop_app/js/bodycover.js' %}"></script>
+</html>

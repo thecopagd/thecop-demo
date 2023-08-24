@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Add event</title>
+</head>
+<body>
+<h1>ADD Author</h1>
+<form method="post" action="{% url 'nationalAdmin_add_author' %}">
+    {% csrf_token %}
+    <input name="name" type="text" placeholder="Dennis" required/><br>
+    <input name="phone" type="text" placeholder="0242545455" required/><br>
+    <input type="submit" value="Submit">
+</form>
+
+</body>
+</html>

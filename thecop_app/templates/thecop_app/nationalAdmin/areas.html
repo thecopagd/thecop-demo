@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+  <head>
+
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="shortcut icon" href="{% static 'thecop_app/images/logo-pent.png' %}">
+    <link rel="stylesheet" href="{% static 'thecop_app/CSS/index.css' %}" />
+    <link rel="stylesheet" href="{% static 'thecop_app/CSS/ananse.css' %}" />
+      <link rel="stylesheet" href="{% static 'thecop_app/CSS/fa/allicons.css' %}">
+    <link rel="stylesheet" href="{% static 'thecop_app/CSS/fa/icons.css' %}">
+
+    <title>The Church Of Pentecost</title>
+    <style>
+    body{font-family:calibri}
+        table{
+            border: 1px solid black; border-spacing: 2px;
+        }
+        th, td{
+            border: 1px solid black;
+            padding: 10px
+        }
+    </style>
+</head>
+
+<body>
+<div onclick="closeForm(b=['form-admin'])" id="body-cover"></div>
+<div class="form-div" id="form-admin">
+    <div class="header">
+        <h4>ADD Area</h4>
+    </div>
+    <div>
+
+    </div>
+    <form method="post" action="{% url 'nationalAdmin_add_area' %}">
+        {% csrf_token %}
+        <select name="nation" hidden="true">
+            <option selected value="{{active_nation.id}}">{{active_nation.country}}</option>
+        </select><br><br>
+        <input name="area_name" type="text" placeholder="Area" required/><br>
+        <span style="color:red">* Please enter only the name of the<br> area without including "Area"</span>
+        <br><br>
+        <input name="location" type="text" placeholder="State or Region" required/><br><br>
+        <input type="submit" value="Submit">
+    </form>
+   </div>
+
+
+<header class="grid-header">
+      <div class="logo">
+          <img src="{% static 'thecop_app/images/The-Church-Of-Pentecost.png' %}" width=200/>
+      </div>
+      <div class="mid-div">
+              <div class="nav-btn" onclick="window.open('{% url 'nationalAdmin_home' %}', '_self')">
+                  <i class="fa-thin fa-gauge"></i>
+                  <span>Dashboard</span>
+              </div>
+            <div class="nav-btn" onclick="window.open('{% url 'nationalAdmin_areas' %}', '_self')">
+                  <i class="fa-thin fa-map"></i>
+                  <span>Areas</span>
+              </div>
+          <div class="nav-btn" onclick="window.open('{% url 'nationalAdmin_admins' %}', '_self')">
+                      <i class="fa-thin fa-user-lock"></i>
+                     <span>Admins</span>
+              </div>
+
+          <div class="nav-btn" onclick="window.open('{% url 'nationalAdmin_members' %}', '_self')">
+                  <i class="fa-thin fa-users"></i>
+                 <span>Members</span>
+          </div>
+          <div class="nav-btn" onclick="window.open('{% url 'copAdmin_members' %}', '_self')">
+                  <i class="fa-thin fa-caret-down"></i>
+                 <span>More</span>
+          </div>
+      </div>
+      <div></div>
+</header>
+<br><br><br>
+<appbody style=" background-color: #f0f1f3 !important;">
+
+    <div class="func-bar">
+        <div class="tag">{{active_nation.country}}: Areas</div>
+        <div class="search-div">
+            <input type="search" placeholder="Search Area">
+        </div>
+        <div class="tag"><i class="fa-thin fa-filter" style="font-size: 15px; font-weight:bold"></i></div>
+        <div class="tag" onclick="openForm('form-admin')"><i class="fa-thin fa-add" style="font-size: 15px; font-weight:bold"></i></div>
+    </div>
+
+    <div class="custom-table-001">
+        <div class="row">
+            <div class="cell"><b>Area</b></div>
+            <div class="cell"><b>ID</b></div>
+            <div class="cell"><b>Region</b></div>
+            <div class="cell"><b>Districts</b></div>
+            <div class="cell"><b>Locals</b></div>
+            <div class="cell"><b>Members</b></div>
+        </div>
+        {% for area in areas|dictsort:"name" %}
+        <div class="row">
+            <div class="cell">{{ area.name }}</div>
+            <div class="cell">{{area.id }}</div>
+            <div class="cell">{{ area.location }}</div>
+            <div class="cell">{{ area.district_set.count }}</div>
+            <div class="cell">{{ area.get_local_total }}</div>
+            <div class="cell">{{ area.get_members_total }}</div>
+        </div>
+        {% endfor %}
+    </div>
+
+
+
+</appbody>
+</body>
+<script src="{% static 'thecop_app/js/bodycover.js' %}"></script>
+</html>

@@ -9,6 +9,9 @@
     <link rel="shortcut icon" href="{% static 'thecop_app/images/logo-pent.png' %}">
     <link rel="stylesheet" href="{% static 'thecop_app/CSS/index.css' %}" />
     <link rel="stylesheet" href="{% static 'thecop_app/CSS/ananse.css' %}" />
+      <link rel="stylesheet" href="{% static 'thecop_app/CSS/fa/allicons.css' %}">
+    <link rel="stylesheet" href="{% static 'thecop_app/CSS/fa/icons.css' %}">
+
     <title>The Church Of Pentecost</title>
     <style>
     body{font-family:calibri}
@@ -23,43 +26,84 @@
 </head>
 
 <body>
-<header class="header">
-      <!-- <a href="#" class="brand" id="brand">COP</a> -->
-       <a href="index.html" class="brand">
-        <img src="{% static 'thecop_app/images/The-Church-Of-Pentecost.png' %}"/>
-       </a>
+<header class="grid-header">
+      <div class="logo">
+          <img src="{% static 'thecop_app/images/The-Church-Of-Pentecost.png' %}" width=200/>
+      </div>
+      <div class="mid-div">
+              <div class="nav-btn" onclick="window.open('{% url 'copAdmin_home' %}', '_self')">
+                  <i class="fa-thin fa-gauge"></i>
+                  <span>Dashboard</span>
+              </div>
+          <div class="nav-btn" onclick="window.open('{% url 'copAdmin_nations' %}', '_self')">
+                  <i class="fa-thin fa-map"></i>
+                  <span>Nations</span>
+              </div>
+          <div class="nav-btn" onclick="window.open('{% url 'copAdmin_admins' %}', '_self')">
+                  <i class="fa-thin fa-user-lock"></i>
+                 <span>Admins</span>
+          </div>
+          <div class="nav-btn" onclick="window.open('{% url 'copAdmin_members' %}', '_self')">
+                  <i class="fa-thin fa-users"></i>
+                 <span>Members</span>
+          </div>
+      </div>
+      <div></div>
 </header>
-<appbody>
+<br><br><br>
+<appbody style=" background-color: #f0f1f3 !important;">
 
-<h1>Home COP ADMIN</h1>
-<a href="{% url 'copAdmin_login' %}">login</a>
-<h2>Nations</h2>
-<ul>
-    {% for country in countries %}
-        <li>{{ country.country }}, {{ country.id }}</li>
-    {% endfor %}
-   <a href="{% url 'copAdmin_add_nation' %}">ADD NATION</a>
-</ul>
 
-<br><br>
-<h2>National Admins</h2>
-<table>
-    <tr>
-        <th>ID</th>
-        <th>PHONE</th>
-        <th>EMAIL</th>
-        <th>NATION</th>
-    </tr>
-    {% for admin in admins %}
-        <tr>
-            <td>{{ admin.id }}</td>
-            <td>{{ admin.phone }}</td>
-            <td>{{ admin.email }}</td>
-            <td>{{ admin.nation.country }}</td>
-        </tr>
-    {% endfor %}
-</table>
-<a href="{% url 'copAdmin_add_nation_admin' %}">ADD NATION ADMIN</a>
+    <div class="counter-div-090">
+        <div class="one">
+            <div class="counter alpha">
+                <div class="count">{{members_total}}</div>
+                <div class="label">
+                    <i class="fa-thin fa-users"></i>
+                    <span>Members</span>
+                </div>
+            </div>
+        </div>
+        <div  class="two">
+            <div class="counter-001">
+                 <div class="counter-av">
+                      <i class="fa-thin fa-globe"></i>
+                 </div>
+                 <div>
+                     <div class="counter-head">Nations</div>
+                     <div class="counter-mini">{{nations_total}}</div>
+                 </div>
+            </div>
+            <div class="counter-001">
+                 <div class="counter-av">
+                      <i class="fa-thin fa-map"></i>
+                 </div>
+                 <div>
+                     <div class="counter-head">Areas</div>
+                     <div class="counter-mini">{{areas_total}}</div>
+                 </div>
+            </div>
+            <div class="counter-001">
+                 <div class="counter-av">
+                      <i class="fa-thin fa-radar"></i>
+                 </div>
+                 <div>
+                     <div class="counter-head">Districts</div>
+                     <div class="counter-mini">{{districts_total}}</div>
+                 </div>
+            </div>
+            <div class="counter-001">
+                 <div class="counter-av">
+                      <i class="fa-thin fa-church"></i>
+                 </div>
+                 <div>
+                     <div class="counter-head">Locals</div>
+                     <div class="counter-mini">{{locals_total}}</div>
+                 </div>
+            </div>
+        </div>
+
+    </div>
 </appbody>
 </body>
 </html>

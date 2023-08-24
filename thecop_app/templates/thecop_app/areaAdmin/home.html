@@ -1,8 +1,18 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
+{% load static %}
+ <head>
+
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="shortcut icon" href="{% static 'thecop_app/images/logo-pent.png' %}">
+    <link rel="stylesheet" href="{% static 'thecop_app/CSS/index.css' %}" />
+    <link rel="stylesheet" href="{% static 'thecop_app/CSS/ananse.css' %}" />
+      <link rel="stylesheet" href="{% static 'thecop_app/CSS/fa/allicons.css' %}">
+    <link rel="stylesheet" href="{% static 'thecop_app/CSS/fa/icons.css' %}">
+
+    <title>The Church Of Pentecost</title>
     <style>
     body{font-family:calibri}
         table{
@@ -15,48 +25,92 @@
     </style>
 </head>
 <body>
-<h1>{{admin.area.name}} AREA ADMIN | {{admin.area.nation.country}}</h1>
 
-<h2>Districts</h2>
-<table>
-    <tr>
-        <th>Name</th>
-        <th>id</th>
-        <th>Location</th>
-    </tr>
-{% for district in admin.area.district_set.all|dictsort:"name" %}
-    <tr>
-        <td>{{ district.name }} District</td>
-        <td>{{ district.id }}</td>
-        <td>{{ district.location }}</td>
-    </tr>
-{% endfor %}
-</table>
-<a href="{% url 'areaAdmin_add_district' %}">Add District</a>
-<h3>District Admins</h3>
-<table>
-    <tr>
-        <th>ID</th>
-        <th>Phone</th>
-        <th>Email</th>
-        <th>District</th>
-    </tr>
-    {% for district in admin.area.district_set.all|dictsort:"name" %}
-     {% for ad in district.districtadmin_set.all %}
-        <tr>
-            <td>{{ ad.id }}</td>
-            <td>{{ ad.phone }}</td>
-            <td>{{ ad.email }}</td>
-            <td>{{ ad.district.name }} District</td>
-        </tr>
-     {% endfor %}
-    {% endfor %}
-</table>
+<header class="grid-header">
+      <div class="logo">
+          <img src="{% static 'thecop_app/images/The-Church-Of-Pentecost.png' %}" width=200/>
+      </div>
+      <div class="mid-div">
+              <div class="nav-btn" onclick="window.open('{% url 'areaAdmin_home' %}', '_self')">
+                  <i class="fa-thin fa-gauge"></i>
+                  <span>Dashboard</span>
+              </div>
+            <div class="nav-btn" onclick="window.open('{% url 'areaAdmin_districts' %}', '_self')">
+                  <i class="fa-thin fa-map"></i>
+                  <span>Districts</span>
+              </div>
+          <div class="nav-btn" onclick="window.open('{% url 'areaAdmin_admins' %}', '_self')">
+                      <i class="fa-thin fa-user-lock"></i>
+                     <span>Admins</span>
+              </div>
 
-<a href="{% url 'areaAdmin_add_district_admin' %}">Add District Admin</a>
+          <div class="nav-btn" onclick="window.open('{% url 'areaAdmin_members' %}', '_self')">
+                  <i class="fa-thin fa-users"></i>
+                 <span>Members</span>
+          </div>
+          <div class="nav-btn" onclick="window.open('{% url 'copAdmin_members' %}', '_self')">
+                  <i class="fa-thin fa-caret-down"></i>
+                 <span>More</span>
+          </div>
+      </div>
+      <div></div>
+</header>
+<br><br><br>
+<appbody style=" background-color: #f0f1f3 !important;">
 
 
-<h3>Announcements</h3>
+    <div class="counter-div-090">
+        <div class="one">
+            <div class="counter alpha">
+                <div class="count">{{admin.area.get_members_total}}</div>
+                <div class="label">
+                    <i class="fa-thin fa-users"></i>
+                    <span>Members</span>
+                </div>
+            </div>
+        </div>
+        <div  class="two">
+            <div class="counter-001">
+                 <div class="counter-av">
+                      <i class="fa-thin fa-globe"></i>
+                 </div>
+                 <div>
+                     <div class="counter-head">Nation</div>
+                     <div class="counter-mini">{{admin.area.nation.country}}</div>
+                 </div>
+            </div>
+            <div class="counter-001">
+                 <div class="counter-av">
+                      <i class="fa-thin fa-map"></i>
+                 </div>
+                 <div>
+                     <div class="counter-head">Area</div>
+                     <div class="counter-mini">{{admin.area.name}} Area</div>
+                 </div>
+            </div>
+            <div class="counter-001">
+                 <div class="counter-av">
+                      <i class="fa-thin fa-radar"></i>
+                 </div>
+                 <div>
+                     <div class="counter-head">Districts</div>
+                     <div class="counter-mini">{{admin.area.district_set.count}}</div>
+                 </div>
+            </div>
+            <div class="counter-001">
+                 <div class="counter-av">
+                      <i class="fa-thin fa-church"></i>
+                 </div>
+                 <div>
+                     <div class="counter-head">Locals</div>
+                     <div class="counter-mini">{{admin.area.get_local_total}}</div>
+                 </div>
+            </div>
+        </div>
+
+    </div>
+
+    <h3>Announcements</h3>
 <div>
     {% for announcement in announcements %}
         <div class="anc n">
@@ -85,6 +139,7 @@
 </div>
 <a href="{% url 'areaAdmin_add_event' %}">ADD Event</a>
 
+</appbody>
 
 </body>
 </html>

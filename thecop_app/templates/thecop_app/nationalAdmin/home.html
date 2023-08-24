@@ -1,8 +1,18 @@
 <!DOCTYPE html>
+{% load static %}
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
+  <head>
+
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="shortcut icon" href="{% static 'thecop_app/images/logo-pent.png' %}">
+    <link rel="stylesheet" href="{% static 'thecop_app/CSS/index.css' %}" />
+    <link rel="stylesheet" href="{% static 'thecop_app/CSS/ananse.css' %}" />
+      <link rel="stylesheet" href="{% static 'thecop_app/CSS/fa/allicons.css' %}">
+    <link rel="stylesheet" href="{% static 'thecop_app/CSS/fa/icons.css' %}">
+
+    <title>The Church Of Pentecost</title>
     <style>
     body{font-family:calibri}
         table{
@@ -15,6 +25,94 @@
     </style>
 </head>
 <body>
+
+<header class="grid-header">
+      <div class="logo">
+          <img src="{% static 'thecop_app/images/The-Church-Of-Pentecost.png' %}" width=200/>
+      </div>
+      <div class="mid-div">
+              <div class="nav-btn" onclick="window.open('{% url 'nationalAdmin_home' %}', '_self')">
+                  <i class="fa-thin fa-gauge"></i>
+                  <span>Dashboard</span>
+              </div>
+            <div class="nav-btn" onclick="window.open('{% url 'nationalAdmin_areas' %}', '_self')">
+                  <i class="fa-thin fa-map"></i>
+                  <span>Areas</span>
+              </div>
+          <div class="nav-btn" onclick="window.open('{% url 'nationalAdmin_admins' %}', '_self')">
+                      <i class="fa-thin fa-user-lock"></i>
+                     <span>Admins</span>
+              </div>
+
+          <div class="nav-btn" onclick="window.open('{% url 'nationalAdmin_members' %}', '_self')">
+                  <i class="fa-thin fa-users"></i>
+                 <span>Members</span>
+          </div>
+          <div class="nav-btn" onclick="window.open('{% url 'copAdmin_members' %}', '_self')">
+                  <i class="fa-thin fa-caret-down"></i>
+                 <span>More</span>
+          </div>
+      </div>
+      <div></div>
+</header>
+<br><br><br>
+<appbody style=" background-color: #f0f1f3 !important;">
+
+
+    <div class="counter-div-090">
+        <div class="one">
+            <div class="counter alpha">
+                <div class="count">{{members_total}}</div>
+                <div class="label">
+                    <i class="fa-thin fa-users"></i>
+                    <span>Members</span>
+                </div>
+            </div>
+        </div>
+        <div  class="two">
+            <div class="counter-001">
+                 <div class="counter-av">
+                      <i class="fa-thin fa-globe"></i>
+                 </div>
+                 <div>
+                     <div class="counter-head">Nation</div>
+                     <div class="counter-mini">{{active_nation.country}}</div>
+                 </div>
+            </div>
+            <div class="counter-001">
+                 <div class="counter-av">
+                      <i class="fa-thin fa-map"></i>
+                 </div>
+                 <div>
+                     <div class="counter-head">Areas</div>
+                     <div class="counter-mini">{{active_nation.area_set.all.count}}</div>
+                 </div>
+            </div>
+            <div class="counter-001">
+                 <div class="counter-av">
+                      <i class="fa-thin fa-radar"></i>
+                 </div>
+                 <div>
+                     <div class="counter-head">Districts</div>
+                     <div class="counter-mini">{{active_nation.get_district_total}}</div>
+                 </div>
+            </div>
+            <div class="counter-001">
+                 <div class="counter-av">
+                      <i class="fa-thin fa-church"></i>
+                 </div>
+                 <div>
+                     <div class="counter-head">Locals</div>
+                     <div class="counter-mini">{{active_nation.get_local_total}}</div>
+                 </div>
+            </div>
+        </div>
+
+    </div>
+</appbody>
+
+
+
 <h1>{{active_nation.country}} Admin</h1>
 <h3>Areas</h3>
 <table>
@@ -82,6 +180,25 @@
     {% endfor %}
 </div>
 <a href="{% url 'nationalAdmin_add_event' %}">ADD Event</a>
+
+
+ <br><br>
+<h2>Article Authors</h2>
+<table>
+    <tr>
+        <th>ID</th>
+        <th>Name</th>
+        <th>PHONE</th>
+    </tr>
+    <tr>
+        {% for author in authors %}
+            <td>{{author.id}}</td>
+            <td>{{author.name}}</td>
+            <td>{{author.phone}}</td>
+        {% endfor %}
+    </tr>
+</table>
+<a href="{% url 'nationalAdmin_add_author' %}">Add Author</a>
 
 
 

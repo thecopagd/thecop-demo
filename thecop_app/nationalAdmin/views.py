@@ -9,15 +9,72 @@ def home(request):
     active_nation = Nation.objects.get(pk=request.session.get('national_admin_nation_id'))
     announcements = active_nation.nationalannouncement_set.all()
     events = active_nation.nationalevent_set.all()
+    authors = active_nation.author_set.all()
 
     context = {
         "areas": Area.objects.filter(nation=active_nation),
         "active_nation": active_nation,
         "admins": AreaAdmin.objects.filter(area__nation=active_nation),
         "announcements": announcements,
-        "events": events
+        "events": events,
+        "authors": authors,
+        "members_total": active_nation.get_members_total()
     }
     return render(request, 'thecop_app/nationalAdmin/home.html', context)
+
+
+def areas(request):
+    active_nation = Nation.objects.get(pk=request.session.get('national_admin_nation_id'))
+    announcements = active_nation.nationalannouncement_set.all()
+    events = active_nation.nationalevent_set.all()
+    authors = active_nation.author_set.all()
+
+    context = {
+        "areas": Area.objects.filter(nation=active_nation),
+        "active_nation": active_nation,
+        "admins": AreaAdmin.objects.filter(area__nation=active_nation),
+        "announcements": announcements,
+        "events": events,
+        "authors": authors,
+        "members_total": active_nation.get_members_total()
+    }
+    return render(request, 'thecop_app/nationalAdmin/areas.html', context)
+
+
+def admins(request):
+    active_nation = Nation.objects.get(pk=request.session.get('national_admin_nation_id'))
+    announcements = active_nation.nationalannouncement_set.all()
+    events = active_nation.nationalevent_set.all()
+    authors = active_nation.author_set.all()
+
+    context = {
+        "areas": Area.objects.filter(nation=active_nation),
+        "active_nation": active_nation,
+        "admins": AreaAdmin.objects.filter(area__nation=active_nation),
+        "announcements": announcements,
+        "events": events,
+        "authors": authors,
+        "members_total": active_nation.get_members_total()
+    }
+    return render(request, 'thecop_app/nationalAdmin/admins.html', context)
+
+
+def members(request):
+    active_nation = Nation.objects.get(pk=request.session.get('national_admin_nation_id'))
+    announcements = active_nation.nationalannouncement_set.all()
+    events = active_nation.nationalevent_set.all()
+    authors = active_nation.author_set.all()
+
+    context = {
+        "areas": Area.objects.filter(nation=active_nation),
+        "active_nation": active_nation,
+        "admins": AreaAdmin.objects.filter(area__nation=active_nation),
+        "announcements": announcements,
+        "events": events,
+        "authors": authors,
+        "members_total": active_nation.get_members_total()
+    }
+    return render(request, 'thecop_app/nationalAdmin/members.html', context)
 
 
 def login(request):
@@ -132,3 +189,17 @@ def add_event(request):
         return redirect("nationalAdmin_home")
 
     return render(request, "thecop_app/nationalAdmin/add_event.html")
+
+
+def add_author(request):
+    active_nation = Nation.objects.get(pk=request.session.get('national_admin_nation_id'))
+    active_admin = NationalAdmin.objects.filter(nation=active_nation).get(pk=request.session.get("active_admin_id"))
+
+    if request.method == 'POST':
+        name = request.POST['name']
+        phone = request.POST['phone']
+
+        active_admin.add_author(name=name, phone=phone)
+        return redirect("nationalAdmin_home")
+
+    return render(request, "thecop_app/nationalAdmin/add_author.html")

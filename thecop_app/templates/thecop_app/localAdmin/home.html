@@ -1,8 +1,19 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Local ADMIN|HOME</title>
+
+{% load static %}
+ <head>
+
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="shortcut icon" href="{% static 'thecop_app/images/logo-pent.png' %}">
+    <link rel="stylesheet" href="{% static 'thecop_app/CSS/index.css' %}" />
+    <link rel="stylesheet" href="{% static 'thecop_app/CSS/ananse.css' %}" />
+      <link rel="stylesheet" href="{% static 'thecop_app/CSS/fa/allicons.css' %}">
+    <link rel="stylesheet" href="{% static 'thecop_app/CSS/fa/icons.css' %}">
+
+    <title>The Church Of Pentecost</title>
     <style>
     body{font-family:calibri}
         table{
@@ -10,11 +21,120 @@
         }
         th, td{
             border: 1px solid black;
-            padding: 10px; vx
+            padding: 10px
         }
     </style>
 </head>
 <body>
+
+<header class="grid-header">
+      <div class="logo">
+          <img src="{% static 'thecop_app/images/The-Church-Of-Pentecost.png' %}" width=200/>
+      </div>
+      <div class="mid-div">
+              <div class="nav-btn" onclick="window.open('{% url 'localAdmin_home' %}', '_self')">
+                  <i class="fa-thin fa-gauge"></i>
+                  <span>Dashboard</span>
+              </div>
+
+          <div class="nav-btn" onclick="window.open('{% url 'localAdmin_members' %}', '_self')">
+                  <i class="fa-thin fa-users"></i>
+                 <span>Members</span>
+          </div>
+          <div class="nav-btn" onclick="window.open('{% url 'copAdmin_members' %}', '_self')">
+                  <i class="fa-thin fa-caret-down"></i>
+                 <span>More</span>
+          </div>
+      </div>
+      <div></div>
+</header>
+<br><br><br>
+<appbody style=" background-color: #f0f1f3 !important;">
+
+
+    <div class="counter-div-090">
+        <div class="one">
+            <div class="counter alpha">
+                <div class="count">{{admin.local_assembly.member_set.count}}</div>
+                <div class="label">
+                    <i class="fa-thin fa-users"></i>
+                    <span>Members</span>
+                </div>
+            </div>
+        </div>
+        <div  class="two">
+            <div class="counter-001">
+                 <div class="counter-av">
+                      <i class="fa-thin fa-globe"></i>
+                 </div>
+                 <div>
+                     <div class="counter-head">Nation</div>
+                     <div class="counter-mini">{{admin.local_assembly.district.area.nation.country}}</div>
+                 </div>
+            </div>
+            <div class="counter-001">
+                 <div class="counter-av">
+                      <i class="fa-thin fa-map"></i>
+                 </div>
+                 <div>
+                     <div class="counter-head">Area</div>
+                     <div class="counter-mini">{{admin.local_assembly.district.area.name}} Area</div>
+                 </div>
+            </div>
+            <div class="counter-001">
+                 <div class="counter-av">
+                      <i class="fa-thin fa-radar"></i>
+                 </div>
+                 <div>
+                     <div class="counter-head">District</div>
+                     <div class="counter-mini">{{admin.local_assembly.district.name}}</div>
+                 </div>
+            </div>
+            <div class="counter-001">
+                 <div class="counter-av">
+                      <i class="fa-thin fa-church"></i>
+                 </div>
+                 <div>
+                     <div class="counter-head">Local</div>
+                     <div class="counter-mini">{{admin.local_assembly.name}}</div>
+                 </div>
+            </div>
+        </div>
+
+    </div>
+
+    <h3>Announcements</h3>
+<div>
+    {% for announcement in announcements %}
+        <div class="anc n">
+            <span>{{ announcement.text }}</span>
+        </div>
+    {% empty %}
+        <div class="anc n">
+            <span>No announcement</span>
+        </div>
+    {% endfor %}
+</div>
+<a href="{% url 'areaAdmin_add_announcement' %}">ADD ANNOUNCEMENT</a>
+
+
+<h3>Events</h3>
+<div>
+    {% for event in events %}
+        <div class="anc n">
+            <span>{{ event.name }}::{{ event.date }}</span>
+        </div>
+    {% empty %}
+        <div class="anc n">
+            <span>No event</span>
+        </div>
+    {% endfor %}
+</div>
+<a href="{% url 'areaAdmin_add_event' %}">ADD Event</a>
+
+</appbody>
+
+
 <h1>{{admin.local_assembly.district.area.nation.country}},{{admin.local_assembly.district.area.name}} Area,
     {{admin.local_assembly.district.name}} District,{{admin.local_assembly.name}} Assembly Admin</h1>
 

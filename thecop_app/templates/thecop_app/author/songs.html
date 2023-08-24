@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+{% load static %}
+ <head>
+
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="shortcut icon" href="{% static 'thecop_app/images/logo-pent.png' %}">
+    <link rel="stylesheet" href="{% static 'thecop_app/CSS/index.css' %}" />
+    <link rel="stylesheet" href="{% static 'thecop_app/CSS/ananse.css' %}" />
+      <link rel="stylesheet" href="{% static 'thecop_app/CSS/fa/allicons.css' %}">
+    <link rel="stylesheet" href="{% static 'thecop_app/CSS/fa/icons.css' %}">
+
+    <title>The Church Of Pentecost</title>
+    <style>
+    body{font-family:calibri}
+        table{
+            border: 1px solid black; border-spacing: 2px;
+        }
+        th, td{
+            border: 1px solid black;
+            padding: 10px
+        }
+    </style>
+</head>
+<body>
+
+<div onclick="closeForm(b=['form-admin'])" id="body-cover"></div>
+<div class="form-div larger" id="form-admin">
+    <div class="header">
+        <h4>Add Song</h4>
+    </div>
+    <div>
+
+    </div>
+    <div style="height: 25em; background-color: white; overflow-y:scroll">
+        <br><br>
+        <form method="post" action="{% url 'author_add_song' %}">
+    {% csrf_token %}
+            <textarea name="lyrics">[Verse 1]
+Type Lyrics here
+            </textarea>
+    <input name="title" type="text" placeholder="Title" required/><br><br>
+    <input name="lang" type="text" placeholder="Language" required/><br><br>
+    <input name="author" type="text" placeholder="Author" required/><br><br>
+
+    <input type="submit" value="Submit">
+</form>
+    </div>
+   </div>
+
+
+<header class="grid-header">
+      <div class="logo">
+          <img src="{% static 'thecop_app/images/The-Church-Of-Pentecost.png' %}" width=200/>
+      </div>
+      <div class="mid-div">
+              <div class="nav-btn" onclick="window.open('{% url 'author_home' %}', '_self')">
+                  <i class="fa-thin fa-gauge"></i>
+                  <span>Dashboard</span>
+              </div>
+            <div class="nav-btn" onclick="window.open('{% url 'author_songs' %}', '_self')">
+                  <i class="fa-thin fa-music"></i>
+                  <span>Songs</span>
+            </div>
+          <div class="nav-btn" onclick="window.open('{% url 'author_articles' %}', '_self')">
+                      <i class="fa-thin fa-newspaper"></i>
+                     <span>Articles</span>
+              </div>
+          <div class="nav-btn" onclick="window.open('{% url 'author_home' %}', '_self')">
+                  <i class="fa-thin fa-caret-down"></i>
+                 <span>More</span>
+          </div>
+      </div>
+      <div></div>
+</header>
+<br><br><br>
+<appbody style=" background-color: #f0f1f3 !important;">
+     <div class="func-bar">
+        <div class="tag">Songs</div>
+        <div class="search-div">
+            <input type="search" placeholder="Search Song">
+        </div>
+        <div class="tag"><i class="fa-thin fa-filter" style="font-size: 15px; font-weight:bold"></i></div>
+        <div class="tag" onclick="openForm('form-admin')"><i class="fa-thin fa-add" style="font-size: 15px; font-weight:bold"></i></div>
+    </div>
+
+
+     <div class="custom-table-001">
+        <div class="row">
+            <div class="cell music-title"><b>Title</b></div>
+            <div class="cell"><b>Author</b></div>
+            <div class="cell"><b>Language</b></div>
+        </div>
+         {% for song in songs %}
+            <div class="row">
+                    <div class="cell music-title">{{song.title}}</div>
+                    <div class="cell">{{song.author}}</div>
+                    <div class="cell">{{song.language}}</div>
+            </div>
+         {% endfor %}
+    </div>
+
+</appbody>
+
+</body>
+<script src="{% static 'thecop_app/js/bodycover.js' %}"></script>
+</html>
