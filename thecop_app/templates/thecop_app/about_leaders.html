@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+
+ {% load static %}
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="shortcut icon" href="{% static 'thecop_app/images/logo-pent.png' %}">
+    <link rel="stylesheet" href="{% static 'thecop_app/CSS/index0.css' %}" />
+    <link rel="stylesheet" href="{% static 'thecop_app/CSS/index1.css' %}" />
+    <link rel="stylesheet" href="{% static 'thecop_app/CSS/about.css' %}" />
+    <link rel="stylesheet" href="{% static 'thecop_app/CSS/index1.css' %}" />
+    <link rel="stylesheet" href="{% static 'thecop_app/CSS/fa/icons.css' %}">
+      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" />
+  <script src="https://unpkg.com/scrollreveal"></script>
+    <title>Document</title>
+  </head>
+
+<body>
+  <header class="header">
+    <!-- <a href="#" class="brand" id="brand">COP</a> -->
+    <a href="index.html" class="brand">
+      <img src="/static/thecop_app/images/The-Church-Of-Pentecost.png" />
+    </a>
+    <div class="menu-btn"></div>
+    <div class="navigation">
+      <div class="navigation-items">
+        <a href="#home" class="nav-item">Home</a>
+        <div class="dropdown">
+          <a href="#" class="dropbtn">About</a>
+          <div class="dropdown-content">
+            <a href="#leaders" class="dropdown-item">Leaders</a>
+            <a href="#vision" class="dropdown-item">Vision</a>
+            <a href="#mission" class="dropdown-item">Mission</a>
+            <a href="#testimonials" class="dropdown-item">Testimonials</a>
+            <a href="#awards" class="dropdown-item">Awards</a>
+          </div>
+        </div>
+        <a href="#" class="nav-item dropdown-item">Donations</a>
+        <a href="#" class="nav-item dropdown-item">Events</a>
+        <a href="#" class="nav-item">The Gallery</a>
+        <a href="#" class="nav-item dropdown-item">Songs</a>
+        <a href="#" class="nav-item">Contact</a>
+
+        <button class="signup">Find A Church</button>
+      </div>
+    </div>
+  </header>
+  <main>
+    <div class="banner">
+      <div class="banner-text">
+        <h1>ABOUT US</h1>
+        <h3>KNOW MORE ABOUT OUR CHURCH</h3>
+      </div>
+    </div>
+
+    <section class="leaders_section">
+      <div class="topic-div">
+        <div class="topic">
+          <h2>OUR NOBLE LEADERS</h2>
+        </div>
+        <div class="hr-div">
+          <img src="/static/thecop_app/images/hr.png" alt="" />
+        </div>
+        <div class="sub-topic">
+          <p>
+            Meet our leaders who help shape vision and mission of our church.
+          </p>
+        </div>
+      </div>
+      <div class="leaders_div" id="leaders">
+
+
+        <div class="container">
+
+
+          <!-- Data will be displayed here -->
+        </div>
+
+      </div>
+      </div>
+    </section>
+  </main>
+</body>
+<script>
+  ScrollReveal({
+    reset: true,
+    distance: "60px",
+    duration: 2500,
+    delay: 400,
+  });
+
+  ScrollReveal().reveal(".topic,.section-title", {
+    delay: 500,
+    origin: "left",
+  });
+  ScrollReveal().reveal(".event-div, .info", { delay: 100, origin: "right" });
+  ScrollReveal().reveal(".date", { delay: 10, origin: "left" });
+  ScrollReveal().reveal(".blogthumbnail", {
+    delay: 300,
+    origin: "bottom",
+    interval: 200,
+  });
+  ScrollReveal().reveal(".sec-02 .image,.sec-03 .image", {
+    delay: 700,
+    origin: "top",
+  });
+  ScrollReveal().reveal(".media-info li", {
+    delay: 500,
+    origin: "top",
+    interval: 200,
+  });
+</script>
+ <script src="/static/thecop_app/js/index.js"></script>
+
+<!-- <script src="../JS/swiper-bundle.min.js"></script> -->
+<!-- Add this script tag in your HTML file -->
+<script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
+
+</html>

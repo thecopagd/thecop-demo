@@ -14,11 +14,12 @@
     <!-- <link rel="stylesheet" href="../CSS/swiper-bundle.min.css" /> -->
     <title>Document</title>
   </head>
+
   <body>
     <header class="header">
       <!-- <a href="#" class="brand" id="brand">COP</a> -->
        <a href="index.html" class="brand">
-        <img src="/static/thecop_app/images/The-Church-Of-Pentecost.png"/>
+        <img src="static/thecop_app/images/The-Church-Of-Pentecost.png"/>
        </a>
       <div class="menu-btn"></div>
       <div class="navigation">
@@ -27,11 +28,11 @@
           <div class="dropdown">
             <a href="#" class="dropbtn">About</a>
             <div class="dropdown-content">
-              <a href="./about.html" class="dropdown-item">Vision</a>
-              <a href="" class="dropdown-item">Mission</a>
-              <a href="" class="dropdown-item">Testimonials</a>
-              <a href="" class="dropdown-item">Leaders</a>
-              <a href="" class="dropdown-item">Awards</a>
+              <a href="{% url 'about_leaders' %}" class="dropdown-item">Leaders</a>
+              <a href="#vision" class="dropdown-item">Vision</a>
+              <a href="#mission" class="dropdown-item">Mission</a>
+              <a href="#testimonials" class="dropdown-item">Testimonials</a>
+              <a href="#awards" class="dropdown-item">Awards</a>
             </div>
           </div>
           <a href="#" class="nav-item dropdown-item">Donations</a>
@@ -66,24 +67,23 @@
         <!-- <video class="video-slider"  src="vid/Nature - 108302.mp4" autoplay muted loop></video> -->
         <!-- <video class="video-slider"  src="../vid/search (1).mp4" autoplay muted loop></video>
         <video class="video-slider"  src="../vid/search (2).mp4" autoplay muted loop></video> -->
-        <img class="video-slider active" src="/static/thecop_app/images/bee.jpg" alt="" />
-        <img class="video-slider" src="/static/thecop_app/images/fern.jpg" alt="" />
-        <img class="video-slider" src="/static/thecop_app/images/rose.jpg" alt="" />
+        <img class="video-slider active" src="static/thecop_app/images/church1.jpg" alt="" />
+        <img class="video-slider" src="static/thecop_app/images/church2.jpg" alt="" />
+        <img class="video-slider" src="static/thecop_app/images/church3.jpg" alt="" />
 
         <div class="content active">
-          <h1>EXPLORE <br /><span>WITH US</span></h1>
+          <h1>Church<br /><span>WITH US</span></h1>
           <p>
-            Explore the world's best tourist sites with<br />
-            great tourists to educate you on your researches; and more over have
-            fun!
+            Coming in contact with us re-kindles your Spirit with the Most High.
+            <br />Join us ,as we possess the nations.
           </p>
-          <a href="index.html#explore">BOOK NOW</a>
+          <a href="index.html#explore">JOIN NOW</a>
         </div>
 
         <div class="content">
           <h1>ENJOY <br /><span>WITH US</span></h1>
-          <p>Take a bite of our recipies and feel good.Eat well!</p>
-          <a href="index.html#food">BOOK NOW</a>
+          <p>Take a look at our activities and have fun</p>
+          <a href="index.html#food">JOIN NOW</a>
         </div>
 
         <div class="content">
@@ -92,7 +92,7 @@
             Travel the world with us.Enoy your trips <br />
             and let it be a memorable one.
           </p>
-          <a href="index.html#popular">BOOK NOW</a>
+          <a href="index.html#popular">JOIN NOW</a>
         </div>
         <div class="slider-navigation">
           <div class="nav-btn active"></div>
@@ -117,10 +117,8 @@
           </div>
           <div class="sub-topic">
             <p>
-              Lorem ipsum dolor sit, amet consectetur adipisicing elit. Suscipit
-              iusto rem nam quidem asperiores facilis officia nemo, iure maxime
-              odit alias aspernatur nesciunt, fuga nulla rerum quia assumenda
-              hic incidunt.
+              We have a lot of exciting events coming this year ranging from the
+              childrens' ministry to the adults ministry.
             </p>
           </div>
         </div>
@@ -129,25 +127,19 @@
           <div class="rounded-design-line"></div>
           <div class="believe-div">
             <div class="date">
-              <h4>16 MAY 2019</h4>
-              <h3>THU 21:30</h3>
+              <h4>16 SEPTEMBER 2023</h4>
+              <h3>SUN 08:30</h3>
             </div>
             <div class="rounded-design"></div>
             <div class="event-div">
               <div class="event">
                 <div>
-                  <h2>WE BELIEVE IN ...</h2>
+                  <h2>CHILDREN'S DAY PROGRAM</h2>
                   <p>
-                    Lorem ipsum dolor sit, amet consectetur adipisicing elit.
-                    Suscipit iusto rem nam quidem asperiores facilis officia
-                    nemo, iure maxime odit alias aspernatur nesciunt, fuga nulla
-                    rerum quia assumenda hic incidunt. Lorem ipsum dolor sit,
-                    amet consectetur adipisicing elit. Suscipit iusto rem nam
-                    quidem asperiores facilis officia nemo, iure maxime odit
-                    alias aspernatur nesciunt, fuga nulla rerum quia assumenda
-                    hic incidunt.
+                    Let's come in our numbers to support our children grow in
+                    Christ. The venue is at the church premises.
                   </p>
-                  <button class="readmore">Find A Church</button>
+                  <button class="readmore">Learn more</button>
                 </div>
                 <div class="event-img">
                   <img src="static/thecop_app/images/bannerimg.jpg" alt="" />
@@ -158,21 +150,19 @@
 
           <div class="believe-div">
             <div class="date">
-              <h4>16 MAY 2019</h4>
-              <h3>THU 21:30</h3>
+              <h4>22 NOVEMBER 2023</h4>
+              <h3>SUN 08:30</h3>
             </div>
             <div class="rounded-design"></div>
             <div class="event-div">
               <div class="event">
                 <div>
-                  <h2>WE BELIEVE IN ...</h2>
+                  <h2>PASTOR PAUL'S RESIGNATION PROGRAM</h2>
                   <p>
-                    Lorem ipsum dolor sit, amet consectetur adipisicing elit.
-                    Suscipit iusto rem nam quidem asperiores facilis officia
-                    nemo, iure maxime odit alias aspernatur nesciunt, fuga nulla
-                    rerum quia assumenda hic incidunt.
+                    Pastor Paul K. Amoah's resignation program will be held this
+                    Sunday at the church premises
                   </p>
-                  <button class="readmore">Find A Church</button>
+                  <button class="readmore">Learn more</button>
                 </div>
                 <div class="event-img">
                   <img src="static/thecop_app/images/bannerimg.jpg" alt="" />
@@ -183,21 +173,21 @@
 
           <div class="believe-div">
             <div class="date">
-              <h4>16 MAY 2019</h4>
+              <h4>22 DECEMBER 2023</h4>
               <h3>THU 21:30</h3>
             </div>
             <div class="rounded-design"></div>
             <div class="event-div">
               <div class="event">
                 <div>
-                  <h2>WE BELIEVE IN ...</h2>
+                  <h2>CAROL'S SERVICE</h2>
                   <p>
-                    Lorem ipsum dolor sit, amet consectetur adipisicing elit.
-                    Suscipit iusto rem nam quidem asperiores facilis officia
-                    nemo, iure maxime odit alias aspernatur nesciunt, fuga nulla
-                    rerum quia assumenda hic incidunt.
+                    The Church of Pentecost together with Altar Praise presents
+                    to you the carol's service 2023. Come with flash hair bands,
+                    your handkerchiefs and your dancing shoes and pour your
+                    hearts out for what the Lord has done for you.
                   </p>
-                  <button class="readmore">Find A Church</button>
+                  <button class="readmore">Book a seat</button>
                 </div>
                 <div class="event-img">
                   <img src="static/thecop_app/images/bannerimg.jpg" alt="" />
@@ -256,11 +246,7 @@
             <img src="static/thecop_app/images/hr.png" alt="" />
           </div>
           <div class="sub-topic">
-            <p>
-              Lorem ipsum dolor sit, amet consectetur adipisicing elit. Suscipit
-              iusto rem nam quidem asperiores facilis officia nemo, iure maxime
-              odit
-            </p>
+            <p>Dive through our recent blogs.</p>
           </div>
         </div>
 
@@ -272,38 +258,18 @@
               </div>
 
               <div class="img-div">
-                <img src="static/thecop_app/images/bannerimg.jpg" alt="" />
+                <img src="static/thecop_app/images/ms.walker.png" alt="" />
               </div>
 
               <div class="text-box">
-                <h2>LOREM IPSUM</h2>
+                <h2>Mrs Odi Walker Laid To Rest</h2>
                 <p>
-                  Lorem ipsum dolor sit amet consectetur, adipisicing elit.
-                  Labore tenetur minus voluptatem, vitae ad pariatur totam vel
-                  nisi, odit dolorum maiores impedit iste harum eos fuga dolores
-                  obcaecati deserunt. Nisi!
+                  The mortal remains of Mrs Florence Odi Walker, who was part of
+                  the formative years of The Church of Pentecost,...
                 </p>
               </div>
             </div>
-            <div class="blogthumbnail">
-              <div class="overlay">
-                <a href="static/thecop_app/blog.html" class="cart-btn">Learn More</a>
-              </div>
 
-              <div class="img-div">
-                <img src="static/thecop_app/images/bannerimg.jpg" alt="" />
-              </div>
-
-              <div class="text-box">
-                <h2>LOREM IPSUM</h2>
-                <p>
-                  Lorem ipsum dolor sit amet consectetur, adipisicing elit.
-                  Labore tenetur minus voluptatem, vitae ad pariatur totam vel
-                  nisi, odit dolorum maiores impedit iste harum eos fuga dolores
-                  obcaecati deserunt. Nisi!
-                </p>
-              </div>
-            </div>
             <div class="blogthumbnail">
               <div class="overlay">
                 <a href="./blog.html" class="cart-btn">Learn More</a>
@@ -314,11 +280,27 @@
               </div>
 
               <div class="text-box">
-                <h2>LOREM IPSUM</h2>
+                <h2>PENT TV GOES LIVE</h2>
                 <p>
-                  adipisicing elit. Labore tenetur minus voluptatem, vitae ad
-                  pariatur totam vel nisi, odit dolorum maiores impedit iste
-                  harum eos fuga dolores obcaecati deserunt. Nisi!
+                  We're now live on your screens. Scan your digi-boxes to get
+                  the Pent tv station.
+                </p>
+              </div>
+            </div>
+            <div class="blogthumbnail">
+              <div class="overlay">
+                <a href="./blog.html" class="cart-btn">Learn More</a>
+              </div>
+
+              <div class="img-div">
+                <img src="static/thecop_app/images/fulani.jpg" alt="" />
+              </div>
+
+              <div class="text-box">
+                <h2>FIRST FULANI PASTOR IN PENTECOST</h2>
+                <p>
+                  Meet the Probationary Overseer Abubakar Diallo; the first
+                  Fulani pastor.
                 </p>
               </div>
             </div>
@@ -336,9 +318,8 @@
           </div>
           <div class="sub-topic">
             <p>
-              Lorem ipsum dolor sit, amet consectetur adipisicing elit. Suscipit
-              iusto rem nam quidem asperiores facilis officia nemo, iure maxime
-              odit
+              We strictly abide by these tenets; as it guides us to know the
+              core values of the church
             </p>
           </div>
         </div>
@@ -504,55 +485,123 @@
           </div>
           <div class="sub-topic">
             <p>
-              Lorem ipsum dolor sit, amet consectetur adipisicing elit. Suscipit
-              iusto rem nam quidem asperiores facilis officia nemo, iure maxime
-              odit
+              Give, and it shall be given unto you; good measure, pressed down,
+              and shaken together, and running over, shall men give into your
+              bosom...(Luke 6:38 KJV)
             </p>
           </div>
         </div>
 
         <div class="donate-container">
           <article>
-            <h1>Joshua needs a new heart</h1>
+            <h1>Abelenkpe Central needs funding for their project</h1>
             <div class="box">
               <div class="img-div">
                 <img src="static/thecop_app/images/bannerimg.jpg" alt="" />
               </div>
               <p>
-                Lorem ipsum dolor, sit amet consectetur adipisicing elit. Beatae
-                nostrum modi sit molestiae odio ad inventore minus? Quisquam cum
-                dicta accusantium ipsa, distinctio animi officiis, quis ad nam,
-                asperiores consequuntur.Lorem ipsum dolor, sit amet consectetur
-                adipisicing elit. Beatae nostrum modi sit molestiae odio ad
+                The church of Pentecost,Abelenkpe Central needs funding to complete their church auditorium.
               </p>
             </div>
           </article>
 
           <div class="donate-progress-bar-container">
-
-            <div class="progress-div">
-
-            </div>
+            <div class="progress-div"></div>
           </div>
         </div>
       </section>
 
+      <section></section>
 
+      <footer class="footer section">
+        <div>
+          <a href="#" class="footer_logo">
+            The Church of Pentecost
+            <i class="bsx bsx-home-alt-2"></i>
+          </a>
+          <p class="footer_description">
+           We are empowered to possess nations<br/> everywhere we find ourselves
+          </p>
+        </div>
 
-      <section>
+        <div class="footer_container container grid">
 
-      </section>
+          <div class="footer_content">
+            <div>
+              <h3 class="footer_title">Activities</h3>
 
+              <ul class="footer_links">
+                <li>
+                  <a href="" class="footer_link">Travel</a>
+                </li>
+                <li>
+                  <a href="" class="footer_link">Explore</a>
+                </li>
+                <li>
+                  <a href="" class="footer_link">Eat</a>
+                </li>
+              </ul>
+            </div>
+            <div>
+              <h3 class="footer_title">Services</h3>
 
-  <footer>
-    <div id="grid-one">
-      <a href="index.html">
-        <img src="static/thecop_app/images/The-Church-Of-Pentecost.png" />
-      </a>
+              <ul class="footer_links">
+                <li>
+                  <a href="" class="footer_link">Contact Sales</a>
+                </li>
+                <li>
+                  <a href="" class="footer_link">Plans & Pricing</a>
+                </li>
+                <li>
+                  <a href="" class="footer_link">Events</a>
+                </li>
+              </ul>
+            </div>
 
-      <p>The Church of Pentecost warmly recieves everyone who wants to put their all in Christ.</p>
-    </div>
-  </footer>
+            <div>
+              <h3 class="footer_title">About Us</h3>
+
+              <ul class="footer_links">
+                <li>
+                  <a href="" class="footer_link">About Us</a>
+                </li>
+                <li>
+                  <a href="" class="footer_link">Our Blog</a>
+                </li>
+                <li>
+                  <a href="" class="footer_link">Features</a>
+                </li>
+              </ul>
+            </div>
+
+            <div>
+              <h3 class="footer_title">Follow Us</h3>
+
+              <ul class="footer_socials">
+                <a href="#" class="footer_social-link" target="_blank">
+                  <i class="bx bxl-linkedin-square"></i>
+                </a>
+                <a href="#" class="footer_social-link" target="_blank">
+                  <i class="bx bxl-facebook-square"></i>
+                </a>
+                <a href="#" class="footer_social-link" target="_blank">
+                  <i class="bx bsl-pinterest"></i>
+                </a>
+              </ul>
+            </div>
+          </div>
+        </div>
+
+        <div class="footer_info container">
+          <span class="footer_copy">
+            © 2023 The Church of Pentecost – General Headquarters. All Rights Reserved          </span>
+
+          <div class="footer_privacy">
+            <a href="#">Terms and conditions</a>
+            <a href="#">Our Private Policies</a>
+          </div>
+        </div>
+      </footer>
     </main>
     <script>
       ScrollReveal({
@@ -586,7 +635,7 @@
         interval: 200,
       });
     </script>
-    <script src="static/thecop_app/JS/index.js"></script>
-    <!-- <script src="../JS/swiper-bundle.min.js"></script> -->
+    <script src="static/thecop_app/js/index.js"></script>
+    <!-- <script src="static/thecop_app/js/swiper-bundle.min.js"></script> -->
   </body>
 </html>
