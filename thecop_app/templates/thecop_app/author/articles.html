@@ -9,6 +9,7 @@
     <link rel="shortcut icon" href="{% static 'thecop_app/images/logo-pent.png' %}">
     <link rel="stylesheet" href="{% static 'thecop_app/CSS/index.css' %}" />
     <link rel="stylesheet" href="{% static 'thecop_app/CSS/ananse.css' %}" />
+    <link rel="stylesheet" href="{% static 'thecop_app/CSS/pi.css' %}" />
       <link rel="stylesheet" href="{% static 'thecop_app/CSS/fa/allicons.css' %}">
     <link rel="stylesheet" href="{% static 'thecop_app/CSS/fa/icons.css' %}">
 
@@ -34,11 +35,10 @@
     <div>
 
     </div>
-    <div style="height: 25em; background-color: white; overflow-y:scroll">
+    <div style="height: 25em; background-color: white; overflow-y:scroll; width:70%">
         <br><br>
-        <form method="post" action="">
+        <form method="post" action="{% url 'author_add_article' %} " enctype="multipart/form-data">
     {% csrf_token %}
-
 
                     <h5>Image:</h5>
                 <div class="div-img-p">
@@ -53,18 +53,14 @@
 
                     </div>
                 </div>
-                <h5>Category</h5>
-                <select name="category" class="sel_opt">
-                    {% for cat in cats %}
-                        <option value="{{cat.id}}">{{cat.name}}</option>
-                    {% endfor %}
-                </select>
                 <h5>Header</h5>
                 <input type="text" class="header-in" name="header">
                 <h5>Brief</h5>
                 <input type="text" class="header-in" name="brief">
                 <h2>Body</h2>
                 <textarea class="body-in" name="body"></textarea>
+
+                <input type="submit" value="Add">
 
 
 </form>
@@ -107,52 +103,31 @@
         <div class="tag" onclick="openForm('form-admin')"><i class="fa-thin fa-add" style="font-size: 15px; font-weight:bold"></i></div>
     </div>
 
-    <div style="width:70%;
-        position: relative;
-        left: 50%; margin-bottom: 30px;
-        translate: -50% 0;">
-        <h4 style="margin: 0 0 20px 30px">Recents <sup>4</sup></h4>
+    <div class="div-923">
+        <h4 style="margin: 0 0 20px 30px">Recent <sup>4</sup></h4>
+
         <div class="fl001">
-            <div class="box001">
-                <div class="cover"></div>
-                <div class="text">Living the godly life. Staying as holy as a saint</div>
-            </div>
-            <div class="box001">
-                <div class="cover"></div>
-                <div class="text">Living the godly life. Staying as holy as a saint</div>
-            </div>
-            <div class="box001">
-                <div class="cover"></div>
-                <div class="text">Living the godly life. Staying as holy as a saint</div>
-            </div>
-            <div class="box001">
-                <div class="cover"></div>
-                <div class="text">Living the godly life. Staying as holy as a saintStaying as holy as a saint</div>
-            </div>
+            {% for article in recent_articles %}
+                <div class="box001" onclick="">
+                    <div class="cover"><img src="{%get_media_prefix%}{{article.img}}"></div>
+                    <div class="text">{{ article.brief|truncatewords_html:14 }}<br>
+                        <span style="font-size:11px; color:rgba(30, 48, 80, 0.388);">{{article.date_created.date}}</span>
+                    </div>
+                </div>
+            {% endfor %}
         </div>
     </div>
-    <div style="width:70%;
-        position: relative;
-        left: 50%;
-        translate: -50% 0;">
+    <div class="div-923">
         <h4 style="margin: 0 0 20px 30px">Older <sup>4</sup></h4>
         <div class="fl001">
-            <div class="box001">
-                <div class="cover"></div>
-                <div class="text">Living the godly life. Staying as holy as a saint</div>
-            </div>
-            <div class="box001">
-                <div class="cover"></div>
-                <div class="text">Living the godly life. Staying as holy as a saint</div>
-            </div>
-            <div class="box001">
-                <div class="cover"></div>
-                <div class="text">Living the godly life. Staying as holy as a saint</div>
-            </div>
-            <div class="box001">
-                <div class="cover"></div>
-                <div class="text">Living the godly life. Staying as holy as a saintStaying as holy as a saint</div>
-            </div>
+            {% for article in older_articles %}
+                <div class="box001" onclick="">
+                    <div class="cover"><img src="{%get_media_prefix%}{{article.img}}"></div>
+                    <div class="text">{{ article.brief|truncatewords_html:14 }}<br>
+                        <span style="font-size:11px; color:rgba(30, 48, 80, 0.388);">{{article.date_created.date}}</span>
+                    </div>
+                </div>
+            {% endfor %}
         </div>
     </div>
 
@@ -162,4 +137,28 @@
 
 </body>
 <script src="{% static 'thecop_app/js/bodycover.js' %}"></script>
+    <script>
+        const previewImage = (event) => {
+            const imageFiles = event.target.files;
+            const imageFilesLength = imageFiles.length;
+            if (imageFilesLength > 0) {
+                const imageSrc = URL.createObjectURL(imageFiles[0]);
+                const imagePreviewElement = document.querySelector("#preview-selected-image");
+                imagePreviewElement.src = imageSrc;
+                imagePreviewElement.style.display = "block";
+            }
+        };
+
+        const schPreviewImage = (event) => {
+            const imageFiles = event.target.files;
+            const imageFilesLength = imageFiles.length;
+            if (imageFilesLength > 0) {
+                const imageSrc = URL.createObjectURL(imageFiles[0]);
+                const imagePreviewElement = document.querySelector("#sch-selected-image");
+                imagePreviewElement.src = imageSrc;
+                imagePreviewElement.style.display = "block";
+            }
+        };
+
+        </script>
 </html>

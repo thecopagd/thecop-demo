@@ -28,8 +28,12 @@ def songs(request):
 
 def articles(request):
     author = Author.objects.get(pk=request.session['author_id'])
+    recent_articles = Article.objects.order_by('-date_created')[:4]
+    older_articles = Article.objects.order_by('date_created')[:4]
     context = {
-        "author": author
+        "author": author,
+        "recent_articles": recent_articles,
+        "older_articles": older_articles
     }
     return render(request, 'thecop_app/author/articles.html', context)
 
@@ -73,3 +77,16 @@ def add_song(request):
 
         new_song.save()
         return redirect("author_songs")
+
+
+def add_article(request):
+    author = Author.objects.get(pk=request.session['author_id'])
+
+    if request.method == "POST":
+        body = request.POST['body']
+        header = request.POST['header']
+        brief = request.POST['brief']
+        img = request.FILES['art_img']
+
+        author.add_article(body=body, head=header, brief=brief, img=img)
+        return redirect("author_articles")

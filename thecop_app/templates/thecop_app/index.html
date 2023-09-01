@@ -6,8 +6,8 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
        <link rel="shortcut icon" href="{% static 'thecop_app/images/logo-pent.png' %}">
-    <link rel="stylesheet" href="{% static 'thecop_app/CSS/index0.css' %}" />
     <link rel="stylesheet" href="{% static 'thecop_app/CSS/index1.css' %}" />
+    <link rel="stylesheet" href="{% static 'thecop_app/CSS/index.css' %}" />
     <link rel="stylesheet" href="{% static 'thecop_app/CSS/ananse.css' %}" />
       <link rel="stylesheet" href="{% static 'thecop_app/CSS/fa/allicons.css' %}">
     <link rel="stylesheet" href="{% static 'thecop_app/CSS/fa/icons.css' %}">
@@ -45,7 +45,8 @@
               <a href="" class="dropdown-item">Other Holidays</a>
             </div>
           </div>
-          <a href="#" class="nav-item">The Gallery</a>
+          <a href="#" class="nav-item">News</a>
+          <a href="#" class="nav-item">Sermons</a>
           <div class="dropdown">
             <a href="#" class="dropbtn">Songs</a>
             <div class="dropdown-content">
@@ -58,6 +59,7 @@
           <a href="#" class="nav-item">Contact</a>
 
           <button class="signup">Find A Church</button>
+          <button class="signup" onclick="window.open('{% url 'member_login' %}', '_self')">Login</button>
         </div>
       </div>
     </header>
@@ -67,9 +69,9 @@
         <!-- <video class="video-slider"  src="vid/Nature - 108302.mp4" autoplay muted loop></video> -->
         <!-- <video class="video-slider"  src="../vid/search (1).mp4" autoplay muted loop></video>
         <video class="video-slider"  src="../vid/search (2).mp4" autoplay muted loop></video> -->
-        <img class="video-slider active" src="static/thecop_app/images/church1.jpg" alt="" />
-        <img class="video-slider" src="static/thecop_app/images/church2.jpg" alt="" />
-        <img class="video-slider" src="static/thecop_app/images/church3.jpg" alt="" />
+        <img class="video-slider active" src="static/thecop_app/images/crowd1.jpg" alt="" />
+        <img class="video-slider" src="static/thecop_app/images/person1.jpg" alt="" />
+        <img class="video-slider" src="static/thecop_app/images/crowd.jpg" alt="" />
 
         <div class="content active">
           <h1>Church<br /><span>WITH US</span></h1>
@@ -203,7 +205,7 @@
           <div class="exp-container">
             <div class="icon-div"></div>
             <div>
-              <div class="room" data-ceil="304">304</div>
+              <div class="room" data-ceil="{{locals_total}}">{{locals_total}}</div>
               <h4>Churches</h4>
             </div>
           </div>
@@ -211,14 +213,14 @@
           <div class="exp-container">
             <div class="icon-div"></div>
             <div>
-              <div class="room" data-ceil="280">280</div>
-              <h4>Souls</h4>
+              <div class="room" data-ceil="{{members_total}}">{{members_total}}</div>
+              <h4>Members</h4>
             </div>
           </div>
           <div class="exp-container">
             <div class="icon-div"></div>
             <div>
-              <div class="room" data-ceil="20">20</div>
+              <div class="room" data-ceil="">20</div>
               <h4>Sermons</h4>
             </div>
           </div>
@@ -250,62 +252,19 @@
           </div>
         </div>
 
-        <div class="blog-container-div">
-          <div class="blog-container">
-            <div class="blogthumbnail">
-              <div class="overlay">
-                <a href="./blog.html" class="cart-btn">Learn More</a>
-              </div>
-
-              <div class="img-div">
-                <img src="static/thecop_app/images/ms.walker.png" alt="" />
-              </div>
-
-              <div class="text-box">
-                <h2>Mrs Odi Walker Laid To Rest</h2>
-                <p>
-                  The mortal remains of Mrs Florence Odi Walker, who was part of
-                  the formative years of The Church of Pentecost,...
-                </p>
-              </div>
-            </div>
-
-            <div class="blogthumbnail">
-              <div class="overlay">
-                <a href="./blog.html" class="cart-btn">Learn More</a>
-              </div>
-
-              <div class="img-div">
-                <img src="static/thecop_app/images/bannerimg.jpg" alt="" />
-              </div>
-
-              <div class="text-box">
-                <h2>PENT TV GOES LIVE</h2>
-                <p>
-                  We're now live on your screens. Scan your digi-boxes to get
-                  the Pent tv station.
-                </p>
-              </div>
-            </div>
-            <div class="blogthumbnail">
-              <div class="overlay">
-                <a href="./blog.html" class="cart-btn">Learn More</a>
-              </div>
-
-              <div class="img-div">
-                <img src="static/thecop_app/images/fulani.jpg" alt="" />
-              </div>
-
-              <div class="text-box">
-                <h2>FIRST FULANI PASTOR IN PENTECOST</h2>
-                <p>
-                  Meet the Probationary Overseer Abubakar Diallo; the first
-                  Fulani pastor.
-                </p>
-              </div>
-            </div>
-          </div>
+        <div  class="div-923">
+          <div class="fl001">
+          {% for article in recent_articles %}
+                <div class="box001" onclick="">
+                    <div class="cover"><img src="{%get_media_prefix%}{{article.img}}"></div>
+                    <div class="text">{{ article.brief|truncatewords_html:14 }}<br>
+                        <span style="font-size:11px; color:rgba(30, 48, 80, 0.388);">{{article.date_created.date}}</span>
+                    </div>
+                </div>
+          {% endfor %}
         </div>
+        </div>
+
       </section>
 
       <section>

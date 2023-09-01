@@ -1,3 +1,6 @@
+import random
+import string
+
 from django.db import models
 from datetime import datetime
 from django.utils.timezone import make_aware
@@ -12,6 +15,22 @@ def convert_to_date_obj(date: str):
     new_date_obj = datetime.strptime(new_date_obj, "%Y-%m-%d")
     new_date_obj = make_aware(new_date_obj)
     return new_date_obj
+
+
+def generate_article_id():
+    num = str(Article.objects.count())
+    length = 6
+    random_chars = ''.join(random.choices(string.ascii_uppercase + string.digits, k=length))
+
+    # Store the result in a variable called "random_string"
+    random_string = num + random_chars
+    random.shuffle(list(random_string))
+
+    char_list = list(random_string)
+    random.shuffle(char_list)
+    shuffled_string = ''.join(char_list)
+
+    return shuffled_string
 
 
 class PentecostAdmin(models.Model):
@@ -251,7 +270,7 @@ class LocalAdmin(models.Model):
         new = LocalAnnouncement(
             id=ed,
             text=text,
-            local=self.local_assembly
+            local=self.local_assembly,
         )
         new.save()
 
@@ -307,6 +326,14 @@ class Author(models.Model):
     name = models.TextField()
     phone = models.TextField()
     password = models.TextField(default=phone)
+
+    def add_article(self, img, head, body, brief):
+        art_id = generate_article_id()
+        print(art_id)
+        new_article = Article(
+            img=img, head=head, body=body, brief=brief, id=art_id, date_created=datetime.now()
+        )
+        new_article.save()
 
 
 class LocalAnnouncement(models.Model):
@@ -408,4 +435,11 @@ class Songs(models.Model):
     title = models.CharField(max_length=100, default="Lyrics")
 
 
-
+class Article(models.Model):
+    img = models.ImageField(upload_to='article_imgs')
+    id = models.CharField(primary_key=True, auto_created=False, max_length=100)
+    head = models.CharField(max_length=500)
+    brief = models.CharField(max_length=500, default="")
+    body = models.TextField()
+    date_created = models.DateTimeField(auto_now_add=True)
+    views = models.IntegerField(default=0)
