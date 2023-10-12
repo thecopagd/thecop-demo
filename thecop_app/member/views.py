@@ -74,3 +74,15 @@ def me(request):
         "member": active_member
     }
     return render(request, "thecop_app/member/me.html", context)
+
+
+
+def headlines(request):
+    active_member = Member.objects.get(pk=request.session.get("member_id"))
+    recent_articles = Article.objects.order_by('-date_created')[:4]
+
+    context = {
+        "member": active_member,
+        "recent_articles": recent_articles
+    }
+    return render(request, "thecop_app/member/headlines.html", context)

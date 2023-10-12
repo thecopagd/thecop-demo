@@ -1,8 +1,10 @@
+@import url('https://fonts.googleapis.com/css2?family=Ubuntu:wght@300&display=swap');
+
 * {
   padding: 0;
   margin: 0;
   box-sizing: border-box;
-  font-family: "Raleway", sans-serif;
+  font-family: 'Ubuntu', sans-serif;
 }
 
 body{
@@ -22,7 +24,7 @@ p {
 }
 
 .header {
-  z-index: 999;
+  z-index: 98;
   position: fixed;
   width: 100%;
   display: flex;
@@ -166,7 +168,7 @@ main {
 
 
 .slider-navigation{
-  z-index: 888;
+  z-index: 0;
   position: relative;
   display: flex;
   align-items: center;
@@ -210,7 +212,7 @@ main {
 }
 
 .home img{
-  z-index: 000;
+  z-index: 0;
   position: absolute;
   top: 0;
   left: 0;
@@ -234,7 +236,7 @@ main {
 }
 
 .home .content{
-  z-index: 888;
+  z-index: 0;
   color: #fff;
   width: 70%;
   margin-top: 50px;

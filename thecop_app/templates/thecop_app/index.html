@@ -9,19 +9,57 @@
     <link rel="stylesheet" href="{% static 'thecop_app/CSS/index1.css' %}" />
     <link rel="stylesheet" href="{% static 'thecop_app/CSS/index.css' %}" />
     <link rel="stylesheet" href="{% static 'thecop_app/CSS/ananse.css' %}" />
+    <link rel="stylesheet" href="{% static 'thecop_app/CSS/sidenav.css' %}" />
       <link rel="stylesheet" href="{% static 'thecop_app/CSS/fa/allicons.css' %}">
     <link rel="stylesheet" href="{% static 'thecop_app/CSS/fa/icons.css' %}">
     <!-- <link rel="stylesheet" href="../CSS/swiper-bundle.min.css" /> -->
-    <title>Document</title>
+    <title>The Church Of Pentecost</title>
   </head>
 
   <body>
+<div onclick="closeNav('lnd')" id="nav-wrapper"></div>
+<LeftNavDrawer id="lnd">
+            <NavListItems>
+                <ListItem onclick="window.open('', '_self')">
+                    <Icon><i class="fa-light fa-home"></i></Icon>
+                    <Name>Home</Name>
+                </ListItem>
+                <ListItem class="hasdrop">
+                    <Icon><i class="fa-light fa-info-circle"></i></Icon>
+                    <Name>About</Name>
+                    <drop>
+                      <ul>
+                        <li></li>
+                        <li onclick="window.open('{% url 'about_leaders' %}', '_self')">Leaders</li>
+                        <li>Tenets</li>
+                        <li>Theme</li>
+                        <li>Any</li>
+                      </ul>
+                    </drop>
+                </ListItem>
+                <ListItem class="hasdrop">
+                    <Icon><i class="fa-light fa-x"></i></Icon>
+                    <Name>News</Name>
+                    <drop>
+                      <ul>
+                        <li></li>
+                        <li onclick="window.open('{% url 'about_leaders' %}', '_self')">Leaders</li>
+                        <li>Tenets</li>
+                        <li>Theme</li>
+                        <li>Any</li>
+                      </ul>
+                    </drop>
+                </ListItem>
+              <button style="color: white; border: 0px; background-color: #214375; margin: 0 0 0 10px; position: absolute; bottom:30px; width: 90%; height: 40px; border-radius: 6px;" onclick="window.open('{% url 'member_login' %}', '_self')">Login</button>
+            </NavListItems>
+        </LeftNavDrawer>
+
     <header class="header">
       <!-- <a href="#" class="brand" id="brand">COP</a> -->
-       <a href="index.html" class="brand">
+       <a href="{% url 'index' %}" class="brand">
         <img src="static/thecop_app/images/The-Church-Of-Pentecost.png"/>
        </a>
-      <div class="menu-btn"></div>
+      <div onclick="openNav('lnd')" class="menu-btn"><i class="fa-regular fa-bars" style="color:white"></i></div>
       <div class="navigation">
         <div class="navigation-items">
           <a href="#home" class="nav-item">Home</a>
@@ -159,9 +197,9 @@
             <div class="event-div">
               <div class="event">
                 <div>
-                  <h2>PASTOR PAUL'S RESIGNATION PROGRAM</h2>
+                  <h2>PASTOR PAUL'S RETIREMENT PROGRAM</h2>
                   <p>
-                    Pastor Paul K. Amoah's resignation program will be held this
+                    Pastor Paul K. Amoah's reTIREMENT program will be held this
                     Sunday at the church premises
                   </p>
                   <button class="readmore">Learn more</button>
@@ -562,38 +600,38 @@
         </div>
       </footer>
     </main>
-    <script>
-      ScrollReveal({
-        reset: true,
-        distance: "60px",
-        duration: 2500,
-        delay: 400,
-      });
+<!--    <script>-->
+<!--      ScrollReveal({-->
+<!--        reset: true,-->
+<!--        distance: "60px",-->
+<!--        duration: 2500,-->
+<!--        delay: 400,-->
+<!--      });-->
 
-      ScrollReveal().reveal(".topic,.section-title", {
-        delay: 500,
-        origin: "left",
-      });
-      ScrollReveal().reveal(".event-div, .info", {
-        delay: 100,
-        origin: "right",
-      });
-      ScrollReveal().reveal(".date", { delay: 10, origin: "left" });
-      ScrollReveal().reveal(".blogthumbnail", {
-        delay: 300,
-        origin: "bottom",
-        interval: 200,
-      });
-      ScrollReveal().reveal(".sec-02 .image,.sec-03 .image", {
-        delay: 700,
-        origin: "top",
-      });
-      ScrollReveal().reveal(".media-info li", {
-        delay: 500,
-        origin: "top",
-        interval: 200,
-      });
-    </script>
+<!--      ScrollReveal().reveal(".topic,.section-title", {-->
+<!--        delay: 500,-->
+<!--        origin: "left",-->
+<!--      });-->
+<!--      ScrollReveal().reveal(".event-div, .info", {-->
+<!--        delay: 100,-->
+<!--        origin: "right",-->
+<!--      });-->
+<!--      ScrollReveal().reveal(".date", { delay: 10, origin: "left" });-->
+<!--      ScrollReveal().reveal(".blogthumbnail", {-->
+<!--        delay: 300,-->
+<!--        origin: "bottom",-->
+<!--        interval: 200,-->
+<!--      });-->
+<!--      ScrollReveal().reveal(".sec-02 .image,.sec-03 .image", {-->
+<!--        delay: 700,-->
+<!--        origin: "top",-->
+<!--      });-->
+<!--      ScrollReveal().reveal(".media-info li", {-->
+<!--        delay: 500,-->
+<!--        origin: "top",-->
+<!--        interval: 200,-->
+<!--      });-->
+<!--    </script>-->
     <script src="static/thecop_app/js/index.js"></script>
     <!-- <script src="static/thecop_app/js/swiper-bundle.min.js"></script> -->
   </body>

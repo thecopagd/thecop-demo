@@ -5,11 +5,11 @@
 <link href="https://fonts.googleapis.com/css2?family=Ubuntu:wght@300&display=swap" rel="stylesheet">
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
     {% load static %}
-    <link rel="stylesheet" href="{% static 'thecop_app/CSS/index.css' %}" />
     <meta charset="UTF-8">
+    <link rel="stylesheet" href="{% static 'thecop_app/CSS/index.css' %}" />
     <link rel="stylesheet" href="{% static 'thecop_app/CSS/ananse.css' %}">
     <link rel="stylesheet" href="{% static 'thecop_app/CSS/form.css' %}">
-    <link rel="style\sheet" href="{% static 'thecop_app/CSS/fa/allicons.css' %}">
+    <link rel="stylesheet" href="{% static 'thecop_app/CSS/fa/allicons.css' %}">
     <link rel="stylesheet" href="{% static 'thecop_app/CSS/fa/icons.css' %}">
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>{{member.local_assembly.district.name}} {{member.local_assembly.name}} Assembly</title>
@@ -37,25 +37,20 @@
     <div class="blank"></div>
 </div>
 
-
 <bottomnav>
-        <navitem  onclick="window.open('{% url 'member_home' %}', '_self')" >
+        <navitem onclick="window.open('{% url 'member_home' %}', '_self')" >
             <i class="fa-light fa-church"></i>
             <text>Home</text>
-        </navitem>
-        <navitem onclick="window.open('', '_self')">
-            <i class="fa-thin fa-megaphone"></i>
-            <text>Announcement</text>
         </navitem>
         <navitem>
             <i class="fa-light fa-video"></i>
             <text>Videos</text>
         </navitem>
-        <navitem>
+        <navitem onclick="window.open('{% url 'member_headlines' %}', '_self')" >
              <i class="fa-light fa-newspaper"></i>
             <text>Headlines</text>
         </navitem>
-        <navitem is-selected>
+        <navitem is-selected onclick="window.open('{% url 'member_me' %}', '_self')">
             <i class="fa-light fa-user"></i>
             <text>Me</text>
         </navitem>
