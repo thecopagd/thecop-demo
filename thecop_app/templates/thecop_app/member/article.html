@@ -25,6 +25,17 @@
 
 <div class="appbody">
 
+    <div class="article-cont">
+        <div class="article-img">
+            <img src="{%get_media_prefix%}{{article.img}}">
+        </div>
+        <h3>{{article.date_created.date}}</h3>
+        <h1 style="font-family: 'Ubuntu'" class="article-title">{{ article.head }}</h1>
+        <article class="article-read" style="font-family: 'Ubuntu'; line-height:2">
+            {{ article.body|safe }}
+        </article>
+    </div>
+
     <div class="section">
         <div class="tag">
             <h3 style="font-family: 'Ubuntu'">Trending</h3>
@@ -42,25 +53,6 @@
             {% endfor %}
         </div>
     </div>
-    <div class="section">
-        <div class="tag">
-            <h3 style="font-family: 'Ubuntu'">Youth Ministry</h3>
-            <span onclick="window.open('', '_self')"
-                  style="font-family: 'Ubuntu'; color:blue; display:flex; align-items:center; justify-content:center">view more</span>
-        </div>
-        <div class="sec">
-            {% for article in recent_articles %}
-            <div class="box001" onclick="window.open('', '_self')">
-                <div class="cover"><img src="{%get_media_prefix%}{{article.img}}"></div>
-                <div class="text">{{ article.brief|truncatewords_html:14 }}<br><span
-                        style="font-size:11px; color:rgba(30, 48, 80, 0.388);">{{article.date_created.date}}</span>
-                </div>
-            </div>
-            {% endfor %}
-        </div>
-    </div>
-
-
     <div class="blank"></div>
 </div>
 <bottomnav>

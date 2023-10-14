@@ -58,14 +58,15 @@
     .section .sec{
     width: 100%;
     flex-wrap: wrap;
-    gap: 44px;
+    gap: 6px;
     display: flex;
     height: fit-content;
     padding-top: 20px;
+    justify-content: center;
 }
-.sec anansecard {
+.sec .box001 {
     margin: 0 0 20px 20px;
-    width: 280px;
+    width: 190px;
 }
 }
 
@@ -123,3 +124,58 @@
 
 
 
+
+.article-cont{
+    width: 100%;
+    background: white;
+    padding: 20px 150px;
+    margin: 0 0 30px 0;
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+}
+
+.article-cont .article-read{
+    font-size: 22px;
+    text-align: justify;
+}
+
+.article-cont .article-title{
+   text-transform: uppercase;
+   font-size: 23px;
+}
+
+
+.article-cont .article-img{
+    width: 100%;
+    height: 30em;
+}
+
+.article-cont .article-img img{
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+
+@media screen and (max-width:688px){
+    .article-cont{
+        width: 100%;
+        padding: 0px 0px;
+    }
+
+
+    .article-cont .article-img{
+        width: 100%;
+    }
+
+    .article-cont .article-title{
+        padding: 0px 20px;
+    }
+
+    .article-cont .article-read{
+        font-size: 16px;
+        padding: 0px 20px;
+    }
+
+}
