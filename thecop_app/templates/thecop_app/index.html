@@ -12,6 +12,7 @@
     <link rel="stylesheet" href="{% static 'thecop_app/CSS/sidenav.css' %}" />
       <link rel="stylesheet" href="{% static 'thecop_app/CSS/fa/allicons.css' %}">
     <link rel="stylesheet" href="{% static 'thecop_app/CSS/fa/icons.css' %}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <!-- <link rel="stylesheet" href="../CSS/swiper-bundle.min.css" /> -->
     <title>The Church Of Pentecost</title>
   </head>
@@ -101,15 +102,15 @@
         </div>
       </div>
     </header>
-    <main>
+      <main>
       <section class="home">
         <!-- <video class="video-slider active"  src="../vid/enjoy.mp4" autoplay muted loop></video> -->
         <!-- <video class="video-slider"  src="vid/Nature - 108302.mp4" autoplay muted loop></video> -->
         <!-- <video class="video-slider"  src="../vid/search (1).mp4" autoplay muted loop></video>
         <video class="video-slider"  src="../vid/search (2).mp4" autoplay muted loop></video> -->
-        <img class="video-slider active" src="static/thecop_app/images/crowd1.jpg" alt="" />
-        <img class="video-slider" src="static/thecop_app/images/person1.jpg" alt="" />
-        <img class="video-slider" src="static/thecop_app/images/crowd.jpg" alt="" />
+        <img class="video-slider active" src="{% static 'thecop_app/images/church1.jpg' %}" alt="" />
+        <img class="video-slider" src="{% static 'thecop_app/images/church2.jpg' %}" alt="" />
+        <img class="video-slider" src="{% static 'thecop_app/images/church3.jpg' %}" alt="" />
 
         <div class="content active">
           <h1>Church<br /><span>WITH US</span></h1>
@@ -150,10 +151,10 @@
       <section>
         <div class="topic-div">
           <div class="topic">
-            <h2>WE BELIEVE IN ...</h2>
+            <h2>PROGRAM OUTLINES</h2>
           </div>
           <div class="hr-div">
-            <img src="static/thecop_app/images/hr.png" alt="" />
+            <img src="{% static 'thecop_app/images/hr.png' %}" alt="" />
           </div>
           <div class="sub-topic">
             <p>
@@ -182,7 +183,7 @@
                   <button class="readmore">Learn more</button>
                 </div>
                 <div class="event-img">
-                  <img src="static/thecop_app/images/bannerimg.jpg" alt="" />
+                  <img src="{% static 'thecop_app/images/bannerimg.jpg' %}" alt="" />
                 </div>
               </div>
             </div>
@@ -197,15 +198,15 @@
             <div class="event-div">
               <div class="event">
                 <div>
-                  <h2>PASTOR PAUL'S RETIREMENT PROGRAM</h2>
+                  <h2>PASTOR PAUL'S RESIGNATION PROGRAM</h2>
                   <p>
-                    Pastor Paul K. Amoah's reTIREMENT program will be held this
+                    Pastor Paul K. Amoah's resignation program will be held this
                     Sunday at the church premises
                   </p>
                   <button class="readmore">Learn more</button>
                 </div>
                 <div class="event-img">
-                  <img src="static/thecop_app/images/bannerimg.jpg" alt="" />
+                  <img src="{% static 'thecop_app/images/bannerimg.jpg' %}" alt="" />
                 </div>
               </div>
             </div>
@@ -230,7 +231,7 @@
                   <button class="readmore">Book a seat</button>
                 </div>
                 <div class="event-img">
-                  <img src="static/thecop_app/images/bannerimg.jpg" alt="" />
+                  <img src="{% static 'thecop_app/images/bannerimg.jpg' %}" alt="" />
                 </div>
               </div>
             </div>
@@ -241,30 +242,29 @@
       <div class="exp-container-div">
         <div class="exp-center">
           <div class="exp-container">
-            <div class="icon-div"></div>
+            <div class="icon-div">
+              <img src="{% static 'thecop_app/images/church.png' %}" alt="" width="30" height="30">
+            </div>
             <div>
-              <div class="room" data-ceil="{{locals_total}}">{{locals_total}}</div>
+              <div class="room" data-ceil="304">304</div>
               <h4>Churches</h4>
             </div>
           </div>
 
           <div class="exp-container">
-            <div class="icon-div"></div>
-            <div>
-              <div class="room" data-ceil="{{members_total}}">{{members_total}}</div>
-              <h4>Members</h4>
+            <div class="icon-div">
+              <img src="{% static 'thecop_app/images/people.png' %}" alt="" width="30" height="30">
             </div>
-          </div>
-          <div class="exp-container">
-            <div class="icon-div"></div>
             <div>
-              <div class="room" data-ceil="">20</div>
-              <h4>Sermons</h4>
+              <div class="room" data-ceil="280">280</div>
+              <h4>Souls</h4>
             </div>
           </div>
 
           <div class="exp-container">
-            <div class="icon-div"></div>
+            <div class="icon-div">
+              <img src="{% static 'thecop_app/images/pulpit.png' %}" alt="" width="30" height="30">
+            </div>
             <div>
               <div class="room" data-ceil="32">32</div>
               <h4>Events</h4>
@@ -283,26 +283,69 @@
             <h2>OUR BLOG</h2>
           </div>
           <div class="hr-div">
-            <img src="static/thecop_app/images/hr.png" alt="" />
+            <img src="{% static 'thecop_app/images/hr.png' %}" alt="" />
           </div>
           <div class="sub-topic">
             <p>Dive through our recent blogs.</p>
           </div>
         </div>
 
-        <div  class="div-923">
-          <div class="fl001">
-          {% for article in recent_articles %}
-                <div class="box001" onclick="">
-                    <div class="cover"><img src="{%get_media_prefix%}{{article.img}}"></div>
-                    <div class="text">{{ article.brief|truncatewords_html:14 }}<br>
-                        <span style="font-size:11px; color:rgba(30, 48, 80, 0.388);">{{article.date_created.date}}</span>
-                    </div>
-                </div>
-          {% endfor %}
-        </div>
-        </div>
+        <div class="blog-container-div">
+          <div class="blog-container">
+            <div class="blogthumbnail">
+              <div class="overlay">
+                <a href="./blog.html" class="cart-btn">Learn More</a>
+              </div>
 
+              <div class="img-div">
+                <img src="{% static 'thecop_app/images/ms.walker.png' %}" alt="" />
+              </div>
+
+              <div class="text-box">
+                <h2>Mrs Odi Walker Laid To Rest</h2>
+                <p>
+                  The mortal remains of Mrs Florence Odi Walker, who was part of
+                  the formative years of The Church of Pentecost,...
+                </p>
+              </div>
+            </div>
+
+            <div class="blogthumbnail">
+              <div class="overlay">
+                <a href="./blog.html" class="cart-btn">Learn More</a>
+              </div>
+
+              <div class="img-div">
+                <img src="{% static 'thecop_app/images/bannerimg.jpg' %}" alt="" />
+              </div>
+
+              <div class="text-box">
+                <h2>PENT TV GOES LIVE</h2>
+                <p>
+                  We're now live on your screens. Scan your digi-boxes to get
+                  the Pent tv station.
+                </p>
+              </div>
+            </div>
+            <div class="blogthumbnail">
+              <div class="overlay">
+                <a href="./blog.html" class="cart-btn">Learn More</a>
+              </div>
+
+              <div class="img-div">
+                <img src="{% static 'thecop_app/images/fulani.jpg' %}" alt="" />
+              </div>
+
+              <div class="text-box">
+                <h2>FIRST FULANI PASTOR IN PENTECOST</h2>
+                <p>
+                  Meet the Probationary Overseer Abubakar Diallo; the first
+                  Fulani pastor.
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
       </section>
 
       <section>
@@ -311,7 +354,7 @@
             <h2>THE TENETS OF THE CHURCH OF PENTECOST</h2>
           </div>
           <div class="hr-div">
-            <img src="static/thecop_app/images/hr.png" alt="" />
+            <img src="{% static 'thecop_app/images/hr.png' %}" alt="" />
           </div>
           <div class="sub-topic">
             <p>
@@ -351,26 +394,33 @@
           <div class="tenet-div">
             <div class="badge"><h3>3</h3></div>
             <div class="tenet-box">
-              <h2>THE BIBLE</h2>
+              <h2>THE DEPRAVED NATURE OF HUMANITY</h2>
               <p>
-                We believe in the divine inspiration and authority of the Holy
-                Scriptures. We believe that the Bible is infalliable with it's
-                declaration, final in its authority, all-supreme in all
-                provisions and comprehensie in its sufficiency.<br /><br />
-                (2 Tim 3:16: 2 Pet 1:21)
+               We believe that"all have sinned and come short of the glory of God"(Genesis3:1-19,
+               Isaiah53:6,Romans3:23),and are subject to eternal punishment(Mathew 13:41,42,Romans6:23)
+               ,and need repentance (Acts2:38,Mathew4:17,Acts20:21)and Regeneration.
+               (John3:3,5,Titus3:5).
+                <br /><br />
+
               </p>
             </div>
           </div>
           <div class="tenet-div">
             <div class="badge"><h3>4</h3></div>
             <div class="tenet-box">
-              <h2>THE BIBLE</h2>
+              <h2>THE SAVIOUR</h2>
               <p>
-                We believe in the divine inspiration and authority of the Holy
-                Scriptures. We believe that the Bible is infalliable with it's
-                declaration, final in its authority, all-supreme in all
-                provisions and comprehensie in its sufficiency.<br /><br />
-                (2 Tim 3:16: 2 Pet 1:21)
+       We believe humanity’s need of a Saviour has been met in the person of
+       Jesus Christ (Matthew 1:21; John 4:42; Acts 2:36; Ephesians 5:23;
+       Philippians 2:6-11), because of His Deity (Isaiah 9:6, John 1:1;
+       John 20:28; Romans 9:5; Titus 2:13-14), Virgin Birth (Isaiah 7:14;
+       Matthew 1:18; Luke 1:25-26), Atoning death (Romans 3:25; Hebrews 9:
+       22; 1 John 2:2), Resurrection (Matthew 28:5-7; Acts 2:24; Acts 2:36
+       ; Acts 10:39-40; 1 Corinthians 15:3-4) and Ascension (Acts 1:9-11;
+         Acts 2:33-36), His Abiding Intercession (Romans 8:34;
+       Hebrews 7:25) and His second coming to judge the living and the
+       dead (Acts 1:11; Acts 10:42; 1 Thessalonians 4:16-18, 2 Timothy 4:1; Revelation 22:12, 20).
+          <br /><br />
               </p>
             </div>
           </div>
@@ -378,26 +428,37 @@
           <div class="tenet-div">
             <div class="badge"><h3>5</h3></div>
             <div class="tenet-box">
-              <h2>THE BIBLE</h2>
+              <h2>REPENTANCE,JUSTIFICATION AND SANTIFICATION </h2>
               <p>
-                We believe in the divine inspiration and authority of the Holy
-                Scriptures. We believe that the Bible is infalliable with it's
-                declaration, final in its authority, all-supreme in all
-                provisions and comprehensie in its sufficiency.<br /><br />
-                (2 Tim 3:16: 2 Pet 1:21)
+          We believe all humans have to repent and confess their sins
+          before God (Luke 15:7; Acts 2:38; Acts 3:19; Acts 17:30),
+          and believe in the vicarious death of Jesus Christ before
+          they can be justified before God (Romans 4:25; 5:1). We
+          believe in the sanctification of the believer through the
+          working of the Holy Spirit (1 Corinthians 1:30; 6:11)
+          and God’s gift of eternal life to the believer (John 17:2, 3;
+           John 10:27, 28; Romans 6:23b; 1John 5:11-13).
+                <br /><br />
               </p>
             </div>
           </div>
           <div class="tenet-div">
             <div class="badge"><h3>6</h3></div>
             <div class="tenet-box">
-              <h2>THE BIBLE</h2>
+              <h2>THE ORDINATION OF BAPTISM AND THE LORD'S SUPPER
+                  OR COMMUNION.
+              </h2>
               <p>
-                We believe in the divine inspiration and authority of the Holy
-                Scriptures. We believe that the Bible is infalliable with it's
-                declaration, final in its authority, all-supreme in all
-                provisions and comprehensie in its sufficiency.<br /><br />
-                (2 Tim 3:16: 2 Pet 1:21)
+      We believe in the ordinance of Baptism by immersion as a testimony
+      of a convert who has attained a responsible age of 13 years. (Matthew
+      3:16; Matthew 28:19; Mark 1:9,10; Mark 16:16; Acts 2:38). Infants
+      and children are not baptised but are dedicated to the Lord (Mark
+      10:13-16; Luke 2:22-24, 34). We believe in the ordinance of the
+      Lord’s Supper or Holy Communion, which should be partaken by all
+      members who are in full fellowship (Luke 22:19, 20; Acts 20:7; 1
+       Corinthians 11:23-33).
+                <br /><br />
+
               </p>
             </div>
           </div>
@@ -405,25 +466,29 @@
           <div class="tenet-div">
             <div class="badge"><h3>7</h3></div>
             <div class="tenet-box">
-              <h2>THE BIBLE</h2>
+              <h2>BABTISM,GIFT,AND FRUIT,OF THE HOLY SPIRIT</h2>
               <p>
-                We believe in the divine inspiration and authority of the Holy
-                Scriptures. We believe that the Bible is infalliable with it's
-                declaration, final in its authority, all-supreme in all
-                provisions and comprehensie in its sufficiency.<br /><br />
-                (2 Tim 3:16: 2 Pet 1:21)
+             We believe in the Baptism of the Holy Spirit for all
+             believers with the initial evidence of speaking in tongues
+            (Joel 2:28, 29; Acts 2:3,4,38,39; Acts 10:44-46; Acts 19:
+             16), and in the operation of the gifts and fruit of the
+            Holy Spirit (Romans 12:6-8; Galatians 5:22,23 and 1
+            Corinthians 12:8-11; 28-30).
+               <br /><br />
               </p>
             </div>
           </div>
           <div class="tenet-div">
             <div class="badge"><h3>8</h3></div>
             <div class="tenet-box">
-              <h2>THE BIBLE</h2>
-              <p>
-                We believe in the divine inspiration and authority of the Holy
-                Scriptures. We believe that the Bible is infalliable with it's
-                declaration, final in its authority, all-supreme in all
-                provisions and comprehensie in its sufficiency.<br /><br />
+              <h2>DIVINE HEALING </h2>
+              <P>
+                 We believe that the healing of sicknesses and diseases is provided for God’s people
+                in the atonement (Isaiah 53:4,5; Matthew 8:7-13; 16,17; Mark 16:17,18; Luke 13:10-16;
+                 Acts 10:38; James 5:14-16). However, the Church is not opposed to medication by
+                 qualified medical practitioners.
+                <br /><br />
+              </P>
                 (2 Tim 3:16: 2 Pet 1:21)
               </p>
             </div>
@@ -432,26 +497,26 @@
           <div class="tenet-div">
             <div class="badge"><h3>9</h3></div>
             <div class="tenet-box">
-              <h2>THE BIBLE</h2>
+              <h2>TITHES AND OFFERINGS</h2>
               <p>
-                We believe in the divine inspiration and authority of the Holy
-                Scriptures. We believe that the Bible is infalliable with it's
-                declaration, final in its authority, all-supreme in all
-                provisions and comprehensie in its sufficiency.<br /><br />
-                (2 Tim 3:16: 2 Pet 1:21)
+             We believe in tithing and in the giving of freewill offerings towards the furtherance
+             of the cause of the Kingdom of God. We believe that God blesses a cheerful giver
+             (Genesis 14:18-20; Malachi 3:6-10; Matthew 23:23; Acts 20:35; Hebrews 7:1-4;
+             I Corinthians 16:1, 2; 2 Corinthians 9:1-9).
+                <br /><br />
               </p>
             </div>
           </div>
           <div class="tenet-div">
             <div class="badge"><h3>10</h3></div>
             <div class="tenet-box">
-              <h2>THE BIBLE</h2>
+              <h2>THE SECOND COMING AND THE NEXT LIFE</h2>
               <p>
-                We believe in the divine inspiration and authority of the Holy
-                Scriptures. We believe that the Bible is infalliable with it's
-                declaration, final in its authority, all-supreme in all
-                provisions and comprehensie in its sufficiency.<br /><br />
-                (2 Tim 3:16: 2 Pet 1:21)
+              We believe in the second coming of Christ and the resurrection of the dead,
+              both the saved and the unsaved. They that are saved to the resurrection of life and
+              the unsaved to the resurrection of damnation (Daniel 12:2; Mark 13:26; John 5:28, 29;
+              Acts 1:11; Acts 10:42; Romans 2:7-11; Romans 6:23).
+                <br /><br />
               </p>
             </div>
           </div>
@@ -459,14 +524,17 @@
           <div class="tenet-div">
             <div class="badge"><h3>11</h3></div>
             <div class="tenet-box">
-              <h2>THE BIBLE</h2>
+              <h2>MARRAIGE AND FAMILY LIFE</h2>
               <p>
-                We believe in the divine inspiration and authority of the Holy
-                Scriptures. We believe that the Bible is infalliable with it's
-                declaration, final in its authority, all-supreme in all
-                provisions and comprehensie in its sufficiency.<br /><br />
-                (2 Tim 3:16: 2 Pet 1:21)
-              </p>
+         We believe in the institution of marriage as a union established and ordained by God
+        for the lifelong, intimate relationship between a man as husband and a woman as wife as
+        biologically defined at birth. We believe that God instituted marriage primarily for
+        mutual help, fellowship and comfort that one ought to have for the other and for the
+        honourable procreation of children, and their training in love, obedience to the Lord
+        and responsible citizenship. (Genesis 2:18, Genesis 21-25; Matthew 19:4-6; 1 Corinthians 7:1-2).
+                <br /><br />
+                </P>
+
             </div>
           </div>
         </div>
@@ -478,7 +546,7 @@
             <h2>DONATE</h2>
           </div>
           <div class="hr-div">
-            <img src="static/thecop_app/images/hr.png" alt="" />
+            <img src="{% static 'thecop_app/images/hr.png' %}" alt="" />
           </div>
           <div class="sub-topic">
             <p>
@@ -494,10 +562,11 @@
             <h1>Abelenkpe Central needs funding for their project</h1>
             <div class="box">
               <div class="img-div">
-                <img src="static/thecop_app/images/bannerimg.jpg" alt="" />
+                <img src="{% static 'thecop_app/images/bannerimg.jpg' %}" alt="" />
               </div>
               <p>
-                The church of Pentecost,Abelenkpe Central needs funding to complete their church auditorium.
+                The church of Pentecost,Abelenkpe Central needs funding to
+                complete their church auditorium.
               </p>
             </div>
           </article>
@@ -510,7 +579,7 @@
 
       <section></section>
 
-      <footer class="footer section">
+      <!-- <footer class="footer section">
         <div>
           <a href="#" class="footer_logo">
             The Church of Pentecost
@@ -598,41 +667,95 @@
             <a href="#">Our Private Policies</a>
           </div>
         </div>
-      </footer>
+      </footer> -->
     </main>
-<!--    <script>-->
-<!--      ScrollReveal({-->
-<!--        reset: true,-->
-<!--        distance: "60px",-->
-<!--        duration: 2500,-->
-<!--        delay: 400,-->
-<!--      });-->
 
-<!--      ScrollReveal().reveal(".topic,.section-title", {-->
-<!--        delay: 500,-->
-<!--        origin: "left",-->
-<!--      });-->
-<!--      ScrollReveal().reveal(".event-div, .info", {-->
-<!--        delay: 100,-->
-<!--        origin: "right",-->
-<!--      });-->
-<!--      ScrollReveal().reveal(".date", { delay: 10, origin: "left" });-->
-<!--      ScrollReveal().reveal(".blogthumbnail", {-->
-<!--        delay: 300,-->
-<!--        origin: "bottom",-->
-<!--        interval: 200,-->
-<!--      });-->
-<!--      ScrollReveal().reveal(".sec-02 .image,.sec-03 .image", {-->
-<!--        delay: 700,-->
-<!--        origin: "top",-->
-<!--      });-->
-<!--      ScrollReveal().reveal(".media-info li", {-->
-<!--        delay: 500,-->
-<!--        origin: "top",-->
-<!--        interval: 200,-->
-<!--      });-->
-<!--    </script>-->
-    <script src="static/thecop_app/js/index.js"></script>
-    <!-- <script src="static/thecop_app/js/swiper-bundle.min.js"></script> -->
+
+    <footer class="site-footer">
+      <div class="footer_container">
+          <div class="footer-top">
+              <div class="footer-section">
+                  <h3>Theme for 2024</h3>
+                  <p><strong>A People of God Unleashed to Transform their World</strong>
+                  <br/> (1 Peter 2:9 and Acts 1:8)
+                  </p>
+              </div>
+
+              <div class="footer-section">
+                  <h3>Quick Links</h3>
+                  <ul>
+                      <li><a href="#">Home</a></li>
+                      <li><a href="#">Services</a></li>
+                      <li><a href="#">Portfolio</a></li>
+                      <li><a href="#">Contact</a></li>
+                  </ul>
+              </div>
+
+              <div class="footer-section">
+                  <h3>Contact Information</h3>
+                  <span><i class="fas fa-map-marker-alt"></i> 1234 Main St, City, Country</span><br/>
+                  <span><i class="fas fa-phone"></i> +123-456-7890</span><br/>
+                  <span><i class="fas fa-envelope"></i> info@example.com</span>
+              </div>
+
+
+          </div>
+
+          <div class="footer-section">
+            <h3>Newsletter</h3>
+            <h5>Subscribe to our newsletter for updates.</h5>
+            <form action="#" method="post" class="footer-form">
+                <input type="email" name="email" placeholder="Enter your email" required>
+                <button type="submit">Subscribe</button>
+            </form>
+        </div>
+
+          <div class="footer-bottom">
+              <p>&copy; 2023 YourWebsiteName. All Rights Reserved.</p>
+              <div class="social-icons">
+                  <a href="#"><i class="fab fa-facebook-f"></i></a>
+                  <a href="#"><i class="fab fa-twitter"></i></a>
+                  <a href="#"><i class="fab fa-instagram"></i></a>
+                  <a href="#"><i class="fab fa-linkedin-in"></i></a>
+              </div>
+          </div>
+      </div>
+  </footer>
+
+    <script>
+      ScrollReveal({
+        reset: true,
+        distance: "60px",
+        duration: 2500,
+        delay: 400,
+      });
+
+      ScrollReveal().reveal(".topic,.section-title", {
+        delay: 500,
+        origin: "left",
+      });
+      ScrollReveal().reveal(".event-div, .info", {
+        delay: 100,
+        origin: "right",
+      });
+      ScrollReveal().reveal(".date", { delay: 10, origin: "left" });
+      ScrollReveal().reveal(".blogthumbnail", {
+        delay: 300,
+        origin: "bottom",
+        interval: 200,
+      });
+      ScrollReveal().reveal(".sec-02 .image,.sec-03 .image", {
+        delay: 700,
+        origin: "top",
+      });
+      ScrollReveal().reveal(".media-info li", {
+        delay: 500,
+        origin: "top",
+        interval: 200,
+      });
+    </script>
+    <script src="{% static 'thecop_app/js/index.js' %}"></script>
+    <!-- <script src="../JS/swiper-bundle.min.js"></script> -->
   </body>
 </html>
+
