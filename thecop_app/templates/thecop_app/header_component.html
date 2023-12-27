@@ -141,7 +141,7 @@
 <div onclick="closeNav('lnd')" id="nav-wrapper"></div>
 <LeftNavDrawer id="lnd">
             <NavListItems>
-                <ListItem onclick="window.open('', '_self')">
+                <ListItem onclick="window.open('{% url 'index' %}', '_self')">
                     <Icon><i class="fa-light fa-home"></i></Icon>
                     <Name>Home</Name>
                 </ListItem>
@@ -158,6 +158,14 @@
                       </ul>
                     </drop>
                 </ListItem>
+                 <ListItem onclick="window.open('{% url 'index' %}', '_self')">
+                    <Icon><i class="fa-light fa-home"></i></Icon>
+                    <Name>Donations</Name>
+                </ListItem>
+                 <ListItem onclick="window.open('{% url 'index' %}', '_self')">
+                    <Icon><i class="fa-light fa-home"></i></Icon>
+                    <Name>Events</Name>
+                </ListItem>
                 <ListItem class="hasdrop">
                     <Icon><i class="fa-light fa-x"></i></Icon>
                     <Name>News</Name>
@@ -170,6 +178,18 @@
                         <li>Any</li>
                       </ul>
                     </drop>
+                </ListItem>
+                 <ListItem onclick="window.open('{% url 'index' %}', '_self')">
+                    <Icon><i class="fa-light fa-home"></i></Icon>
+                    <Name>Sermons</Name>
+                </ListItem>
+                 <ListItem onclick="window.open('{% url 'index' %}', '_self')">
+                    <Icon><i class="fa-light fa-home"></i></Icon>
+                    <Name>Songs</Name>
+                </ListItem>
+                 <ListItem onclick="window.open('{% url 'songs' %}', '_self')">
+                    <Icon><i class="fa-light fa-home"></i></Icon>
+                    <Name>Contacts</Name>
                 </ListItem>
               <button style="color: white; border: 0px; background-color: #214375; margin: 0 0 0 10px; position: absolute; bottom:30px; width: 90%; height: 40px; border-radius: 6px;" onclick="window.open('{% url 'member_login' %}', '_self')">Login</button>
             </NavListItems>
