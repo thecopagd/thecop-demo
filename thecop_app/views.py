@@ -12,5 +12,8 @@ def index(request):
     return render(request, 'thecop_app/index.html', context)
 
 
+def songs(request):
+    return render(request, 'thecop_app/songs.html')
+
 def about_leaders(request):
     return render(request, 'thecop_app/about_leaders.html')

@@ -672,15 +672,18 @@ section {
   margin: 30px 60px;
 }
 
-.tenet-div {
+.tenet-divs {
   display: flex;
   justify-content: flex-start;
   align-items: flex-start;
-
-  width: 50%;
-  max-height: 500px;
-
   margin-bottom: 30px;
+flex-direction: row;
+}
+
+.tenet-div {
+  flex: 1;
+  display: flex;
+  align-items: flex-start;
 }
 
 .badge {
@@ -1205,6 +1208,11 @@ margin: 030px;
     font-size: 15px;
   }
 
+  .tenet-divs {
+   flex-direction: column;
+  }
+
+
 }
 
 /* General Styles */
@@ -1292,3 +1300,154 @@ article {
   transition: width 0.5s ease-in-out; /* Smooth transition for progress */
 }
 
+
+
+
+/* Event Section styles */
+/* General Styles */
+body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+}
+
+/* Banner Section styles */
+.banner {
+  position: relative;
+  height: 400px;
+  overflow: hidden;
+}
+
+.banner img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.banner_text {
+  position: absolute;
+  bottom: 20px;
+  left: 20px;
+  color: white;
+}
+
+.banner_text h1 {
+  margin: 0;
+  font-size: 2.5em;
+}
+
+.banner_text h3 {
+  margin: 5px 0 0;
+  font-size: 1.5em;
+}
+
+/* Event Section styles */
+.event_sec {
+  background-color: #f5f5f5;
+  padding: 20px;
+}
+
+.text_box h2 {
+  color: #333;
+}
+
+.text_box h1 {
+  color: #555;
+  margin: 10px 0;
+}
+
+.text_box span {
+  color: #777;
+  font-size: 0.8em;
+  margin-left: 10px;
+}
+
+.text_box p {
+  color: #888;
+}
+
+/* Events Overview styles */
+.events_div {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  padding: 20px;
+}
+
+.event_div {
+  width: calc(50% - 10px);
+  margin-bottom: 20px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease-in-out;
+}
+
+.event_div:hover {
+  transform: translateY(-5px);
+}
+
+.event_div img {
+  width: 100%;
+  height: auto;
+  border-top-left-radius: 5px;
+  border-top-right-radius: 5px;
+}
+
+.details {
+  padding: 15px;
+  background-color: #fff;
+  border-bottom-left-radius: 5px;
+  border-bottom-right-radius: 5px;
+}
+
+.details h2 {
+  color: #333;
+  margin-bottom: 5px;
+}
+
+.details p {
+  color: #555;
+  margin-bottom: 10px;
+}
+
+/* Modal styles */
+.modal {
+  display: none;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 1000;
+  width: 80%;
+  max-width: 500px;
+  background-color: #ffffff;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+  border-radius: 5px;
+  overflow: hidden;
+}
+
+.modal-content {
+  padding: 20px;
+}
+
+.close-button {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  cursor: pointer;
+  color: #777;
+  font-size: 24px;
+}
+
+/* Additional styles for modal events (if needed) */
+.modal-content img {
+  width: 100%;
+  height: auto;
+  margin-bottom: 20px;
+}
+
+.modal-content p {
+  color: #555;
+  margin-bottom: 10px;
+}
+
+/* Other styles can be added based on the requirements */

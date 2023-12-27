@@ -158,79 +158,7 @@ btns.forEach((btn, i) => {
 
 //   console.log(data);
 
-const pastorsData = [
-  {
-    name: "Apostle Eric Nyamekye",
-    role: "Chairman",
-    bio: "He has been a very good chairman.",
-    imageSrc: "/images/Aps.-Eric-Nyamekye.jpg",
-  },
-  {
-    name: "Apostle Alexander Nana Yaw Kumi-Larbi",
-    role: "General Secretary",
-    bio: "He has been a very good general secretary.",
-    imageSrc: "/images/Apostle_kumi.jpg",
-  },
-  {
-    name: "Apostle Emmanuel Agyemang Bekoe",
-    role: "International Missions Director",
-    bio: "He has been a very good International Missions Director.",
-    imageSrc: "/images/Aps-Emmanuel-Agyemang-Bekoe.jpg",
-  },
-  {
-    name: "Apostle Ousmane Zabre ",
-    role: " Executive Council Member",
-    bio: "He has been a very good  Executive Council Member.",
-    imageSrc: "/images/Aps.-Ousmane1-1-Excutive Council.jpg",
-  },
-  {
-    name: "Apostle Samuel Osei Asante  ",
-    role: " Executive Council Member",
-    bio: "He has been a very good  Executive Council Member.",
-    imageSrc: "/images/Aps.-S.O-Asante-1.jpg",
-  },
-  // Add more pastor data as needed
-];
 
-// Get the div where you want to display the data
-const container = document.querySelector(".container");
-
-// Loop through the data and create HTML elements for each pastor
-pastorsData.forEach((pastor) => {
-  // Create the leader_div element
-  const leaderDiv = document.createElement("div");
-  leaderDiv.classList.add("leader_div");
-
-  // Create the image element
-  const imageElement = document.createElement("img");
-  imageElement.src = pastor.imageSrc;
-  imageElement.alt = pastor.role;
-
-  // Create the details div
-  const detailsDiv = document.createElement("div");
-  detailsDiv.classList.add("details");
-
-  // Create the name element
-  const nameElement = document.createElement("h3");
-  nameElement.classList.add("name");
-  nameElement.textContent = pastor.name;
-
-  // Create the role element
-  const roleElement = document.createElement("h4");
-  roleElement.classList.add("role");
-  roleElement.innerHTML = `<span>Role</span>: ${pastor.role}`;
-
-  // Append the image, name, and role to the details div
-  detailsDiv.appendChild(nameElement);
-  detailsDiv.appendChild(roleElement);
-
-  // Append the image and details div to the leader_div
-  leaderDiv.appendChild(imageElement);
-  leaderDiv.appendChild(detailsDiv);
-
-  // Append the leader_div to the container
-  container.appendChild(leaderDiv);
-});
 
 
 
@@ -239,87 +167,7 @@ pastorsData.forEach((pastor) => {
 
 //Songs
 
-        const songs = [
-            {
-                title: "Amazing Grace",
-                lyrics: [
-                    "Amazing grace! How sweet the sound",
-                    "That saved a wretch like me!",
-                    "I once was lost, but now am found;",
-                    "Was blind, but now I see."
-                ]
-            },
-            {
-                title: "When Peace Like a River",
-                lyrics: [
-                    "When peace like a river, attendeth my way,",
-                    "When sorrows like sea billows roll;",
-                    "Whatever my lot, Thou hast taught me to say",
-                    "It is well, it is well, with my soul."
-                ]
-            }
-            // Add more songs similarly
-        ];
 
-        let currentSongIndex = 0;
-
-        function navigateSong(direction) {
-            if (direction === 'previous') {
-                currentSongIndex = (currentSongIndex - 1 + songs.length) % songs.length;
-            } else if (direction === 'next') {
-                currentSongIndex = (currentSongIndex + 1) % songs.length;
-            }
-
-            displaySongs(); // Refresh the displayed songs
-        }
-
-        function displaySongs() {
-            const container = document.querySelector('.songcontainer');
-
-            // Clear existing content
-            container.innerHTML = '';
-
-            // Display the current song
-            const currentSong = songs[currentSongIndex];
-            const lyricsDiv = document.createElement('div');
-            lyricsDiv.className = 'lyrics';
-            lyricsDiv.innerHTML = `
-                <h1>${currentSong.title}</h1>
-                <p>${currentSong.lyrics.join('<br>')}</p>
-            `;
-
-            container.appendChild(lyricsDiv);
-
-            // Add navigation buttons
-            container.innerHTML += `
-                <div class="pagination">
-                    <button onclick="navigateSong('previous')">Previous Song</button>
-                    <button onclick="navigateSong('next')">Next Song</button>
-                </div>
-            `;
-
-            container.innerHTML += `
-        <div class="comments">
-            <h2>Comments</h2>
-            <textarea id="commentInput" placeholder="Add your comment here..."></textarea>
-            <button onclick="addComment()">Submit</button>
-            <div id="commentDisplay"></div>
-        </div>
-    `;
-        }
-        displaySongs();
-
-        function addComment() {
-            const comment = document.getElementById('commentInput').value;
-            const commentDisplay = document.getElementById('commentDisplay');
-
-            if (comment.trim() !== '') {
-                const commentElement = document.createElement('p');
-                commentElement.textContent = comment;
-                commentDisplay.appendChild(commentElement);
-                document.getElementById('commentInput').value = '';
-            }
-        }
 
 
 
@@ -353,12 +201,3 @@ document.getElementById('myModal').addEventListener('click', function(event) {
         }
     }
 
-function openNav(a){
-    document.getElementById(a).style.width = "250px";
-    document.getElementById("nav-wrapper").style.display = "block"
-}
-
-function closeNav(a){
-    document.getElementById(a).style.width = "0px"
-    document.getElementById("nav-wrapper").style.display = "none"
-}

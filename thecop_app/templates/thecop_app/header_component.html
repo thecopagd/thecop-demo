@@ -1,0 +1,220 @@
+  {% load static %}
+  <head>
+      <style>
+          @media screen and (min-width: 767px){
+            .menu-btn{
+                display: none;
+            }
+          }
+      </style>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+       <link rel="shortcut icon" href="{% static 'thecop_app/images/logo-pent.png' %}">
+    <link rel="stylesheet" href="{% static 'thecop_app/CSS/index1.css' %}" />
+    <link rel="stylesheet" href="{% static 'thecop_app/CSS/index.css' %}" />
+    <link rel="stylesheet" href="{% static 'thecop_app/CSS/ananse.css' %}" />
+    <link rel="stylesheet" href="{% static 'thecop_app/CSS/sidenav.css' %}" />
+      <link rel="stylesheet" href="{% static 'thecop_app/CSS/fa/allicons.css' %}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <!-- <link rel="stylesheet" href="../CSS/swiper-bundle.min.css" /> -->
+    <title>The Church Of Pentecost</title>
+
+      {% if active == "songs" %}
+        <style>
+      /* Basic Styles */
+      body {
+        font-family: Arial, sans-serif;
+        background-color: #f5f5f5;
+        color: #333;
+      }
+
+      .songcontainer {
+        max-width: 800px;
+        margin: 20px auto;
+        padding: 20px;
+        background-color: #ffffff;
+        box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+      }
+
+      h1 {
+        color: #007bff;
+        text-align: center;
+        margin-bottom: 20px;
+      }
+
+      .lyrics {
+        margin-bottom: 30px;
+        line-height: 1.6;
+      }
+
+      .pagination {
+        text-align: center;
+        margin-bottom: 20px;
+      }
+
+      .comments {
+        margin-top: 30px;
+      }
+
+      textarea {
+        width: 100%;
+        padding: 10px;
+        margin-bottom: 10px;
+        border: 1px solid #ddd;
+        resize: vertical;
+      }
+
+      button {
+        padding: 10px 20px;
+        background-color: #007bff;
+        border: none;
+        color: #fff;
+        cursor: pointer;
+      }
+
+      button:hover {
+        background-color: #0056b3;
+      }
+
+      /* Comment Section Styles */
+
+      .comments {
+        margin-top: 30px;
+        border-top: 2px solid #007bff; /* Adding a border for separation */
+        padding-top: 20px; /* Some padding above the comments for spacing */
+      }
+
+      h2 {
+        color: #007bff;
+        margin-bottom: 15px;
+      }
+
+      textarea {
+        width: 100%;
+        padding: 10px;
+        margin-bottom: 10px;
+        border: 1px solid #ddd;
+        resize: vertical;
+        font-size: 16px; /* Adjust font size for better readability */
+      }
+
+      button {
+        padding: 10px 20px;
+        background-color: #007bff;
+        border: none;
+        color: #fff;
+        cursor: pointer;
+        transition: background-color 0.3s; /* Smooth transition for hover effect */
+      }
+
+      button:hover {
+        background-color: #0056b3;
+      }
+
+      #commentDisplay {
+        margin-top: 20px;
+        padding: 10px;
+        border: 1px solid #ddd;
+        max-height: 200px;
+        overflow-y: auto; /* Scrollable for long comments */
+      }
+
+      #commentDisplay p {
+        margin-bottom: 10px;
+        padding: 5px 0;
+        border-bottom: 1px solid #ddd; /* Adding a border between comments */
+      }
+
+      /* Responsive Styles */
+      @media (max-width: 600px) {
+        .songcontainer {
+          padding: 10px;
+        }
+      }
+    </style>
+
+      {% endif %}
+  </head>
+
+
+<div onclick="closeNav('lnd')" id="nav-wrapper"></div>
+<LeftNavDrawer id="lnd">
+            <NavListItems>
+                <ListItem onclick="window.open('', '_self')">
+                    <Icon><i class="fa-light fa-home"></i></Icon>
+                    <Name>Home</Name>
+                </ListItem>
+                <ListItem class="hasdrop">
+                    <Icon><i class="fa-light fa-info-circle"></i></Icon>
+                    <Name>About</Name>
+                    <drop>
+                      <ul>
+                        <li></li>
+                        <li onclick="window.open('{% url 'about_leaders' %}', '_self')">Leaders</li>
+                        <li>Tenets</li>
+                        <li>Theme</li>
+                        <li>Any</li>
+                      </ul>
+                    </drop>
+                </ListItem>
+                <ListItem class="hasdrop">
+                    <Icon><i class="fa-light fa-x"></i></Icon>
+                    <Name>News</Name>
+                    <drop>
+                      <ul>
+                        <li></li>
+                        <li onclick="window.open('{% url 'about_leaders' %}', '_self')">Leaders</li>
+                        <li>Tenets</li>
+                        <li>Theme</li>
+                        <li>Any</li>
+                      </ul>
+                    </drop>
+                </ListItem>
+              <button style="color: white; border: 0px; background-color: #214375; margin: 0 0 0 10px; position: absolute; bottom:30px; width: 90%; height: 40px; border-radius: 6px;" onclick="window.open('{% url 'member_login' %}', '_self')">Login</button>
+            </NavListItems>
+        </LeftNavDrawer>
+
+    <header class="header">
+      <!-- <a href="#" class="brand" id="brand">COP</a> -->
+       <a href="{% url 'index' %}" class="brand">
+        <img src="static/thecop_app/images/The-Church-Of-Pentecost.png"/>
+       </a>
+      <div onclick="openNav('lnd')" class="menu-btn"><i class="fa-regular fa-bars" style="color:white"></i></div>
+      <div class="navigation">
+        <div class="navigation-items">
+          <a href="{% url 'index' %}" class="nav-item">Home</a>
+          <div class="dropdown">
+            <a href="#" class="dropbtn">About</a>
+            <div class="dropdown-content">
+              <a href="{% url 'about_leaders' %}" class="dropdown-item">Leaders</a>
+              <a href="#vision" class="dropdown-item">Vision</a>
+              <a href="#mission" class="dropdown-item">Mission</a>
+              <a href="#testimonials" class="dropdown-item">Testimonials</a>
+              <a href="#awards" class="dropdown-item">Awards</a>
+            </div>
+          </div>
+          <a href="#" class="nav-item dropdown-item">Donations</a>
+          <div class="dropdown">
+            <a href="#" class="dropbtn">Events</a>
+            <div class="dropdown-content">
+              <a href="./about.html" class="dropdown-item">Easter Convention</a>
+              <a href="" class="dropdown-item">Carol Services</a>
+              <a href="" class="dropdown-item">Sports</a>
+              <a href="" class="dropdown-item">Other Holidays</a>
+            </div>
+          </div>
+          <a href="#" class="nav-item">News</a>
+          <a href="#" class="nav-item">Sermons</a>
+          <a href="{% url 'songs' %}" class="nav-item">Songs</a>
+          <a href="#" class="nav-item">Contact</a>
+
+          <button class="signup">Find A Church</button>
+          <button class="signup" onclick="window.open('{% url 'member_login' %}', '_self')">Login</button>
+        </div>
+      </div>
+    </header>
+
+
+
+    <script src="{% static 'thecop_app/js/sidenav.js' %}"></script>
