@@ -711,6 +711,7 @@ flex-direction: row;
 .tenet-box p {
   text-align: left;
   font-size: 15px;
+  line-height: 30px;
 }
 
 /*DONATE STYLES*/
