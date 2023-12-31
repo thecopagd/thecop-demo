@@ -6,6 +6,20 @@ from django.core.exceptions import ObjectDoesNotExist
 
 
 def home(request):
+    active_admin = PentecostAdmin.objects.get(pk=request.session.get('pent_admin_id'))
+
+    adults_count = active_admin.get_adults_count()[0]
+    adults_male = active_admin.get_adults_count()[1]
+    adults_female = active_admin.get_adults_count()[2]
+
+    youth_count = active_admin.get_youth_count()[0]
+    youth_male = active_admin.get_youth_count()[1]
+    youth_female = active_admin.get_youth_count()[2]
+
+    children_count = active_admin.get_children_count()[0]
+    children_male = active_admin.get_children_count()[1]
+    children_female = active_admin.get_children_count()[2]
+
     context = {
         "countries": Nation.objects.all(),
         "admins": NationalAdmin.objects.all(),
@@ -14,12 +28,21 @@ def home(request):
         "areas_total": Area.objects.all().count(),
         "nations_total": Nation.objects.all().count(),
         "members_total": Member.objects.all().count(),
-
+        'adults_count': adults_count,
+        'adults_male': adults_male,
+        'adults_female': adults_female,
+        'youth_count': youth_count,
+        'youth_male': youth_male,
+        'youth_female': youth_female,
+        'children_count': children_count,
+        'children_male': children_male,
+        'children_female': children_female,
     }
     return render(request, 'thecop_app/pentAdmin/home.html', context)
 
 
 def nations(request):
+    active_admin = PentecostAdmin.objects.get(pk=request.session.get('pent_admin_id'))
     context = {
         "countries": Nation.objects.all(),
         "admins": NationalAdmin.objects.all(),
@@ -33,6 +56,7 @@ def nations(request):
 
 
 def admins(request):
+    active_admin = PentecostAdmin.objects.get(pk=request.session.get('pent_admin_id'))
     context = {
         "countries": Nation.objects.all(),
         "admins": NationalAdmin.objects.all(),
@@ -47,6 +71,7 @@ def admins(request):
 
 
 def members(request):
+    active_admin = PentecostAdmin.objects.get(pk=request.session.get('pent_admin_id'))
     context = {
         "countries": Nation.objects.all(),
         "admins": NationalAdmin.objects.all(),
@@ -90,6 +115,7 @@ def login(request):
             admin = PentecostAdmin.objects.get(pk=_id)
             if ep == admin.email or ep == admin.phone:
                 if admin.password == password:
+                    request.session['pent_admin_id'] = _id
                     return redirect("copAdmin_home")
                 else:
                     return HttpResponse("Fail")
@@ -102,6 +128,7 @@ def login(request):
 
 
 def add_nation(request):
+    active_admin = PentecostAdmin.objects.get(pk=request.session.get('pent_admin_id'))
     if request.method == 'POST':
         country = request.POST['country']
 
@@ -118,6 +145,8 @@ def add_nation(request):
 
 
 def add_nation_admin(request):
+    active_admin = PentecostAdmin.objects.get(pk=request.session.get('pent_admin_id'))
+
     context = {
         "countries": Nation.objects.all(),
     }

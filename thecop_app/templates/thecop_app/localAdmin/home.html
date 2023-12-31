@@ -1,53 +1,10 @@
 <!DOCTYPE html>
 <html lang="en">
-
 {% load static %}
- <head>
-
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="shortcut icon" href="{% static 'thecop_app/images/logo-pent.png' %}">
-    <link rel="stylesheet" href="{% static 'thecop_app/CSS/index.css' %}" />
-    <link rel="stylesheet" href="{% static 'thecop_app/CSS/ananse.css' %}" />
-      <link rel="stylesheet" href="{% static 'thecop_app/CSS/fa/allicons.css' %}">
-    <link rel="stylesheet" href="{% static 'thecop_app/CSS/fa/icons.css' %}">
-
-    <title>The Church Of Pentecost</title>
-    <style>
-    body{font-family:calibri}
-        table{
-            border: 1px solid black; border-spacing: 2px;
-        }
-        th, td{
-            border: 1px solid black;
-            padding: 10px
-        }
-    </style>
-</head>
+{% load baseui_local %}
 <body>
 
-<header class="grid-header">
-      <div class="logo">
-          <img src="{% static 'thecop_app/images/The-Church-Of-Pentecost.png' %}" width=200/>
-      </div>
-      <div class="mid-div">
-              <div class="nav-btn" onclick="window.open('{% url 'localAdmin_home' %}', '_self')">
-                  <i class="fa-thin fa-gauge"></i>
-                  <span>Dashboard</span>
-              </div>
-
-          <div class="nav-btn" onclick="window.open('{% url 'localAdmin_members' %}', '_self')">
-                  <i class="fa-thin fa-users"></i>
-                 <span>Members</span>
-          </div>
-          <div class="nav-btn">
-                  <i class="fa-thin fa-caret-down"></i>
-                 <span>More</span>
-          </div>
-      </div>
-      <div></div>
-</header>
+{% header_component %}
 <br><br><br>
 <appbody style=" background-color: #f0f1f3 !important;">
 
@@ -102,6 +59,102 @@
         </div>
 
     </div>
+     <div class="ministry-div">
+        <h3>Adults Ministry</h3>
+        <div class="ministry-row">
+             <div class="counter-001">
+             <div class="counter-av">
+                  <i class="fa-thin fa-users"></i>
+             </div>
+             <div>
+                 <div class="counter-head">Total</div>
+                 <div class="counter-mini">{{adults_count}}</div>
+             </div>
+        </div>
+            <div class="counter-001">
+             <div class="counter-av">
+                  <i class="fa-thin fa-male"></i>
+             </div>
+             <div>
+                 <div class="counter-head">Men</div>
+                 <div class="counter-mini">{{adults_count_male}}</div>
+             </div>
+        </div>
+            <div class="counter-001">
+             <div class="counter-av">
+                  <i class="fa-thin fa-female"></i>
+             </div>
+             <div>
+                 <div class="counter-head">Women</div>
+                 <div class="counter-mini">{{adults_count_female}}</div>
+             </div>
+        </div>
+        </div>
+    </div>
+    <div class="ministry-div">
+        <h3>Youth Ministry</h3>
+        <div class="ministry-row">
+             <div class="counter-001">
+             <div class="counter-av">
+                  <i class="fa-thin fa-users"></i>
+             </div>
+             <div>
+                 <div class="counter-head">Total</div>
+                 <div class="counter-mini">{{youth_count}}</div>
+             </div>
+        </div>
+            <div class="counter-001">
+             <div class="counter-av">
+                  <i class="fa-thin fa-male"></i>
+             </div>
+             <div>
+                 <div class="counter-head">Gents</div>
+                 <div class="counter-mini">{{youth_count_male}}</div>
+             </div>
+        </div>
+            <div class="counter-001">
+             <div class="counter-av">
+                  <i class="fa-thin fa-female"></i>
+             </div>
+             <div>
+                 <div class="counter-head">Ladies</div>
+                 <div class="counter-mini">{{youth_count_female}}</div>
+             </div>
+        </div>
+        </div>
+    </div>
+    <div class="ministry-div">
+        <h3>Children Ministry</h3>
+        <div class="ministry-row">
+             <div class="counter-001">
+             <div class="counter-av">
+                  <i class="fa-thin fa-children"></i>
+             </div>
+             <div>
+                 <div class="counter-head">Total</div>
+                 <div class="counter-mini">{{children_count}}</div>
+             </div>
+        </div>
+            <div class="counter-001">
+             <div class="counter-av">
+                  <i class="fa-thin fa-child"></i>
+             </div>
+             <div>
+                 <div class="counter-head">Boys</div>
+                 <div class="counter-mini">{{children_count_male}}</div>
+             </div>
+        </div>
+            <div class="counter-001">
+             <div class="counter-av">
+                  <i class="fa-thin fa-child-dress"></i>
+             </div>
+             <div>
+                 <div class="counter-head">Girls</div>
+                 <div class="counter-mini">{{children_count_female}}</div>
+             </div>
+        </div>
+        </div>
+    </div>
 
     <h3>Announcements</h3>
 <div>
@@ -138,31 +191,6 @@
 <h1>{{admin.local_assembly.district.area.nation.country}},{{admin.local_assembly.district.area.name}} Area,
     {{admin.local_assembly.district.name}} District,{{admin.local_assembly.name}} Assembly Admin</h1>
 
-<table>
-    <tr>
-        <th>Name</th>
-        <th>ID</th>
-        <th>Gender</th>
-        <th>Age</th>
-        <th>Phone</th>
-        <th>Phone 2</th>
-        <th>Email</th>
-        <th>Address</th>
-    </tr>
-{% for member in admin.local_assembly.member_set.all|dictsort:"name" %}
-    <tr>
-        <td>{{ member.id }}</td>
-        <td>{{ member.name }}</td>
-        <td>{{ member.gender }}</td>
-        <td>{{ member.age }}</td>
-        <td>{{ member.phone }}</td>
-        <td>{{ member.phone2 }}</td>
-        <td>{{ member.email }}</td>
-        <td>{{ member.address }}</td>
-    </tr>
-{% endfor %}
-</table>
-<a href="{% url 'localAdmin_add_member' %}">Add Member</a>
 
 <h3>Announcements</h3>
 <div>

@@ -1,0 +1,61 @@
+{% load static %}
+
+  <head>
+
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="shortcut icon" href="{% static 'thecop_app/images/logo-pent.png' %}">
+    <link rel="stylesheet" href="{% static 'thecop_app/CSS/index.css' %}" />
+    <link rel="stylesheet" href="{% static 'thecop_app/CSS/ananse.css' %}" />
+      <link rel="stylesheet" href="{% static 'thecop_app/CSS/fa/allicons.css' %}">
+    <link rel="stylesheet" href="{% static 'thecop_app/CSS/fa/icons.css' %}">
+
+    <title>The Church Of Pentecost</title>
+    <style>
+    body{font-family:calibri}
+        table{
+            border: 1px solid black; border-spacing: 2px;
+        }
+        th, td{
+            border: 1px solid black;
+            padding: 10px
+        }
+    </style>
+</head>
+<body>
+
+<header class="grid-header">
+      <div class="logo">
+          <img src="{% static 'thecop_app/images/The-Church-Of-Pentecost.png' %}" width=200/>
+      </div>
+      <div class="mid-div">
+              <div class="nav-btn" onclick="window.open('{% url 'nationalAdmin_home' %}', '_self')">
+                  <i class="fa-thin fa-gauge"></i>
+                  <span>Dashboard</span>
+              </div>
+            <div class="nav-btn" onclick="window.open('{% url 'nationalAdmin_areas' %}', '_self')">
+                  <i class="fa-thin fa-map"></i>
+                  <span>Areas</span>
+              </div>
+          <div class="nav-btn" onclick="window.open('{% url 'nationalAdmin_admins' %}', '_self')">
+                      <i class="fa-thin fa-user-lock"></i>
+                     <span>Admins</span>
+              </div>
+
+          <div class="nav-btn" onclick="window.open('{% url 'nationalAdmin_members' %}', '_self')">
+                  <i class="fa-thin fa-users"></i>
+                 <span>Members</span>
+          </div>
+          <div class="nav-btn has-drop">
+                  <i class="fa-thin fa-caret-down"></i>
+                 <span>More</span>
+              <div class="drop" style="margin: 11% 0 0 -3%;">
+                  <div onclick="window.open('{% url 'nationalAdmin_announcement' %}', '_self')" class="item">Announcement</div>
+                  <div class="item">Events</div>
+                  <div class="item">Authors</div>
+              </div>
+          </div>
+      </div>
+      <div></div>
+</header>

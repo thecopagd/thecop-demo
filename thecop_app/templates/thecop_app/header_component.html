@@ -20,7 +20,6 @@
 
     <!-- <link rel="stylesheet" href="../CSS/swiper-bundle.min.css" /> -->
     <title>The Church Of Pentecost</title>
-
       {% if active == "songs" %}
         <style>
       /* Basic Styles */
@@ -30,12 +29,27 @@
         color: #333;
       }
 
-      .songcontainer {
-        max-width: 800px;
-        margin: 20px auto;
+      .songcontainer,
+      .songtitles {
         padding: 20px;
         background-color: #ffffff;
         box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+      }
+
+      .songcontainer {
+        min-width: 800px;
+        max-width: 900px;
+      }
+      .songtitles {
+        min-width: 500px;
+        max-width: 900px;
+      }
+
+      .songsdetails {
+        display: flex;
+        justify-content: space-evenly;
+        align-items: flex-start;
+        flex-direction: row;
       }
 
       h1 {
@@ -127,14 +141,40 @@
         border-bottom: 1px solid #ddd; /* Adding a border between comments */
       }
 
+      #songList {
+        list-style: none;
+        padding: 0;
+        cursor: pointer;
+      }
+
+      #songList li {
+        margin-bottom: 5px;
+        padding: 8px;
+        background-color: #f0f0f0;
+        border-radius: 5px;
+        transition: background-color 0.3s;
+      }
+
+      #songList li:hover {
+        background-color: #e0e0e0;
+      }
+
       /* Responsive Styles */
       @media (max-width: 600px) {
+        .songsdetails {
+          flex-direction: column;
+        }
+
         .songcontainer {
           padding: 10px;
         }
+
+        .songcontainer, .songtitles {
+        min-width: 100%;
+        max-width: 100%;
+      }
       }
     </style>
-
       {% endif %}
   </head>
 

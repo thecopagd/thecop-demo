@@ -18,7 +18,20 @@ def home(request):
         "announcements": announcements,
         "events": events,
         "authors": authors,
-        "members_total": active_nation.get_members_total()
+        "members_total": active_nation.get_members_total(),
+        # --------------------------------------------------------------#
+        "adults_count": active_nation.get_adults_count()[0],
+        "adults_count_male": active_nation.get_adults_count()[1],
+        "adults_count_female": active_nation.get_adults_count()[2],
+        # --------------------------------------------------------------#
+        "youth_count": active_nation.get_youth_count()[0],
+        "youth_count_male": active_nation.get_youth_count()[1],
+        "youth_count_female": active_nation.get_youth_count()[2],
+        # --------------------------------------------------------------#
+        "children_count": active_nation.get_children_count()[0],
+        "children_count_male": active_nation.get_children_count()[1],
+        "children_count_female": active_nation.get_children_count()[2]
+        # --------------------------------------------------------------#
     }
     return render(request, 'thecop_app/nationalAdmin/home.html', context)
 
@@ -164,7 +177,7 @@ def add_announcement(request):
 
         active_admin.add_announcement(text)
 
-        return redirect("nationalAdmin_home")
+        return redirect("nationalAdmin_announcement")
 
     context = {
         "nation": active_nation,
@@ -203,3 +216,23 @@ def add_author(request):
         return redirect("nationalAdmin_home")
 
     return render(request, "thecop_app/nationalAdmin/add_author.html")
+
+
+def announcement(request):
+    active_nation = Nation.objects.get(pk=request.session.get('national_admin_nation_id'))
+    active_admin = NationalAdmin.objects.filter(nation=active_nation).get(pk=request.session.get("active_admin_id"))
+
+    context = {
+        "admin": active_admin,
+        "announcements": active_nation.get_announcements()
+    }
+    return render(request, 'thecop_app/nationalAdmin/announcement.html', context)
+
+
+def delete_announcement(request, id):
+    active_nation = Nation.objects.get(pk=request.session.get('national_admin_nation_id'))
+    active_admin = NationalAdmin.objects.filter(nation=active_nation).get(pk=request.session.get("active_admin_id"))
+
+    active_admin.delete_announcement(id)
+
+    return redirect("nationalAdmin_announcement")

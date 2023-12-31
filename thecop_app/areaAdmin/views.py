@@ -12,7 +12,20 @@ def home(request):
         "admins": DistrictAdmin.objects.all(),
         "admin": active_admin,
         "announcements": active_admin.area.areaannouncement_set.all(),
-        "events": active_admin.area.areaevent_set.all()
+        "events": active_admin.area.areaevent_set.all(),
+        # --------------------------------------------------------------#
+        "adults_count": active_admin.area.get_adults_count()[0],
+        "adults_count_male": active_admin.area.get_adults_count()[1],
+        "adults_count_female": active_admin.area.get_adults_count()[2],
+        # --------------------------------------------------------------#
+        "youth_count": active_admin.area.get_youth_count()[0],
+        "youth_count_male": active_admin.area.get_youth_count()[1],
+        "youth_count_female": active_admin.area.get_youth_count()[2],
+        # --------------------------------------------------------------#
+        "children_count": active_admin.area.get_children_count()[0],
+        "children_count_male": active_admin.area.get_children_count()[1],
+        "children_count_female": active_admin.area.get_children_count()[2]
+        # --------------------------------------------------------------#
     }
     return render(request, 'thecop_app/areaAdmin/home.html', context)
 

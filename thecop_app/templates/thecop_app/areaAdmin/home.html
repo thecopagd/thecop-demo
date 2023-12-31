@@ -8,6 +8,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="shortcut icon" href="{% static 'thecop_app/images/logo-pent.png' %}">
     <link rel="stylesheet" href="{% static 'thecop_app/CSS/index0.css' %}" />
+    <link rel="stylesheet" href="{% static 'thecop_app/CSS/index.css' %}" />
     <link rel="stylesheet" href="{% static 'thecop_app/CSS/ananse.css' %}" />
       <link rel="stylesheet" href="{% static 'thecop_app/CSS/fa/allicons.css' %}">
     <title>The Church Of Pentecost</title>
@@ -106,6 +107,102 @@
             </div>
         </div>
 
+    </div>
+     <div class="ministry-div">
+        <h3>Adults Ministry</h3>
+        <div class="ministry-row">
+             <div class="counter-001">
+             <div class="counter-av">
+                  <i class="fa-thin fa-users"></i>
+             </div>
+             <div>
+                 <div class="counter-head">Total</div>
+                 <div class="counter-mini">{{adults_count}}</div>
+             </div>
+        </div>
+            <div class="counter-001">
+             <div class="counter-av">
+                  <i class="fa-thin fa-male"></i>
+             </div>
+             <div>
+                 <div class="counter-head">Men</div>
+                 <div class="counter-mini">{{adults_count_male}}</div>
+             </div>
+        </div>
+            <div class="counter-001">
+             <div class="counter-av">
+                  <i class="fa-thin fa-female"></i>
+             </div>
+             <div>
+                 <div class="counter-head">Women</div>
+                 <div class="counter-mini">{{adults_count_female}}</div>
+             </div>
+        </div>
+        </div>
+    </div>
+    <div class="ministry-div">
+        <h3>Youth Ministry</h3>
+        <div class="ministry-row">
+             <div class="counter-001">
+             <div class="counter-av">
+                  <i class="fa-thin fa-users"></i>
+             </div>
+             <div>
+                 <div class="counter-head">Total</div>
+                 <div class="counter-mini">{{youth_count}}</div>
+             </div>
+        </div>
+            <div class="counter-001">
+             <div class="counter-av">
+                  <i class="fa-thin fa-male"></i>
+             </div>
+             <div>
+                 <div class="counter-head">Gents</div>
+                 <div class="counter-mini">{{youth_count_male}}</div>
+             </div>
+        </div>
+            <div class="counter-001">
+             <div class="counter-av">
+                  <i class="fa-thin fa-female"></i>
+             </div>
+             <div>
+                 <div class="counter-head">Ladies</div>
+                 <div class="counter-mini">{{youth_count_female}}</div>
+             </div>
+        </div>
+        </div>
+    </div>
+    <div class="ministry-div">
+        <h3>Children Ministry</h3>
+        <div class="ministry-row">
+             <div class="counter-001">
+             <div class="counter-av">
+                  <i class="fa-thin fa-children"></i>
+             </div>
+             <div>
+                 <div class="counter-head">Total</div>
+                 <div class="counter-mini">{{children_count}}</div>
+             </div>
+        </div>
+            <div class="counter-001">
+             <div class="counter-av">
+                  <i class="fa-thin fa-child"></i>
+             </div>
+             <div>
+                 <div class="counter-head">Boys</div>
+                 <div class="counter-mini">{{children_count_male}}</div>
+             </div>
+        </div>
+            <div class="counter-001">
+             <div class="counter-av">
+                  <i class="fa-thin fa-child-dress"></i>
+             </div>
+             <div>
+                 <div class="counter-head">Girls</div>
+                 <div class="counter-mini">{{children_count_female}}</div>
+             </div>
+        </div>
+        </div>
     </div>
 
     <h3>Announcements</h3>

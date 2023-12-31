@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+{% load static %}
+{% load baseui_local %}
+<html lang="en">
+
+{% header_component %}
+<body>
+<div onclick="closeForm(b=['form-admin'])" id="body-cover"></div>
+<div class="form-div" id="form-admin">
+    <div class="header">
+        <h4>ADD Announcement</h4>
+    </div>
+    <div>
+
+    </div>
+    <form method="post" action="{% url 'localAdmin_add_announcement' %}">
+        {% csrf_token %}
+        <textarea name="text" required> </textarea>
+        <br><br>
+        <input type="submit" value="Add">
+    </form>
+   </div>
+
+<br><br><br>
+<appbody style=" background-color: #f0f1f3 !important;">
+
+<div class="paded001">
+    <div class="l-i-001">
+        <div class="l-div"><h3>Announcements</h3></div>
+        <div class="i-div">
+            <i class="fa-duotone fa-arrow-down-arrow-up"></i>
+            <i class="fa-duotone fa-trash-list"></i>
+            <i onclick="openForm('form-admin')" class="fa-duotone fa-plus"></i>
+        </div>
+    </div>
+    <br>
+    <div>
+        {% for announcement in announcements %}
+            <div class="anc n admin">
+                <span>{{ announcement.text }}</span>
+                <div class="overview">
+                    <i class="fa-duotone fa-edit"></i>
+                    <i class="fa-duotone fa-trash" onclick="window.open('{% url 'localAdmin_delete_announcement' id=announcement.id  %}', '_self')"></i>
+                </div>
+            </div>
+        {% empty %}
+            <div class="anc n">
+                <span>No announcement</span>
+            </div>
+        {% endfor %}
+    </div>
+</div>
+
+
+</appbody>
+</body>
+<script src="{% static 'thecop_app/js/bodycover.js' %}"></script>
+
+</html>

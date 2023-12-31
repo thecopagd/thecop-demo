@@ -3,6 +3,8 @@ from . import views
 
 urlpatterns = [
     path("home", views.home, name="nationalAdmin_home"),
+    path("announcement", views.announcement, name="nationalAdmin_announcement"),
+    path("delete_announcement/<str:id>", views.delete_announcement, name="nationalAdmin_delete_announcement"),
     path("areas", views.areas, name="nationalAdmin_areas"),
     path("admins", views.admins, name="nationalAdmin_admins"),
     path("members", views.members, name="nationalAdmin_members"),

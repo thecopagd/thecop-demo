@@ -5,10 +5,12 @@
 
 
   <body>
-{% header_component active="songs" %}
+    <!-- Header section -->
+   {% header_component active="songs" %}
+
     <main>
       <!-- Song container -->
-      <div class="songsdetails">
+      <!-- <div class="songsdetails">
         <div class="songtitles">Titles</div>
         <div class="songcontainer">
           <div class="pagination">
@@ -26,9 +28,21 @@
             <div id="commentDisplay"></div>
           </div>
         </div>
-      </div>
+      </div> -->
     </main>
 
+    <main>
+      <!-- Song container -->
+      <div class="songsdetails">
+        <div class="songtitles">
+          <h2>Song Titles</h2>
+          <ul id="songList"></ul>
+        </div>
+        <div class="songcontainer" id="songDetails">
+          <!-- Song details will be displayed here -->
+        </div>
+      </div>
+    </main>
     <script>
       //Songs
       const songs = [
@@ -66,58 +80,82 @@
         displaySongs(); // Refresh the displayed songs
       }
 
-      function displaySongs() {
-        const container = document.querySelector(".songcontainer");
-
-        // Clear existing content
-        container.innerHTML = "";
-
-        // Display the current song
+      function navigateSong(direction) {
         const currentSong = songs[currentSongIndex];
-        const titleDiv = document.createElement("div");
-        titleDiv.className = "song-title";
-        titleDiv.textContent = currentSong.title;
-        container.appendChild(titleDiv);
 
-        const lyricsDiv = document.createElement("div");
-        lyricsDiv.className = "lyrics";
-        lyricsDiv.innerHTML = `
+        if (direction === "previous") {
+          // Display the previous verse of the current song
+          currentSong.currentVerseIndex = Math.max(
+            currentSong.currentVerseIndex - 1,
+            0
+          );
+          displaySongDetails(currentSongIndex);
+        } else if (direction === "next") {
+          // Display the next verse of the current song or move to the next song
+          if (currentSong.currentVerseIndex < currentSong.lyrics.length - 1) {
+            currentSong.currentVerseIndex++;
+          } else {
+            currentSongIndex = (currentSongIndex + 1) % songs.length;
+            currentSong.currentVerseIndex = 0;
+          }
+          displaySongDetails(currentSongIndex);
+        }
+      }
+
+      function displaySongs() {
+        // Display the song list on the left
+        const songList = document.getElementById("songList");
+        songList.innerHTML = "";
+        songs.forEach((song, index) => {
+          const listItem = document.createElement("li");
+          listItem.textContent = song.title;
+          listItem.onclick = () => displaySongDetails(index, false);
+          songList.appendChild(listItem);
+        });
+
+        // Display the current song's details on the right
+        displaySongDetails(currentSongIndex, false);
+      }
+
+      function displaySongDetails(index, showPreviousVerse) {
+        const container = document.getElementById("songDetails");
+        const currentSong = songs[index];
+
+        // Display the title and lyrics
+        container.innerHTML = `
                 <h1>${currentSong.title}</h1>
                 <p>${currentSong.lyrics.join("<br>")}</p>
             `;
 
-        container.appendChild(lyricsDiv);
-
-        // Add navigation buttons
+        // Display the navigation buttons
         container.innerHTML += `
                 <div class="pagination">
-                    <button onclick="navigateSong('previous')">Previous Song</button>
+                    <button onclick="navigateSong('previous')">Previous Verse</button>
                     <button onclick="navigateSong('next')">Next Song</button>
+                </div>
+                <div class="comments">
+                    <h2>Comments</h2>
+                    <textarea id="commentInput" placeholder="Add your comment here..."></textarea>
+                    <button onclick="addComment()">Submit</button>
+                    <div id="commentDisplay"></div>
                 </div>
             `;
 
-        container.innerHTML += `
-        <div class="comments">
-            <h2>Comments</h2>
-            <textarea id="commentInput" placeholder="Add your comment here..."></textarea>
-            <button onclick="addComment()">Submit</button>
-            <div id="commentDisplay"></div>
-        </div>
-    `;
-      }
-      displaySongs();
-
-      function addComment() {
-        const comment = document.getElementById("commentInput").value;
-        const commentDisplay = document.getElementById("commentDisplay");
-
-        if (comment.trim() !== "") {
-          const commentElement = document.createElement("p");
-          commentElement.textContent = comment;
-          commentDisplay.appendChild(commentElement);
-          document.getElementById("commentInput").value = "";
+        // Display the previous verse if needed
+        if (showPreviousVerse) {
+          addComment("Displaying previous verse");
         }
       }
+
+      function addComment(comment) {
+        const commentDisplay = document.getElementById("commentDisplay");
+        const commentElement = document.createElement("p");
+        commentElement.textContent = comment;
+        commentDisplay.appendChild(commentElement);
+      }
+
+      // Initial display
+      displaySongs();
     </script>
 
     <!-- Additional scripts or footer content can be added here -->
