@@ -1,0 +1,335 @@
+<!DOCTYPE html>
+<html lang="en">
+{% load static %}
+{% load baseui %}
+
+<head>
+
+    <style>
+        /* Basic Styles */
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f5f5f5;
+            color: #333;
+            margin: 0;
+        }
+
+        .header {
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .gallery {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 10px;
+            padding: 10px;
+        }
+
+        .gallery-item {
+            position: relative;
+            overflow: hidden;
+            border-radius: 5px;
+        }
+
+        .gallery-item:hover img {
+            filter: brightness(50%);
+            transform: scale(1.2);
+        }
+
+        .gallery-item img {
+            width: 100%;
+            height: 100%;
+            display: block;
+            border-radius: 5px;
+            transition: filter 0.3s ease, transform 0.3s ease;
+        }
+
+        .gallery-item .description {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            color: #fff;
+            font-size: 15px;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+            text-align: center;
+            width: 80%;
+            margin: 0 auto;
+        }
+
+        .gallery-item:hover .description {
+            opacity: 1;
+        }
+
+        /* Responsive Styles */
+        @media only screen and (max-width: 800px) {
+            .gallery {
+                grid-template-columns: repeat(auto-fill, minmax(100%, 1fr));
+            }
+
+            .gallery {
+                margin-top: 90px;
+            }
+        }
+
+        /* Modal Styles */
+        .modal {
+            display: none;
+            position: fixed;
+            width: 100%;
+            height: auto;
+            background-color: rgba(0, 0, 0, 0.8);
+            justify-content: center;
+            align-items: center;
+        }
+
+        .modal-content {
+            position: relative;
+            max-width: 100%;
+            max-height: 100%;
+        }
+
+
+        #modalImage {
+            width: 100%;
+            height: auto;
+        }
+
+        #modalDescription {
+            color: #fff;
+            font-size: 18px;
+            margin-top: 10px;
+            text-align: center;
+        }
+
+        .modal-content span {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            font-size: 24px;
+            cursor: pointer;
+            color: #fff;
+        }
+
+        span.close {
+            position: absolute;
+            top: 10px;
+            font-size: 24px;
+            color: #fff;
+            cursor: pointer;
+        }
+
+        .modal-content img {
+            width: 100%;
+            height: auto;
+        }
+
+        /* Gallery Banner Styles */
+        .gallery-banner {
+            font-size: 25px;
+            color: #000000;
+            text-align: center;
+            padding: 10px;
+            margin-bottom: 5px;
+            margin-top: 70px;
+        }
+        .gallery-item {
+            position: relative;
+            overflow: hidden;
+            border-radius: 5px;
+        }
+
+        /* Close Button Styles */
+        .close-btn {
+            font-size: px;
+            color: white;
+            cursor: pointer;
+        }
+    </style>
+</head>
+
+<body>
+    {% header_component active="songs" %}
+
+    <div class="gallery-banner">
+        <h2>Welcome to Our Gallery</h2>
+    </div>
+    <div class="gallery">
+        <!-- Gallery Items -->
+        <div class="gallery-item">
+            <img src="/static/thecop_app/images/IMG_3723.JPG" alt="">
+            <div class="description">Play on the birth of Jesus at Abelemkpe Central Assembly</div>
+        </div>
+        <div class="gallery-item">
+            <img src="/static/thecop_app/images/IMG_3717.JPG" alt="">
+            <div class="description">Play on the birth of Jesus at Abelemkpe Central Assembly</div>
+        </div>
+        <div class="gallery-item">
+            <img src="/static/thecop_app/images/IMG_8421.JPG" alt="">
+            <div class="description">Sermon by Elder Delali of Abelemkpe Central Assembly</div>
+        </div>
+        <div class="gallery-item">
+            <img src="/static/thecop_app/images/IMG_8489.JPG" alt="">
+            <div class="description">Carols Service at Abelemkpe Central Assembly</div>
+        </div>
+        <div class="gallery-item">
+            <img src="/static/thecop_app/images/IMG_8497.JPG" alt="">
+            <div class="description">Ministration from Alter Praise at Carols Service</div>
+        </div>
+        <div class="gallery-item">
+            <img src="/static/thecop_app/images/f9f3ffb3-f40d-4c4e-9b2f-e42e3548c900.JPG" alt="">
+            <div class="description">Theme of the church for 2024</div>
+        </div>
+        <div class="gallery-item">
+            <img src="/static/thecop_app/images/church1.jpg" alt="">
+            <div class="description">Women's Ministry Beadmaking Practicals</div>
+        </div>
+        <div class="gallery-item">
+            <img src="/static/thecop_app/images/church2.jpg" alt="">
+            <div class="description">Children's Ministry New Year's Party</div>
+        </div>
+        <div class="gallery-item">
+            <img src="/static/thecop_app/images/IMG_3723.JPG" alt="">
+            <div class="description">Play on the birth of Jesus at Abelemkpe Central Assembly</div>
+        </div>
+        <div class="gallery-item">
+            <img src="/static/thecop_app/images/IMG_3717.JPG" alt="">
+            <div class="description">Play on the birth of Jesus at Abelemkpe Central Assembly</div>
+        </div>
+        <div class="gallery-item">
+            <img src="/static/thecop_app/images/IMG_8421.JPG" alt="">
+            <div class="description">Sermon by Elder Delali of Abelemkpe Central Assembly</div>
+        </div>
+        <div class="gallery-item">
+            <img src="/static/thecop_app/images/IMG_8489.JPG" alt="">
+            <div class="description">Carols Service at Abelemkpe Central Assembly</div>
+        </div>
+        <div class="gallery-item">
+            <img src="/static/thecop_app/images/IMG_8497.JPG" alt="">
+            <div class="description">Ministration from Alter Praise at Carols Service</div>
+        </div>
+        <div class="gallery-item">
+            <img src="/static/thecop_app/images/f9f3ffb3-f40d-4c4e-9b2f-e42e3548c900.JPG" alt="">
+            <div class="description">Theme of the church for 2024</div>
+        </div>
+        <div class="gallery-item">
+            <img src="/static/thecop_app/images/church1.jpg" alt="">
+            <div class="description">Women's Ministry Beadmaking Practicals</div>
+        </div>
+        <div class="gallery-item">
+            <img src="/static/thecop_app/images/church2.jpg" alt="">
+            <div class="description">Children's Ministry New Year's Party</div>
+        </div>
+        <!-- Add more gallery items as needed -->
+    </div>
+    <footer class="site-footer">
+        <div class="footer_container">
+            <div class="footer-top">
+                <div class="footer-section">
+                    <h3>Theme for 2024</h3>
+                    <p><strong>A People of God Unleashed to Transform their World</strong>
+                        <br /> (1 Peter 2:9 and Acts 1:8)
+                    </p>
+                </div>
+
+                <div class="footer-section">
+                    <h3>Quick Links</h3>
+                    <ul>
+                        <li><a href="#">Home</a></li>
+                        <li><a href="#">Services</a></li>
+                        <li><a href="#">Portfolio</a></li>
+                        <li><a href="#">Contact</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-section">
+                    <h3>Contact Information</h3>
+                    <span><i class="fas fa-map-marker-alt"></i> 1234 Main St, City, Country</span><br />
+                    <span><i class="fas fa-phone"></i> +123-456-7890</span><br />
+                    <span><i class="fas fa-envelope"></i> info@example.com</span>
+                </div>
+            </div>
+
+            <div class="footer-section">
+                <h3>Newsletter</h3>
+                <h5>Subscribe to our newsletter for updates.</h5>
+                <form action="#" method="post" class="footer-form">
+                    <input type="email" name="email" placeholder="Enter your email" required>
+                    <button type="submit">Subscribe</button>
+                </form>
+            </div>
+
+            <div class="footer-bottom">
+                <p>&copy; 2023 YourWebsiteName. All Rights Reserved.</p>
+                <div class="social-icons">
+                    <a href="#"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#"><i class="fab fa-twitter"></i></a>
+                    <a href="#"><i class="fab fa-instagram"></i></a>
+                    <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Preview Modal -->
+    <div id="myModal" class="modal">
+        <div class="modal-content">
+            <span onclick="closeModal()" class="close-btn" title="Close">&times;</span>
+            <img id="modalImage" src="" alt="Modal Image">
+            <p id="modalDescription" class="description"></p>
+        </div>
+    </div>
+
+    <script>
+        // JavaScript code for your gallery
+        document.querySelectorAll('.gallery-item').forEach(item => {
+            item.addEventListener('click', function () {
+                const imageUrl = this.querySelector('img').src;
+                const description = this.querySelector('.description').textContent;
+                openModal(imageUrl, description);
+            });
+        });
+
+        function openModal(imageUrl, description) {
+            const modal = document.getElementById('myModal');
+            const modalImage = document.getElementById('modalImage');
+            const modalDescription = document.getElementById('modalDescription');
+
+            modalImage.src = imageUrl; // Set the source of the modal image
+            modalDescription.textContent = description;
+
+            modal.style.display = 'block';
+
+            // Add a class to the clicked gallery item for styling (overlay effect)
+            document.querySelectorAll('.gallery-item').forEach(item => {
+                item.classList.remove('clicked');
+            });
+            this.classList.add('clicked');
+
+        }
+
+        function closeModal() {
+            const modal = document.getElementById('myModal');
+            modal.style.display = 'none';
+
+            // Remove the overlay effect class when the modal is closed
+            document.querySelectorAll('.gallery-item').forEach(item => {
+                item.classList.remove('clicked');
+            });
+        }
+
+        // Close modal if clicked outside of the image
+        window.onclick = function (event) {
+            const modal = document.getElementById('myModal');
+            if (event.target == modal) {
+                closeModal();
+            }
+        };
+
+    </script>
+</body>
+</html>

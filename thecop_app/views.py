@@ -17,3 +17,7 @@ def songs(request):
 
 def about_leaders(request):
     return render(request, 'thecop_app/about_leaders.html')
+
+
+def gallery(request):
+    return render(request, 'thecop_app/gallery.html')
