@@ -631,7 +631,7 @@ class Member(models.Model):
         return self.local_assembly.district.districtannouncement_set.all()
 
     def get_local_announcements(self):
-        return self.local_assembly.district.area.areaannouncement_set.all()
+        return self.local_assembly.localannouncement_set.all()
 
     def get_age(self):
         age = today.year - self.date_of_birth.year - (
