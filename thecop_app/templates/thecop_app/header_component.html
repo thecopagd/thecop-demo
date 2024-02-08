@@ -262,7 +262,7 @@
           <a href="{% url 'songs' %}" class="nav-item">Songs</a>
           <a href="#" class="nav-item">Contact</a>
 
-          <button class="signup">Find A Church</button>
+          <button onclick="window.open('{% url 'find_church' %}', '_self')" class="signup">Find A Church</button>
           <button class="signup" onclick="window.open('{% url 'member_login' %}', '_self')">Login</button>
         </div>
       </div>

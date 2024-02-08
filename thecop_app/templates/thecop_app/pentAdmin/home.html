@@ -41,14 +41,14 @@
         var data = new google.visualization.arrayToDataTable([
          ['Gender', 'Population', { role: 'style' }],
          ['Total', {{adults_count}}, 'lime'],            // RGB value
-         ['Male', {{adults_male}}, 'royal blue'],            // English color name
-         ['Female', {{adults_female}}, 'gold'],
+         ['Male', {{adults_male}}, 'purple'],            // English color name
+         ['Female', {{adults_female}}, 'LightCoral'],
       ]);
 
         // Set chart options
         var options = {'title':'Gender Population - Adult Ministry',
                        'width':"100%",
-                       'height':300};
+                       'height':400};
 
         // Instantiate and draw our chart, passing in some options.
         var chart = new google.visualization.ColumnChart(document.getElementById('adult_ministry_chart_div'));
@@ -75,14 +75,14 @@
         var data = new google.visualization.arrayToDataTable([
          ['Gender', 'Population', { role: 'style' }],
          ['Total', {{youth_count}}, 'lime'],            // RGB value
-         ['Male', {{youth_male}}, 'royal blue'],            // English color name
-         ['Female', {{youth_female}}, 'gold'],
+         ['Male', {{youth_male}}, 'purple'],            // English color name
+         ['Female', {{youth_female}}, 'LightCoral'],
       ]);
 
         // Set chart options
         var options = {'title':'Gender Population - Youth Ministry',
                        'width':"100%",
-                       'height':300};
+                       'height':400};
 
         // Instantiate and draw our chart, passing in some options.
         var chart = new google.visualization.ColumnChart(document.getElementById('youth_ministry_chart_div'));
@@ -109,15 +109,15 @@
         var data = new google.visualization.arrayToDataTable([
          ['Gender', 'Population', { role: 'style' }],
          ['Total', {{children_count}}, 'lime'],            // RGB value
-         ['Male', {{children_male}}, 'royal blue'],            // English color name
-         ['Female', {{children_female}}, 'gold'],
+         ['Male', {{children_male}}, 'purple'],            // English color name
+         ['Female', {{children_female}}, 'LightCoral'],
       ]);
 
 
         // Set chart options
         var options = {'title':'Gender Population - Children Ministry',
                        'width':"100%",
-                       'height':300};
+                       'height':400};
 
         // Instantiate and draw our chart, passing in some options.
         var chart = new google.visualization.ColumnChart(document.getElementById('children_ministry_chart_div'));
@@ -125,6 +125,41 @@
       }
     </script>
     <!--  END Children ministry chart script  -->
+
+      <!-- START ministry chart script  -->
+      <script type="text/javascript">
+
+      // Load the Visualization API and the corechart package.
+      google.charts.load('current', {'packages':['corechart']});
+
+      // Set a callback to run when the Google Visualization API is loaded.
+      google.charts.setOnLoadCallback(drawChart);
+
+      // Callback that creates and populates a data table,
+      // instantiates the pie chart, passes in the data and
+      // draws it.
+      function drawChart() {
+
+        // Create the data table.
+        var data = new google.visualization.arrayToDataTable([
+         ['Ministry', 'Population', { role: 'style' }],
+         ['Adult', {{adults_count}}, 'grey'],            // RGB value
+         ['Youth', {{youth_count}}, 'turquoise'],            // English color name
+         ['Children', {{children_count}}, 'wheat'],
+      ]);
+
+
+        // Set chart options
+        var options = {'title':'Ministry Population',
+                       'width':"100%",
+                       'height': 360};
+
+        // Instantiate and draw our chart, passing in some options.
+        var chart = new google.visualization.ColumnChart(document.getElementById('all_ministry_chart_div'));
+        chart.draw(data, options);
+      }
+    </script>
+    <!--  END  ministry chart script  -->
 </head>
 
 <body>
@@ -159,11 +194,12 @@
     <div class="counter-div-090">
         <div class="one">
             <div class="counter alpha">
-                <div class="count">{{members_total}}</div>
+                <!--div class="count">{{members_total}}</div -->
                 <div class="label">
                     <i class="fa-thin fa-users"></i>
-                    <span>Members</span>
+                    <span>{{members_total}} Members</span>
                 </div>
+                <div id="all_ministry_chart_div"></div>
             </div>
         </div>
         <div  class="two">

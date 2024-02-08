@@ -21,3 +21,7 @@ def about_leaders(request):
 
 def gallery(request):
     return render(request, 'thecop_app/gallery.html')
+
+
+def find_church(request):
+    return render(request, 'thecop_app/find_church.html')

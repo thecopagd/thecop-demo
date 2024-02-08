@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <script type='text/javascript'>
+    var map, searchManager;
+
+    function GetMap() {
+        map = new Microsoft.Maps.Map('#myMap', {
+            credentials: "AvYrgf7iM_8CAN1MUgdxJ-SvvEJDYUgjET2RcLpcT1KyvADVE3oDkbKGvGX9agQg",
+            supportedMapTypes: [
+                Microsoft.Maps.MapTypeId.road,
+                Microsoft.Maps.MapTypeId.aerial,
+                Microsoft.Maps.MapTypeId.streetside,
+                Microsoft.Maps.MapTypeId.grayscale,
+                Microsoft.Maps.MapTypeId.canvasDark,
+                Microsoft.Maps.MapTypeId.canvasLight,
+                Microsoft.Maps.MapTypeId.birdseye, //Will display a button in the future.
+                Microsoft.Maps.MapTypeId.ordnanceSurvey //Only appears when user is in UK.
+            ],
+            mapTypeId: Microsoft.Maps.MapTypeId.grayscale
+        });
+
+        // JSON data containing pushpin positions
+        var pushpinData = [
+            {"latitude": 5.602107556001205, "longitude": -0.2250461937510739},
+            {"latitude": 5.604240627849691, "longitude": -0.21485875664393042},
+            {"latitude": 5.612038726715142, "longitude": -0.20338873298007798},
+        ];
+
+        // Add pushpins to the map
+        addPushpins(pushpinData);
+    }
+
+    function addPushpins(pushpinData) {
+        for (var i = 0; i < pushpinData.length; i++) {
+            var pushpin = pushpinData[i];
+            var location = new Microsoft.Maps.Location(pushpin.latitude, pushpin.longitude);
+            var pin = new Microsoft.Maps.Pushpin(location);
+            map.entities.push(pin);
+        }
+    }
+    </script>
+    <script type='text/javascript' src='http://www.bing.com/api/maps/mapcontrol?callback=GetMap' async defer></script>
+</head>
+
+{% load static %}
+
+{% load baseui %}
+  <body>
+{% header_component active="index" %}
+    <main>
+    <div id="myMap" style="position:relative;width:100%;min-width:290px;height:600px;background-color:gray"></div>
+    </main>
+
+    <footer class="site-footer">
+        <div class="footer_container">
+            <div class="footer-top">
+                <div class="footer-section">
+                    <h3>Theme for 2024</h3>
+                    <p><strong>A People of God Unleashed to Transform their World</strong>
+                    <br/> (1 Peter 2:9 and Acts 1:8)
+                    </p>
+                </div>
+
+                <div class="footer-section">
+                    <h3>Quick Links</h3>
+                    <ul>
+                        <li><a href="#">Home</a></li>
+                        <li><a href="#">Services</a></li>
+                        <li><a href="#">Portfolio</a></li>
+                        <li><a href="#">Contact</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-section">
+                    <h3>Contact Information</h3>
+                    <span><i class="fas fa-map-marker-alt"></i> 1234 Main St, City, Country</span><br/>
+                    <span><i class="fas fa-phone"></i> +123-456-7890</span><br/>
+                    <span><i class="fas fa-envelope"></i> info@example.com</span>
+                </div>
+            </div>
+
+            <div class="footer-section">
+                <h3>Newsletter</h3>
+                <h5>Subscribe to our newsletter for updates.</h5>
+                <form action="#" method="post" class="footer-form">
+                    <input type="email" name="email" placeholder="Enter your email" required>
+                    <button type="submit">Subscribe</button>
+                </form>
+            </div>
+
+            <div class="footer-bottom">
+                <p>&copy; 2024 The Church Of Pentecost. All Rights Reserved.</p>
+                <div class="social-icons">
+                    <a href="#"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#"><i class="fab fa-twitter"></i></a>
+                    <a href="#"><i class="fab fa-instagram"></i></a>
+                    <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        ScrollReveal({
+            reset: true,
+            distance: "60px",
+            duration: 2500,
+            delay: 400,
+        });
+
+        ScrollReveal().reveal(".topic,.section-title", {
+            delay: 500,
+            origin: "left",
+        });
+        ScrollReveal().reveal(".event-div, .info", {
+            delay: 100,
+            origin: "right",
+        });
+        ScrollReveal().reveal(".date", { delay: 10, origin: "left" });
+        ScrollReveal().reveal(".blogthumbnail", {
+            delay: 300,
+            origin: "bottom",
+            interval: 200,
+        });
+        ScrollReveal().reveal(".sec-02 .image,.sec-03 .image", {
+            delay: 700,
+            origin: "top",
+        });
+        ScrollReveal().reveal(".media-info li", {
+            delay: 500,
+            origin: "top",
+            interval: 200,
+        });
+    </script>
+
+    <!-- <script src="../JS/swiper-bundle.min.js"></script> -->
+</body>
+</html>

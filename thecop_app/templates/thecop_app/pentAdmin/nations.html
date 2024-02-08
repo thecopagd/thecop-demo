@@ -2,6 +2,30 @@
 {% load static %}
 <html lang="en">
   <head>
+      <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+    <script type="text/javascript">
+      google.charts.load('current', {
+        'packages':['geochart'],
+      });
+      google.charts.setOnLoadCallback(drawRegionsMap);
+
+      function drawRegionsMap() {
+        var data = google.visualization.arrayToDataTable([
+          ['Country', 'Population', 'Areas'],
+          {% for country in countries|dictsort:"country" %}
+            ['{{country.country}}', {{country.get_members_total}}, {{country.area_set.count}}],
+          {% endfor %}
+        ]);
+
+        var options = {
+            'colors': '#2C4275',
+        };
+
+        var chart = new google.visualization.GeoChart(document.getElementById('regions_div'));
+
+        chart.draw(data, options);
+      }
+    </script>
 
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
@@ -12,16 +36,7 @@
     <link rel="stylesheet" href="{% static 'thecop_app/CSS/fa/allicons.css' %}">
 
     <title>The Church Of Pentecost</title>
-    <style>
-    body{font-family:calibri}
-        table{
-            border: 1px solid black; border-spacing: 2px;
-        }
-        th, td{
-            border: 1px solid black;
-            padding: 10px
-        }
-    </style>
+
 </head>
 
 <body>
@@ -78,7 +93,7 @@
         <div class="tag" onclick="openForm('form-admin')"><i class="fa-thin fa-add" style="font-size: 15px; font-weight:bold"></i></div>
     </div>
 
-    <div class="custom-table-001">
+    <!--div class="custom-table-001">
         <div class="row">
             <div class="cell"><b>Country</b></div>
             <div class="cell"><b>ID</b></div>
@@ -97,7 +112,9 @@
             <div class="cell">{{ country.get_local_total }}</div>
         </div>
         {% endfor %}
-    </div>
+    </div -->
+
+    <div id="regions_div" style="width: 100%; height: 500px;"></div>
 
 
 
