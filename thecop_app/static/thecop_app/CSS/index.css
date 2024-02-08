@@ -1297,3 +1297,50 @@ section {
     display: flex;
     align-items: center;
 }
+
+
+
+.show-member-search{
+    display: flex;
+    flex-direction: column;
+    width: 400px;
+    padding: 10px 20px;
+    background: white;
+    gap: 6px
+}
+.show-member-search .member-card{
+    width: 100%;
+    height: 5em;
+    display: grid;
+    grid-template-columns: 20% 90%;
+    border-radius: 11px;
+    padding: 0 10px;
+    background: white;
+    box-shadow: 0px 10px 20px 0px rgba(229, 229, 229, 0.75);
+    cursor: pointer
+}
+
+.show-member-search .member-card .avt{
+    display: flex;
+    align-items: center;
+    justify-content:center;
+}
+
+.show-member-search .member-card .txts{
+    padding: 0 10px
+}
+
+.show-member-search .member-card .txts .t1{
+    font-weight: bold;
+}
+
+.show-member-search .member-card .txts .t2{
+    font-size: 13px;
+}
+
+.show-member-search .member-card .txts .t3{
+    font-size: 11px;
+}
+
+
+

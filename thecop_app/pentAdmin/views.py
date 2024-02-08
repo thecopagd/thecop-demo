@@ -1,4 +1,4 @@
-from django.http import HttpResponse
+from django.http import HttpResponse, JsonResponse
 from django.shortcuts import render, redirect
 from ..logic import *
 from ..models import *
@@ -169,3 +169,13 @@ def add_nation_admin(request):
         return redirect("copAdmin_home")
 
     return render(request, 'thecop_app/pentAdmin/addnationadmin.html', context)
+
+
+def search_member(request):
+    query = request.GET.get('q')
+    if query:
+        results = Member.objects.filter(name__icontains=query)
+        data = [{'id': result.id, 'name': result.name} for result in results]
+    else:
+        data = []
+    return JsonResponse(data, safe=False)

@@ -71,50 +71,70 @@
 <appbody style=" background-color: #f0f1f3 !important;">
 
     <div class="func-bar">
-        <div class="tag">Nations</div>
+        <div class="tag">Members</div>
         <div class="search-div">
-            <input type="search" placeholder="Search Name, ID, Country, District, Area, Local">
+            <input id="searchMembers" type="search" placeholder="Search Name, ID, Country, District, Area, Local">
         </div>
         <div class="tag"><i class="fa-thin fa-filter" style="font-size: 15px; font-weight:bold"></i></div>
 <!--        <div class="tag" onclick="openForm('form-admin')"><i class="fa-thin fa-add" style="font-size: 15px; font-weight:bold"></i></div>-->
     </div>
 
-    <div class="custom-table-001">
-        <div class="row">
-            <div class="cell"><b>Profile</b></div>
-            <div class="cell"><b>ID</b></div>
-            <div class="cell"><b>Name</b></div>
-            <div class="cell"><b>Gender</b></div>
-            <div class="cell"><b>Date of Birth</b></div>
-            <div class="cell"><b>Phone (1)</b></div>
-            <div class="cell"><b>Phone (2)</b></div>
-            <div class="cell"><b>Country</b></div>
+    <div style="width: 100%; display: flex; align-items: center; justify-content: center">
+        <div id="show-member-search-result" class="show-member-search">
+            <!-- div class="member-card">
+                <div class="avt">
+                    <img src="/static/thecop_app/images/ant.png">
+                </div>
+                <div class="txts" style="">
+                    <div class="t1">Dennis Prince Kweku Delali</div>
+                    <div class="t2">Male . Youth</div>
+                    <div class="t3">Ghana . LA Area . Abelenpke District . Central Assembly</div>
+                </div>
+            </div -->
         </div>
-        {% for member in members %}
-        <div class="row">
-            <div class="cell" style="display: flex; align-items: center; justify-content:center;">
-                <img src="{% static 'thecop_app/images/ant.png' %}" width=50>
-            </div>
-            <div class="cell">{{ member.id }}</div>
-            <div class="cell">{{ member.name }}</div>
-            <div class="cell">{{ member.gender }}</div>
-            <div class="cell">{{ member.date_of_birth }}</div>
-            <div class="cell">{{ member.phone }}</div>
-            <div class="cell">
-                {% if member.phone2 == "" %}
-                    null
-                {% else %}
-                    {{member.phone2}}
-                {% endif %}
-            </div>
-            <div class="cell">{{ member.local_assembly.district.area.nation.country }}</div>
-        </div>
-        {% endfor %}
     </div>
+
 
 
 
 </appbody>
 </body>
 <script src="{% static 'thecop_app/js/bodycover.js' %}"></script>
+<script>
+     const searchInput = document.getElementById('searchMembers');
+     const searchResults = document.getElementById('show-member-search-result');
+
+     searchInput.addEventListener('input', function() {
+        const query = this.value.trim();
+
+        fetch('{% url "copAdmin_search_member" %}?q=' + query)
+        .then(response => response.json())
+        .then(data => {
+             data.forEach(item => {
+                searchResults.innerHTML = '';
+                data.forEach(item => {
+                    var tempDiv = document.createElement('div');
+                    // Set the innerHTML of the temporary div to your HTML string
+                    tempDiv.innerHTML = `<div class="member-card"> \
+                        <div class="avt"> \
+                            <img src="/static/thecop_app/images/ant.png"> \
+                        </div> \
+                        <div class="txts" style=""> \
+                            <div class="t1">${item.name}</div> \
+                            <div class="t2">Male . Youth</div> \
+                            <div class="t3">Ghana . LA Area . Abelenpke District . Central Assembly</div> \
+                        </div> \
+                    </div>`;
+
+// Access the first child element (the member-card div)
+var memberCard = tempDiv.firstChild;
+                    searchResults.appendChild(memberCard);
+                });
+             })
+        })
+        .catch(error => {
+                console.error('Error:', error);
+            })
+     })
+</script>
 </html>
